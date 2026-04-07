@@ -1,0 +1,65 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background 0.1s, border-color 0.1s, opacity 0.1s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* ── 크기 ─────────────────── */
+.sm  { padding: 4px 12px; font-size: 0.75rem; }
+.md  { padding: 8px 20px; font-size: 0.875rem; }
+.lg  { padding: 12px 28px; font-size: 1rem; }
+
+.fullWidth { width: 100%; }
+
+/* ── 종류 ─────────────────── */
+.primary {
+  background: var(--c-surface2);
+  border-color: var(--c-border-lt);
+  color: var(--c-text);
+}
+.primary:hover:not(:disabled) {
+  background: var(--c-border);
+  border-color: var(--c-text-dim);
+}
+
+.gold {
+  background: var(--c-gold);
+  border-color: var(--c-gold-bright);
+  color: #0c0906;
+}
+.gold:hover:not(:disabled) {
+  background: var(--c-gold-bright);
+}
+
+.danger {
+  background: #2a1010;
+  border-color: var(--c-fail);
+  color: #e08070;
+}
+.danger:hover:not(:disabled) {
+  background: var(--c-fail);
+  color: var(--c-text);
+}
+
+.ghost {
+  background: transparent;
+  border-color: var(--c-border);
+  color: var(--c-text-dim);
+}
+.ghost:hover:not(:disabled) {
+  border-color: var(--c-border-lt);
+  color: var(--c-text);
+}

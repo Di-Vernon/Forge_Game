@@ -1,0 +1,454 @@
+/* ── ForgeScreen 레이아웃 ─────────────────────────────────── */
+
+.screen {
+  display: grid;
+  grid-template-rows: 56px 1fr 52px;
+  height: 100%;
+  min-height: 0;
+  background: var(--c-bg);
+  position: relative;
+}
+
+/* ── 헤더 ──────────────────────────────────────────────── */
+.header {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 2px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.bgmBtn {
+  background: transparent;
+  border: 1px solid var(--c-border-lt);
+  color: var(--c-text-dim);
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  transition: color 0.1s, border-color 0.1s;
+}
+.bgmBtn:hover { color: var(--c-text); border-color: var(--c-text-dim); }
+.bgmBtnOn     { color: var(--c-gold-bright); border-color: var(--c-gold); }
+
+.titleBadge {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--c-gold);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px var(--c-gold);
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+}
+.statLabel { color: var(--c-text-dim); font-size: 0.68rem; }
+.statValue  { color: var(--c-text); font-family: 'Courier New', monospace; font-weight: 700; }
+.statValue.gold { color: var(--c-gold-bright); }
+
+/* ── 메인 영역 ─────────────────────────────────────────── */
+.main {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── 사이드 패널 공통 ────────────────────────────────────── */
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 16px;
+  border-right: 2px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.rightPanel {
+  border-right: none;
+  border-left: 2px solid var(--c-border);
+}
+
+.panelLabel {
+  font-size: 0.65rem;
+  color: var(--c-text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.panelPrice {
+  font-family: 'Courier New', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+  text-align: center;
+  line-height: 1.2;
+}
+.panelPrice.dimmed { color: var(--c-text-dim); font-size: 0.9rem; }
+
+.rateDisplay {
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--c-text);
+  text-align: center;
+  line-height: 1;
+}
+.rateDisplay.high   { color: var(--c-success); }
+.rateDisplay.medium { color: var(--c-gold-bright); }
+.rateDisplay.low    { color: var(--c-nearmiss); }
+.rateDisplay.veryLow { color: var(--c-fail); }
+
+.costTag {
+  font-size: 0.72rem;
+  color: var(--c-text-dim);
+  text-align: center;
+}
+.costTag span {
+  font-family: 'Courier New', monospace;
+  color: var(--c-text);
+  font-weight: 700;
+}
+
+.indomitableNote {
+  font-size: 0.65rem;
+  color: var(--c-gold);
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* ── 검 중앙 영역 ─────────────────────────────────────── */
+.swordCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--c-bg);
+  overflow: hidden;
+}
+
+/* 대장간 배경 그리드 패턴 */
+.swordCenter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--c-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* 모루 받침 */
+.anvil {
+  position: absolute;
+  bottom: 28px;
+  width: 120px;
+  height: 20px;
+  background: var(--c-surface2);
+  border: 2px solid var(--c-border);
+}
+.anvil::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 12px;
+  background: var(--c-surface2);
+  border: 2px solid var(--c-border);
+  border-bottom: none;
+}
+
+.swordWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 강화 중 오버레이 */
+.forgingOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.forgingOverlay.forging  { animation: flash-success 0.4s ease infinite; }
+.forgingOverlay.success  { animation: flash-success 0.5s ease forwards; }
+.forgingOverlay.fail     { animation: flash-fail    0.5s ease forwards; }
+.forgingOverlay.near_miss{ animation: flash-nearmiss 2.4s ease forwards; }
+
+/* ── waiting_reveal 오버레이 ─────────────────────────────── */
+.revealOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 5, 2, 0.78);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 5;
+  cursor: pointer;
+  animation: reveal-in 0.35s ease;
+}
+
+@keyframes reveal-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.revealOrb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c-gold-bright) 0%, var(--c-gold) 40%, transparent 70%);
+  box-shadow:
+    0 0 20px var(--c-gold),
+    0 0 60px rgba(200, 144, 40, 0.4);
+  animation: orb-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes orb-pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 20px var(--c-gold), 0 0 60px rgba(200,144,40,0.4); }
+  50%       { transform: scale(1.15); box-shadow: 0 0 32px var(--c-gold-bright), 0 0 80px rgba(200,144,40,0.6); }
+}
+
+.revealPrompt {
+  font-size: 0.8rem;
+  color: var(--c-gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: prompt-blink 1.4s ease-in-out infinite;
+}
+
+@keyframes prompt-blink {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.4; }
+}
+
+/* ── 시작 화면 오버레이 ──────────────────────────────────── */
+.startOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: rgba(12, 9, 6, 0.85);
+  z-index: 10;
+}
+
+.startTitle {
+  font-size: 1.2rem;
+  color: var(--c-text-dim);
+  letter-spacing: 0.15em;
+}
+
+/* ── 푸터 ──────────────────────────────────────────────── */
+.footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0 20px;
+  border-top: 2px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.swordInfo {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.levelTag {
+  font-family: 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+}
+
+.swordName {
+  font-size: 0.9rem;
+  color: var(--c-text);
+  letter-spacing: 0.04em;
+}
+
+.storageBtn {
+  background: transparent;
+  border: 1px solid var(--c-border-lt);
+  color: var(--c-text-dim);
+  font-size: 0.72rem;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  transition: color 0.1s, border-color 0.1s;
+}
+.storageBtn:hover {
+  color: var(--c-text);
+  border-color: var(--c-text-dim);
+}
+
+/* ── 건너뛰기 버튼 영역 ──────────────────────────────────── */
+.actionRow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--c-border);
+}
+
+.skipCost {
+  font-size: 0.62rem;
+  color: var(--c-text-dim);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* ── Phase 4+ 미구현 안내 ──────────────────────────────── */
+.phaseNote {
+  font-size: 0.65rem;
+  color: var(--c-text-faint);
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* ── 검 클릭 가능 상태 ────────────────────────────────── */
+.swordClickable {
+  cursor: pointer;
+}
+.swordClickable:hover {
+  filter: brightness(1.15);
+}
+
+/* ── 푸터 검 이름 버튼 ────────────────────────────────── */
+.swordNameBtn {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed var(--c-border-lt);
+  color: var(--c-text);
+  font-size: 0.9rem;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  padding: 0 2px;
+  cursor: pointer;
+  transition: color 0.1s, border-color 0.1s;
+}
+.swordNameBtn:hover:not(:disabled) {
+  color: var(--c-gold-bright);
+  border-bottom-color: var(--c-gold-bright);
+}
+.swordNameBtn:disabled {
+  cursor: default;
+  border-bottom-color: transparent;
+}
+
+/* ── 검 도안 모달 ─────────────────────────────────────── */
+.loreBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  animation: fadeIn 0.12s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.loreModal {
+  background: var(--c-surface);
+  border: 2px solid var(--c-border);
+  width: min(480px, 90%);
+  max-height: 70%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
+}
+
+.loreHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface2);
+  flex-shrink: 0;
+}
+
+.loreLevelTag {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+  min-width: 2.5rem;
+}
+
+.loreTitle {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--c-text);
+  letter-spacing: 0.05em;
+}
+
+.loreClose {
+  background: transparent;
+  border: 1px solid var(--c-border-lt);
+  color: var(--c-text-dim);
+  font-size: 0.8rem;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: color 0.1s, border-color 0.1s;
+}
+.loreClose:hover {
+  color: var(--c-text);
+  border-color: var(--c-text-dim);
+}
+
+.loreBody {
+  padding: 20px 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.loreText {
+  font-size: 0.85rem;
+  color: var(--c-text-dim);
+  line-height: 1.75;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}

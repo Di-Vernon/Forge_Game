@@ -1,0 +1,215 @@
+{
+  "_comment": "모든 확률/비용 수치는 이 파일에서만 관리. 하드코딩 금지.",
+
+  "initialGold": 2000,
+
+  "upgradeCosts": {
+    "0": 5, "1": 10, "2": 15, "3": 22, "4": 32,
+    "5": 48, "6": 72, "7": 108, "8": 160, "9": 235,
+    "10": 340, "11": 480, "12": 680, "13": 960,
+    "14": 1350, "15": 1900, "16": 2700, "17": 3800,
+    "18": 5300, "19": 7400, "20": 10400, "21": 14500,
+    "22": 20000, "23": 28000, "24": 0
+  },
+
+  "upgradeSuccessRates": [
+    { "from": 0,  "to": 1,  "rate": 0.95, "nearMiss": false },
+    { "from": 1,  "to": 2,  "rate": 0.93, "nearMiss": false },
+    { "from": 2,  "to": 3,  "rate": 0.90, "nearMiss": false },
+    { "from": 3,  "to": 4,  "rate": 0.87, "nearMiss": false },
+    { "from": 4,  "to": 5,  "rate": 0.83, "nearMiss": false },
+    { "from": 5,  "to": 6,  "rate": 0.78, "nearMiss": false },
+    { "from": 6,  "to": 7,  "rate": 0.73, "nearMiss": false },
+    { "from": 7,  "to": 8,  "rate": 0.75, "nearMiss": false },
+    { "from": 8,  "to": 9,  "rate": 0.70, "nearMiss": false },
+    { "from": 9,  "to": 10, "rate": 0.65, "nearMiss": false },
+    { "from": 10, "to": 11, "rate": 0.60, "nearMiss": false },
+    { "from": 11, "to": 12, "rate": 0.55, "nearMiss": false },
+    { "from": 12, "to": 13, "rate": 0.50, "nearMiss": false },
+    { "from": 13, "to": 14, "rate": 0.68, "nearMiss": false },
+    { "from": 14, "to": 15, "rate": 0.63, "nearMiss": false },
+    { "from": 15, "to": 16, "rate": 0.58, "nearMiss": true  },
+    { "from": 16, "to": 17, "rate": 0.52, "nearMiss": true  },
+    { "from": 17, "to": 18, "rate": 0.52, "nearMiss": true  },
+    { "from": 18, "to": 19, "rate": 0.50, "nearMiss": true  },
+    { "from": 19, "to": 20, "rate": 0.50, "nearMiss": true  },
+    { "from": 20, "to": 21, "rate": 0.48, "nearMiss": true  },
+    { "from": 21, "to": 22, "rate": 0.52, "nearMiss": true  },
+    { "from": 22, "to": 23, "rate": 0.57, "nearMiss": true  },
+    { "from": 23, "to": 24, "rate": 0.62, "nearMiss": true  },
+    { "from": 24, "to": 25, "rate": 0.65, "nearMiss": true  }
+  ],
+
+  "blocks": {
+    "1": { "levels": [0, 1, 2, 3, 4, 5, 6, 7] },
+    "2": { "levels": [8, 9, 10, 11, 12] },
+    "3": { "levels": [13, 14, 15, 16] },
+    "4": { "levels": [17, 18, 19, 20, 21, 22] },
+    "5": { "levels": [23, 24] },
+    "6": { "levels": [25] }
+  },
+
+  "materialRequirements": {
+    "17": { "swords": [{ "level": 12, "count": 1 }] },
+    "18": { "swords": [{ "level": 12, "count": 1 }] },
+    "19": { "swords": [{ "level": 12, "count": 2 }] },
+    "20": { "swords": [{ "level": 16, "count": 1 }] },
+    "21": { "swords": [{ "level": 11, "count": 1 }] },
+    "22": { "swords": [{ "level": 16, "count": 1 }] },
+    "23": { "swords": [{ "level": 2,  "count": 1 }] },
+    "24": { "swords": [{ "level": 16, "count": 1 }] },
+    "25": { "swords": [{ "level": 16, "count": 2 }, { "level": 12, "count": 1 }] }
+  },
+
+  "titleProtection": {
+    "indomitable_smith": { "chance": 0.35 },
+    "sword_saint": { "chance": 0.60, "fragmentDropChance": 0.50, "materialPreserveOnProtect": true }
+  },
+
+  "masterSmithBonusRate": 0.02,
+
+  "titles": {
+    "beginners_luck": {
+      "name": "초심자의 행운",
+      "condition": "첫 파괴 경험",
+      "effectDescription": "파괴 시 100% 확률로 조각 드랍"
+    },
+    "bargain_master": {
+      "name": "흥정의 달인",
+      "condition": "15회 판매",
+      "effectDescription": "검 판매 시 골드 +50%"
+    },
+    "scavenger": {
+      "name": "잔해의 수집가",
+      "condition": "조각 5종 보유 또는 20개 획득",
+      "effectDescription": "파괴 시 100% 드랍 + 수량 2배"
+    },
+    "indomitable_smith": {
+      "name": "불굴의 대장장이",
+      "condition": "+8 이상에서 15회 파괴",
+      "effectDescription": "실패 시 35% 확률로 파괴 방지 (레벨 유지)"
+    },
+    "master_smith": {
+      "name": "달인 대장장이",
+      "condition": "+18 이상 첫 제작",
+      "effectDescription": "모든 강화 성공 확률 +2%p"
+    },
+    "refine_peak": {
+      "name": "재련의 정점",
+      "condition": "조합소에서 검 3회 제작",
+      "effectDescription": "+17 이상 실패 시 재료 검 보존 (골드는 소모)"
+    },
+    "sword_saint": {
+      "name": "검성의 대장장이",
+      "condition": "백야(+17) 최초 제작",
+      "effectDescription": "실패 시 60% 확률로 파괴 방지 + 파괴 시 50% 검성의 파편 드랍 + 보호 시 재료 보존"
+    },
+    "legend_smith": {
+      "name": "전설의 대장장이",
+      "condition": "+25 제작",
+      "effectDescription": "없음 (명예 칭호)"
+    },
+    "mythic_tale": {
+      "name": "신화 속 이야기",
+      "condition": "+1~+25 전부 보관",
+      "effectDescription": "없음"
+    }
+  },
+
+  "skipCosts": {
+    "scavenger":         { "targetLevel": 5,  "gold": 100,  "fragmentId": "refined_iron",    "fragmentCount": 1 },
+    "indomitable_smith": { "targetLevel": 7,  "gold": 116,  "fragmentId": "refined_iron",    "fragmentCount": 1 },
+    "sword_saint":       { "targetLevel": 8,  "gold": 238,  "fragmentId": "enchanted_iron",  "fragmentCount": 1 },
+    "master_smith":      { "targetLevel": 12, "gold": 4418, "fragmentId": "unknown_mineral", "fragmentCount": 1 },
+    "refine_peak":       { "targetLevel": 12, "gold": 4418, "fragmentId": "unknown_mineral", "fragmentCount": 1 },
+    "legend_smith":      { "targetLevel": 25, "gold": 0,    "fragmentId": null,              "fragmentCount": 0 }
+  },
+
+  "shop": {
+    "_comment": "상점 가격은 조합소보다 비싸야 함. 구체 수치는 밸런싱 시 확정.",
+    "scrollPrices": {
+      "x1":  { "count": 1,  "price": 150 },
+      "x5":  { "count": 5,  "price": 637 },
+      "x10": { "count": 10, "price": 1125 }
+    }
+  },
+
+  "fragments": {
+    "rusty_iron":      { "name": "녹슨 철조각" },
+    "refined_iron":    { "name": "정제된 철조각" },
+    "enchanted_iron":  { "name": "마력이 부여된 철조각" },
+    "moonlight":       { "name": "달빛 조각" },
+    "unknown_mineral": { "name": "알 수 없는 광물 파편" },
+    "spirit":          { "name": "사령 조각" },
+    "swordmaster":     { "name": "검성의 파편" },
+    "twisted_mana":    { "name": "뒤틀린 마력파편" }
+  },
+
+  "dropTable": [
+    { "level": 0,  "drops": [] },
+    { "level": 1,  "drops": [] },
+    { "level": 2,  "drops": [{ "fragmentId": "rusty_iron", "weight": 80 }, { "fragmentId": "refined_iron", "weight": 5 }] },
+    { "level": 3,  "drops": [{ "fragmentId": "rusty_iron", "weight": 80 }, { "fragmentId": "refined_iron", "weight": 5 }] },
+    { "level": 4,  "drops": [{ "fragmentId": "rusty_iron", "weight": 80 }, { "fragmentId": "refined_iron", "weight": 5 }] },
+    { "level": 5,  "drops": [{ "fragmentId": "rusty_iron", "weight": 80 }, { "fragmentId": "refined_iron", "weight": 15 }] },
+    { "level": 6,  "drops": [{ "fragmentId": "enchanted_iron", "weight": 40 }] },
+    { "level": 7,  "drops": [{ "fragmentId": "rusty_iron", "weight": 80 }, { "fragmentId": "refined_iron", "weight": 15 }] },
+    { "level": 8,  "drops": [{ "fragmentId": "enchanted_iron", "weight": 40 }, { "fragmentId": "unknown_mineral", "weight": 5 }] },
+    { "level": 9,  "drops": [{ "fragmentId": "spirit", "weight": 15 }] },
+    { "level": 10, "drops": [{ "fragmentId": "moonlight", "weight": 15 }] },
+    { "level": 11, "drops": [{ "fragmentId": "swordmaster", "weight": 15 }] },
+    { "level": 12, "drops": [{ "fragmentId": "unknown_mineral", "weight": 40 }] },
+    { "level": 13, "drops": [{ "fragmentId": "moonlight", "weight": 15 }, { "fragmentId": "spirit", "weight": 15 }] },
+    { "level": 14, "drops": [{ "fragmentId": "unknown_mineral", "weight": 40 }, { "fragmentId": "enchanted_iron", "weight": 40 }, { "fragmentId": "twisted_mana", "weight": 3 }] },
+    { "level": 15, "drops": [{ "fragmentId": "moonlight", "weight": 25 }] },
+    { "level": 16, "drops": [{ "fragmentId": "spirit", "weight": 25 }, { "fragmentId": "unknown_mineral", "weight": 15 }] },
+    { "level": 17, "drops": [{ "fragmentId": "swordmaster", "weight": 35 }] },
+    { "level": 18, "drops": [{ "fragmentId": "twisted_mana", "weight": 35 }] },
+    { "level": 19, "drops": [{ "fragmentId": "spirit", "weight": 35 }, { "fragmentId": "twisted_mana", "weight": 35 }] },
+    { "level": 20, "drops": [{ "fragmentId": "unknown_mineral", "weight": 35 }] },
+    { "level": 21, "drops": [{ "fragmentId": "twisted_mana", "weight": 35 }] },
+    { "level": 22, "drops": [{ "fragmentId": "twisted_mana", "weight": 35 }] },
+    { "level": 23, "drops": [{ "fragmentId": "rusty_iron", "weight": 80 }, { "fragmentId": "refined_iron", "weight": 35 }] },
+    { "level": 24, "drops": [{ "fragmentId": "twisted_mana", "weight": 35 }] },
+    { "level": 25, "drops": [] }
+  ],
+
+  "dropBaseChance": 0.60,
+
+  "fragmentQuantityChance": {
+    "single": 0.80,
+    "double": 0.20
+  },
+
+  "crafting": {
+    "_comment": "조합소 레시피. null인 수량은 밸런싱 시 확정.",
+    "scroll": [
+      { "fragmentId": "rusty_iron",      "amount": 6, "yield": 1 },
+      { "fragmentId": "refined_iron",    "amount": 4, "yield": 1 },
+      { "fragmentId": "enchanted_iron",  "amount": 3, "yield": 1 },
+      { "fragmentId": "moonlight",       "amount": 2, "yield": 1 },
+      { "fragmentId": "spirit",          "amount": 2, "yield": 1 },
+      { "fragmentId": "twisted_mana",    "amount": 1, "yield": 1 }
+    ],
+    "swords": [
+      { "resultLevel": 8,  "materials": [{ "fragmentId": "enchanted_iron",  "amount": 2 }] },
+      { "resultLevel": 11, "materials": [{ "fragmentId": "swordmaster",     "amount": 1 }] },
+      { "resultLevel": 12, "materials": [{ "fragmentId": "enchanted_iron",  "amount": 2 }, { "fragmentId": "unknown_mineral", "amount": 2 }] },
+      { "resultLevel": 15, "materials": [{ "fragmentId": "moonlight",       "amount": 3 }] },
+      { "resultLevel": 16, "materials": [{ "fragmentId": "unknown_mineral", "amount": 6 }] },
+      { "resultLevel": 17, "materials": [{ "fragmentId": "swordmaster",     "amount": 2 }] },
+      { "resultLevel": 18, "materials": [{ "fragmentId": "twisted_mana",    "amount": 10 }] },
+      { "resultLevel": 19, "materials": [{ "fragmentId": "twisted_mana",    "amount": 12 }] },
+      { "resultLevel": 20, "materials": [{ "fragmentId": "twisted_mana",    "amount": 15 }] },
+      { "resultLevel": 23, "materials": [{ "fragmentId": "swordmaster",     "amount": 4 }] }
+    ],
+    "yeoMyeong": {
+      "_comment": "+25 여명 제작 레시피",
+      "resultLevel": 25,
+      "materials": [
+        { "type": "sword", "level": 24, "amount": 3 },
+        { "type": "sword", "level": 12, "amount": 1 }
+      ]
+    }
+  }
+}

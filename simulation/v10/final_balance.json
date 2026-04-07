@@ -1,0 +1,94 @@
+{
+  "version": "v10",
+  "best_scenario": "C1_p35_low_p60",
+  "best_score": 29.7,
+  "recommended": {
+    "curve": "C1",
+    "curve_name": "깊은골짜기",
+    "protect_indom": 0.35,
+    "protect_saint": 0.6,
+    "cost_set": "low",
+    "skip_costs": {
+      "5": {
+        "gold": 500,
+        "녹슨철조각": 1
+      },
+      "7": {
+        "gold": 2000,
+        "녹슨철조각": 1
+      },
+      "8": {
+        "gold": 4000,
+        "마력부여철조각": 1
+      },
+      "12": {
+        "gold": 20000,
+        "마력부여철조각": 1
+      }
+    }
+  },
+  "results_p50": {
+    "phase_a_hours": 0.42,
+    "phase_b_hours": 0.6733333333333333,
+    "phase_c_hours": 13.690416666666668,
+    "total_hours": 14.783750000000001,
+    "success_rate_25": 0.9316,
+    "score": 29.7
+  },
+  "all_scenarios": [
+    {
+      "key": "C1_p35_low_p60",
+      "score": 29.7,
+      "total_h": 14.78,
+      "success_rate": 0.9316
+    },
+    {
+      "key": "C1_p30_high_p60",
+      "score": 29.7,
+      "total_h": 15.72,
+      "success_rate": 0.9294
+    },
+    {
+      "key": "C1_p35_mid_p60",
+      "score": 29.5,
+      "total_h": 15.14,
+      "success_rate": 0.9198
+    },
+    {
+      "key": "C1_p35_low_p55",
+      "score": 28.8,
+      "total_h": 21.48,
+      "success_rate": 0.8744
+    },
+    {
+      "key": "C1_p30_high_p55",
+      "score": 28.7,
+      "total_h": 22.83,
+      "success_rate": 0.8662
+    },
+    {
+      "key": "C1_p35_mid_p55",
+      "score": 28.4,
+      "total_h": 21.68,
+      "success_rate": 0.8474
+    },
+    {
+      "key": "C1_p35_low_p50",
+      "score": 26.9,
+      "total_h": 29.36,
+      "success_rate": 0.755
+    },
+    {
+      "key": "C1_p30_high_p50",
+      "score": 26.6,
+      "total_h": 29.08,
+      "success_rate": 0.733
+    },
+    {
+      "key": "C1_p35_mid_p50",
+      "score": 26.0,
+      "total_h": 26.79,
+      "success_rate": 0.6988
+    }
+  ]
+}

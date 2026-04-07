@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(1:*)",
+      "Bash(npx create-vite@latest . --template react-ts 2)",
+      "Bash(npx create-vite@latest /tmp/forge-temp --template react-ts)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(npm install:*)",
+      "Bash(npm audit:*)",
+      "Bash(npm ls:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run:*)",
+      "Bash(npx vitest:*)",
+      "Bash(python:*)",
+      "Bash(taskkill /F /IM python.exe)",
+      "Bash(taskkill /FI \"IMAGENAME eq python.exe\" /F)",
+      "Bash(cmd /c \"taskkill /F /IM python.exe\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(pip install:*)",
+      "Bash(rm -rf v5 v6 v7)",
+      "Bash(rm -f *.py *.json *.md)",
+      "Bash(rm -rf v5 v6)",
+      "Bash(rm -rf v7)",
+      "Bash(tasklist)",
+      "Bash(taskkill /F /IM python3.11.exe)",
+      "Bash(cmd /c \"rmdir /s /q C:\\\\Users\\\\PC\\\\project\\\\Forge_Game\\\\simulation\\\\v7\")",
+      "Bash(powershell:*)",
+      "Read(//c/Users/PC/.claude/projects/C--Users-PC-project-Forge-Game/**)",
+      "Bash(python3 -c ':*)",
+      "Bash(python3:*)",
+      "Bash(node -e \"const h = require\\('./node_modules/eslint-plugin-react-hooks'\\); console.log\\(Object.keys\\(h.configs || {}\\)\\)\")",
+      "Bash(node -e \"const h = require\\('./node_modules/eslint-plugin-react-hooks'\\); console.log\\(JSON.stringify\\(Object.keys\\(h.configs['recommended-latest'] || {}\\)\\)\\)\")",
+      "Bash(echo \"PID: $!\")",
+      "Bash(echo \"Started: $!\")",
+      "Bash(find C:\\\\Users\\\\PC\\\\project\\\\Forge_Game\\\\simulation\\\\v11\\\\\" -type f -name *\" | head -50:*)"
+    ]
+  }
+}

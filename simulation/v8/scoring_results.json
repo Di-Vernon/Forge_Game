@@ -1,0 +1,674 @@
+[
+  {
+    "key": "C2_p55",
+    "curve": "C2",
+    "curve_name": "완만학습",
+    "protect_pct": 0.55,
+    "phase_a_hours": 3.46,
+    "phase_b_hours": 6.3,
+    "phase_c_hours": 10.13,
+    "total_hours": 19.89,
+    "phase_ratios": {
+      "A": 0.174,
+      "B": 0.317,
+      "C": 0.509
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 4.33,
+    "mc_p90_hours": 14.32,
+    "var_ratio": 3.31,
+    "section_ratios": {
+      "0-7": 0.697,
+      "8-13": 0.247,
+      "14-16": 0.035,
+      "17-21": 0.018,
+      "22-25": 0.003
+    },
+    "score": 37.0,
+    "in_target": false
+  },
+  {
+    "key": "C6_p55",
+    "curve": "C6",
+    "curve_name": "후반관대",
+    "protect_pct": 0.55,
+    "phase_a_hours": 4.4,
+    "phase_b_hours": 6.91,
+    "phase_c_hours": 10.31,
+    "total_hours": 21.62,
+    "phase_ratios": {
+      "A": 0.203,
+      "B": 0.32,
+      "C": 0.477
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 4.76,
+    "mc_p90_hours": 16.09,
+    "var_ratio": 3.38,
+    "section_ratios": {
+      "0-7": 0.703,
+      "8-13": 0.247,
+      "14-16": 0.031,
+      "17-21": 0.016,
+      "22-25": 0.003
+    },
+    "score": 36.9,
+    "in_target": false
+  },
+  {
+    "key": "C1_p57",
+    "curve": "C1",
+    "curve_name": "깊은골짜기",
+    "protect_pct": 0.58,
+    "phase_a_hours": 6.51,
+    "phase_b_hours": 9.71,
+    "phase_c_hours": 14.65,
+    "total_hours": 30.88,
+    "phase_ratios": {
+      "A": 0.211,
+      "B": 0.315,
+      "C": 0.475
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 6.69,
+    "mc_p90_hours": 22.39,
+    "var_ratio": 3.35,
+    "section_ratios": {
+      "0-7": 0.705,
+      "8-13": 0.251,
+      "14-16": 0.029,
+      "17-21": 0.013,
+      "22-25": 0.002
+    },
+    "score": 36.8,
+    "in_target": false
+  },
+  {
+    "key": "C1_p55",
+    "curve": "C1",
+    "curve_name": "깊은골짜기",
+    "protect_pct": 0.55,
+    "phase_a_hours": 6.51,
+    "phase_b_hours": 14.09,
+    "phase_c_hours": 18.66,
+    "total_hours": 39.26,
+    "phase_ratios": {
+      "A": 0.166,
+      "B": 0.359,
+      "C": 0.475
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 9.85,
+    "mc_p90_hours": 33.37,
+    "var_ratio": 3.39,
+    "section_ratios": {
+      "0-7": 0.724,
+      "8-13": 0.24,
+      "14-16": 0.025,
+      "17-21": 0.01,
+      "22-25": 0.002
+    },
+    "score": 36.4,
+    "in_target": false
+  },
+  {
+    "key": "C3_p50",
+    "curve": "C3",
+    "curve_name": "극적반전",
+    "protect_pct": 0.5,
+    "phase_a_hours": 6.96,
+    "phase_b_hours": 13.4,
+    "phase_c_hours": 18.31,
+    "total_hours": 38.67,
+    "phase_ratios": {
+      "A": 0.18,
+      "B": 0.347,
+      "C": 0.474
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 9.41,
+    "mc_p90_hours": 31.04,
+    "var_ratio": 3.3,
+    "section_ratios": {
+      "0-7": 0.747,
+      "8-13": 0.222,
+      "14-16": 0.02,
+      "17-21": 0.009,
+      "22-25": 0.002
+    },
+    "score": 35.8,
+    "in_target": false
+  },
+  {
+    "key": "C4_p60",
+    "curve": "C4",
+    "curve_name": "높은바닥",
+    "protect_pct": 0.6,
+    "phase_a_hours": 3.34,
+    "phase_b_hours": 1.83,
+    "phase_c_hours": 4.42,
+    "total_hours": 9.59,
+    "phase_ratios": {
+      "A": 0.348,
+      "B": 0.191,
+      "C": 0.461
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 1.28,
+    "mc_p90_hours": 4.13,
+    "var_ratio": 3.22,
+    "section_ratios": {
+      "0-7": 0.654,
+      "8-13": 0.26,
+      "14-16": 0.046,
+      "17-21": 0.033,
+      "22-25": 0.008
+    },
+    "score": 28.0,
+    "in_target": false
+  },
+  {
+    "key": "C2_p60",
+    "curve": "C2",
+    "curve_name": "완만학습",
+    "protect_pct": 0.6,
+    "phase_a_hours": 3.46,
+    "phase_b_hours": 3.61,
+    "phase_c_hours": 7.07,
+    "total_hours": 14.14,
+    "phase_ratios": {
+      "A": 0.245,
+      "B": 0.255,
+      "C": 0.5
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 2.47,
+    "mc_p90_hours": 8.17,
+    "var_ratio": 3.31,
+    "section_ratios": {
+      "0-7": 0.663,
+      "8-13": 0.262,
+      "14-16": 0.044,
+      "17-21": 0.025,
+      "22-25": 0.005
+    },
+    "score": 27.8,
+    "in_target": false
+  },
+  {
+    "key": "C4_p57",
+    "curve": "C4",
+    "curve_name": "높은바닥",
+    "protect_pct": 0.58,
+    "phase_a_hours": 3.34,
+    "phase_b_hours": 2.24,
+    "phase_c_hours": 5.03,
+    "total_hours": 10.61,
+    "phase_ratios": {
+      "A": 0.314,
+      "B": 0.211,
+      "C": 0.474
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 1.55,
+    "mc_p90_hours": 5.18,
+    "var_ratio": 3.34,
+    "section_ratios": {
+      "0-7": 0.667,
+      "8-13": 0.254,
+      "14-16": 0.043,
+      "17-21": 0.029,
+      "22-25": 0.007
+    },
+    "score": 27.7,
+    "in_target": false
+  },
+  {
+    "key": "C6_p60",
+    "curve": "C6",
+    "curve_name": "후반관대",
+    "protect_pct": 0.6,
+    "phase_a_hours": 4.4,
+    "phase_b_hours": 3.94,
+    "phase_c_hours": 7.21,
+    "total_hours": 15.55,
+    "phase_ratios": {
+      "A": 0.283,
+      "B": 0.253,
+      "C": 0.464
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 2.69,
+    "mc_p90_hours": 9.23,
+    "var_ratio": 3.43,
+    "section_ratios": {
+      "0-7": 0.671,
+      "8-13": 0.264,
+      "14-16": 0.039,
+      "17-21": 0.023,
+      "22-25": 0.004
+    },
+    "score": 27.6,
+    "in_target": false
+  },
+  {
+    "key": "C2_p57",
+    "curve": "C2",
+    "curve_name": "완만학습",
+    "protect_pct": 0.58,
+    "phase_a_hours": 3.46,
+    "phase_b_hours": 4.51,
+    "phase_c_hours": 8.17,
+    "total_hours": 16.14,
+    "phase_ratios": {
+      "A": 0.214,
+      "B": 0.28,
+      "C": 0.506
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 3.16,
+    "mc_p90_hours": 9.99,
+    "var_ratio": 3.16,
+    "section_ratios": {
+      "0-7": 0.678,
+      "8-13": 0.256,
+      "14-16": 0.04,
+      "17-21": 0.021,
+      "22-25": 0.004
+    },
+    "score": 27.4,
+    "in_target": false
+  },
+  {
+    "key": "C6_p57",
+    "curve": "C6",
+    "curve_name": "후반관대",
+    "protect_pct": 0.58,
+    "phase_a_hours": 4.4,
+    "phase_b_hours": 4.94,
+    "phase_c_hours": 8.33,
+    "total_hours": 17.67,
+    "phase_ratios": {
+      "A": 0.249,
+      "B": 0.28,
+      "C": 0.471
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 3.44,
+    "mc_p90_hours": 11.66,
+    "var_ratio": 3.39,
+    "section_ratios": {
+      "0-7": 0.684,
+      "8-13": 0.257,
+      "14-16": 0.036,
+      "17-21": 0.019,
+      "22-25": 0.004
+    },
+    "score": 27.3,
+    "in_target": false
+  },
+  {
+    "key": "C3_p60",
+    "curve": "C3",
+    "curve_name": "극적반전",
+    "protect_pct": 0.6,
+    "phase_a_hours": 6.96,
+    "phase_b_hours": 4.3,
+    "phase_c_hours": 8.66,
+    "total_hours": 19.92,
+    "phase_ratios": {
+      "A": 0.349,
+      "B": 0.216,
+      "C": 0.435
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 3.07,
+    "mc_p90_hours": 9.81,
+    "var_ratio": 3.2,
+    "section_ratios": {
+      "0-7": 0.687,
+      "8-13": 0.257,
+      "14-16": 0.032,
+      "17-21": 0.02,
+      "22-25": 0.004
+    },
+    "score": 27.2,
+    "in_target": false
+  },
+  {
+    "key": "C4_p55",
+    "curve": "C4",
+    "curve_name": "높은바닥",
+    "protect_pct": 0.55,
+    "phase_a_hours": 3.34,
+    "phase_b_hours": 3.02,
+    "phase_c_hours": 6.1,
+    "total_hours": 12.46,
+    "phase_ratios": {
+      "A": 0.268,
+      "B": 0.242,
+      "C": 0.49
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 2.04,
+    "mc_p90_hours": 6.86,
+    "var_ratio": 3.36,
+    "section_ratios": {
+      "0-7": 0.686,
+      "8-13": 0.245,
+      "14-16": 0.038,
+      "17-21": 0.025,
+      "22-25": 0.006
+    },
+    "score": 27.2,
+    "in_target": false
+  },
+  {
+    "key": "C5_p60",
+    "curve": "C5",
+    "curve_name": "이중골짜기",
+    "protect_pct": 0.6,
+    "phase_a_hours": 6.5,
+    "phase_b_hours": 5.1,
+    "phase_c_hours": 10.13,
+    "total_hours": 21.73,
+    "phase_ratios": {
+      "A": 0.299,
+      "B": 0.235,
+      "C": 0.466
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 3.5,
+    "mc_p90_hours": 11.76,
+    "var_ratio": 3.36,
+    "section_ratios": {
+      "0-7": 0.688,
+      "8-13": 0.257,
+      "14-16": 0.032,
+      "17-21": 0.02,
+      "22-25": 0.003
+    },
+    "score": 27.2,
+    "in_target": false
+  },
+  {
+    "key": "C1_p60",
+    "curve": "C1",
+    "curve_name": "깊은골짜기",
+    "protect_pct": 0.6,
+    "phase_a_hours": 6.51,
+    "phase_b_hours": 7.56,
+    "phase_c_hours": 12.45,
+    "total_hours": 26.52,
+    "phase_ratios": {
+      "A": 0.245,
+      "B": 0.285,
+      "C": 0.47
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 5.17,
+    "mc_p90_hours": 17.24,
+    "var_ratio": 3.33,
+    "section_ratios": {
+      "0-7": 0.692,
+      "8-13": 0.258,
+      "14-16": 0.032,
+      "17-21": 0.016,
+      "22-25": 0.003
+    },
+    "score": 27.1,
+    "in_target": false
+  },
+  {
+    "key": "C3_p57",
+    "curve": "C3",
+    "curve_name": "극적반전",
+    "protect_pct": 0.58,
+    "phase_a_hours": 6.96,
+    "phase_b_hours": 5.42,
+    "phase_c_hours": 10.08,
+    "total_hours": 22.46,
+    "phase_ratios": {
+      "A": 0.31,
+      "B": 0.241,
+      "C": 0.449
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 3.63,
+    "mc_p90_hours": 12.31,
+    "var_ratio": 3.39,
+    "section_ratios": {
+      "0-7": 0.7,
+      "8-13": 0.249,
+      "14-16": 0.029,
+      "17-21": 0.018,
+      "22-25": 0.003
+    },
+    "score": 26.9,
+    "in_target": false
+  },
+  {
+    "key": "C5_p57",
+    "curve": "C5",
+    "curve_name": "이중골짜기",
+    "protect_pct": 0.58,
+    "phase_a_hours": 6.5,
+    "phase_b_hours": 6.47,
+    "phase_c_hours": 11.85,
+    "total_hours": 24.82,
+    "phase_ratios": {
+      "A": 0.262,
+      "B": 0.261,
+      "C": 0.477
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 4.35,
+    "mc_p90_hours": 14.98,
+    "var_ratio": 3.45,
+    "section_ratios": {
+      "0-7": 0.701,
+      "8-13": 0.25,
+      "14-16": 0.029,
+      "17-21": 0.017,
+      "22-25": 0.003
+    },
+    "score": 26.9,
+    "in_target": false
+  },
+  {
+    "key": "C3_p55",
+    "curve": "C3",
+    "curve_name": "극적반전",
+    "protect_pct": 0.55,
+    "phase_a_hours": 6.96,
+    "phase_b_hours": 7.64,
+    "phase_c_hours": 12.63,
+    "total_hours": 27.23,
+    "phase_ratios": {
+      "A": 0.255,
+      "B": 0.281,
+      "C": 0.464
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 5.21,
+    "mc_p90_hours": 17.49,
+    "var_ratio": 3.35,
+    "section_ratios": {
+      "0-7": 0.719,
+      "8-13": 0.239,
+      "14-16": 0.025,
+      "17-21": 0.014,
+      "22-25": 0.003
+    },
+    "score": 26.5,
+    "in_target": false
+  },
+  {
+    "key": "C4_p50",
+    "curve": "C4",
+    "curve_name": "높은바닥",
+    "protect_pct": 0.5,
+    "phase_a_hours": 3.34,
+    "phase_b_hours": 4.93,
+    "phase_c_hours": 8.4,
+    "total_hours": 16.66,
+    "phase_ratios": {
+      "A": 0.2,
+      "B": 0.296,
+      "C": 0.504
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 3.51,
+    "mc_p90_hours": 12.08,
+    "var_ratio": 3.45,
+    "section_ratios": {
+      "0-7": 0.718,
+      "8-13": 0.231,
+      "14-16": 0.031,
+      "17-21": 0.017,
+      "22-25": 0.004
+    },
+    "score": 26.5,
+    "in_target": false
+  },
+  {
+    "key": "C2_p50",
+    "curve": "C2",
+    "curve_name": "완만학습",
+    "protect_pct": 0.5,
+    "phase_a_hours": 3.46,
+    "phase_b_hours": 10.85,
+    "phase_c_hours": 14.44,
+    "total_hours": 28.74,
+    "phase_ratios": {
+      "A": 0.12,
+      "B": 0.377,
+      "C": 0.502
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 7.52,
+    "mc_p90_hours": 25.53,
+    "var_ratio": 3.39,
+    "section_ratios": {
+      "0-7": 0.725,
+      "8-13": 0.232,
+      "14-16": 0.029,
+      "17-21": 0.012,
+      "22-25": 0.002
+    },
+    "score": 26.4,
+    "in_target": false
+  },
+  {
+    "key": "C5_p55",
+    "curve": "C5",
+    "curve_name": "이중골짜기",
+    "protect_pct": 0.55,
+    "phase_a_hours": 6.5,
+    "phase_b_hours": 9.2,
+    "phase_c_hours": 14.97,
+    "total_hours": 30.67,
+    "phase_ratios": {
+      "A": 0.212,
+      "B": 0.3,
+      "C": 0.488
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 6.2,
+    "mc_p90_hours": 20.49,
+    "var_ratio": 3.3,
+    "section_ratios": {
+      "0-7": 0.721,
+      "8-13": 0.239,
+      "14-16": 0.025,
+      "17-21": 0.013,
+      "22-25": 0.002
+    },
+    "score": 26.4,
+    "in_target": false
+  },
+  {
+    "key": "C6_p50",
+    "curve": "C6",
+    "curve_name": "후반관대",
+    "protect_pct": 0.5,
+    "phase_a_hours": 4.4,
+    "phase_b_hours": 11.96,
+    "phase_c_hours": 14.65,
+    "total_hours": 31.01,
+    "phase_ratios": {
+      "A": 0.142,
+      "B": 0.386,
+      "C": 0.473
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 8.25,
+    "mc_p90_hours": 26.65,
+    "var_ratio": 3.23,
+    "section_ratios": {
+      "0-7": 0.731,
+      "8-13": 0.232,
+      "14-16": 0.025,
+      "17-21": 0.011,
+      "22-25": 0.002
+    },
+    "score": 26.2,
+    "in_target": false
+  },
+  {
+    "key": "C1_p50",
+    "curve": "C1",
+    "curve_name": "깊은골짜기",
+    "protect_pct": 0.5,
+    "phase_a_hours": 6.51,
+    "phase_b_hours": 25.8,
+    "phase_c_hours": 27.76,
+    "total_hours": 60.07,
+    "phase_ratios": {
+      "A": 0.108,
+      "B": 0.429,
+      "C": 0.462
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 17.3,
+    "mc_p90_hours": 58.03,
+    "var_ratio": 3.35,
+    "section_ratios": {
+      "0-7": 0.75,
+      "8-13": 0.223,
+      "14-16": 0.019,
+      "17-21": 0.007,
+      "22-25": 0.001
+    },
+    "score": 25.8,
+    "in_target": false
+  },
+  {
+    "key": "C5_p50",
+    "curve": "C5",
+    "curve_name": "이중골짜기",
+    "protect_pct": 0.5,
+    "phase_a_hours": 6.5,
+    "phase_b_hours": 16.34,
+    "phase_c_hours": 21.98,
+    "total_hours": 44.82,
+    "phase_ratios": {
+      "A": 0.145,
+      "B": 0.365,
+      "C": 0.49
+    },
+    "achievement_rate": 1.0,
+    "mc_p50_hours": 11.2,
+    "mc_p90_hours": 36.76,
+    "var_ratio": 3.28,
+    "section_ratios": {
+      "0-7": 0.748,
+      "8-13": 0.222,
+      "14-16": 0.02,
+      "17-21": 0.009,
+      "22-25": 0.001
+    },
+    "score": 25.8,
+    "in_target": false
+  }
+]

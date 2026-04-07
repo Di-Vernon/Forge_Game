@@ -1,0 +1,277 @@
+/* ── StorageScreen 레이아웃 ─────────────────────────────────── */
+
+.screen {
+  display: grid;
+  grid-template-rows: 52px 1fr;
+  height: 100%;
+  min-height: 0;
+  /* 보물창고: 깊고 어두운 남색 기조 */
+  background: #07080f;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 돌벽 질감 격자 */
+.screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 헤더 ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-text-dim);
+}
+
+.headerCount {
+  margin-left: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.countNum {
+  font-weight: 700;
+  color: var(--c-gold-bright);
+}
+
+.countDen {
+  color: var(--c-text-dim);
+}
+
+/* ── 메인 스크롤 영역 ─────────────────────────────────────────── */
+.main {
+  overflow-y: auto;
+  min-height: 0;
+  position: relative;
+  z-index: 1;
+  padding: 14px 12px 36px;
+}
+
+/* ── 5열 도감 그리드 ─────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+/* ── 슬롯 공통 ─────────────────────────────────────────────────── */
+.slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 4px 10px;
+  border: 1px solid var(--c-border);
+  background: transparent;
+  font-family: inherit;
+  transition: background 0.12s, border-color 0.12s;
+  min-height: 128px;
+}
+
+/* ── 미보관 (어두움) ─────────────────────────────────────────── */
+.slotEmpty {
+  background: rgba(8, 8, 18, 0.7);
+  opacity: 0.52;
+  cursor: default;
+}
+
+/* ── 보관됨 (밝음) ───────────────────────────────────────────── */
+.slotOwned {
+  background: var(--c-surface);
+  cursor: pointer;
+}
+
+.slotOwned:hover {
+  background: var(--c-surface2);
+  border-color: var(--c-border-lt);
+}
+
+/* ── +25 여명 특별 이펙트 ──────────────────────────────────── */
+.slotLegendary {
+  border-color: var(--c-gold);
+  animation: legendary-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes legendary-pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(200, 160, 32, 0.25),
+                inset 0 0 10px rgba(200, 160, 32, 0.07);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(200, 160, 32, 0.55),
+                inset 0 0 20px rgba(200, 160, 32, 0.14);
+  }
+}
+
+/* ── 레벨 텍스트 ─────────────────────────────────────────────── */
+.slotLevel {
+  font-family: 'Courier New', monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--c-text-dim);
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+/* ── 검 이미지 영역 ──────────────────────────────────────────── */
+.slotSword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 68px;
+}
+
+.lockIcon {
+  font-size: 1.15rem;
+  opacity: 0.22;
+}
+
+/* ── 검 이름 ────────────────────────────────────────────────── */
+.slotName {
+  font-size: 0.58rem;
+  color: var(--c-text-dim);
+  text-align: center;
+  line-height: 1.3;
+  width: 100%;
+  padding: 0 2px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
+}
+
+.slotNameEmpty {
+  color: var(--c-text-faint);
+  font-style: italic;
+}
+
+/* ── 수량 뱃지 ───────────────────────────────────────────────── */
+.countBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.56rem;
+  font-weight: 700;
+  background: var(--c-gold);
+  color: #1a1000;
+  padding: 1px 4px;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+/* ── 도감 상세 모달 ──────────────────────────────────────────── */
+.loreBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.84);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  animation: modal-fade 0.15s ease;
+}
+
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.loreModal {
+  background: var(--c-surface);
+  border: 2px solid var(--c-border);
+  width: min(480px, 92%);
+  max-height: 74%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.92);
+  animation: modal-slide 0.15s ease;
+}
+
+@keyframes modal-slide {
+  from { transform: translateY(10px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.loreHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface2);
+  flex-shrink: 0;
+}
+
+.loreLevel {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 2.8rem;
+  flex-shrink: 0;
+}
+
+.loreName {
+  font-size: 0.9rem;
+  color: var(--c-text);
+  flex: 1;
+}
+
+.loreClose {
+  background: transparent;
+  border: 1px solid var(--c-border-lt);
+  color: var(--c-text-dim);
+  font-size: 0.8rem;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.1s, border-color 0.1s;
+  flex-shrink: 0;
+}
+.loreClose:hover { color: var(--c-text); border-color: var(--c-text-dim); }
+
+.loreBody {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.loreText {
+  font-size: 0.82rem;
+  color: var(--c-text-dim);
+  line-height: 1.85;
+}
+
+/* ── 반응형 ──────────────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .grid { gap: 5px; }
+  .slotName { font-size: 0.54rem; }
+}

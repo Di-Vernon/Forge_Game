@@ -1,0 +1,296 @@
+{
+  "V11_A_SetA": {
+    "curve": "V11_A",
+    "protect_set": "SetA",
+    "prot_indom": 0.3,
+    "prot_saint": 0.55,
+    "n": 3000,
+    "completion_rate": 0.974,
+    "total_hours": {
+      "p25": 14.679,
+      "p50": 25.099,
+      "p75": 42.345,
+      "p90": 60.751
+    },
+    "phase_a_hours": {
+      "p25": 0.352,
+      "p50": 0.622,
+      "p75": 0.888
+    },
+    "phase_b_hours": {
+      "p25": 1.955,
+      "p50": 3.723,
+      "p75": 7.019
+    },
+    "phase_c_hours": {
+      "p25": 3.645,
+      "p50": 8.467,
+      "p75": 16.493
+    },
+    "phase_d_hours": {
+      "p25": 0.694,
+      "p50": 3.727,
+      "p75": 19.802
+    },
+    "phase_ratios_p50": {
+      "A": 2.5,
+      "B": 14.8,
+      "C": 33.7,
+      "D": 14.8,
+      "total_hours": 25.1
+    },
+    "materials": {
+      "consumed_p50": 120.0,
+      "preserved_p50": 48.0,
+      "preserve_rate": 0.286
+    },
+    "skip_used_p50": 559.5,
+    "destructions_p50": 2184.0,
+    "score": 25
+  },
+  "V11_A_SetB": {
+    "curve": "V11_A",
+    "protect_set": "SetB",
+    "prot_indom": 0.35,
+    "prot_saint": 0.6,
+    "n": 3000,
+    "completion_rate": 0.999,
+    "total_hours": {
+      "p25": 10.997,
+      "p50": 17.432,
+      "p75": 29.219,
+      "p90": 44.635
+    },
+    "phase_a_hours": {
+      "p25": 0.343,
+      "p50": 0.6,
+      "p75": 0.852
+    },
+    "phase_b_hours": {
+      "p25": 1.547,
+      "p50": 2.999,
+      "p75": 5.375
+    },
+    "phase_c_hours": {
+      "p25": 2.835,
+      "p50": 5.809,
+      "p75": 11.596
+    },
+    "phase_d_hours": {
+      "p25": 0.694,
+      "p50": 2.776,
+      "p75": 13.002
+    },
+    "phase_ratios_p50": {
+      "A": 3.4,
+      "B": 17.2,
+      "C": 33.3,
+      "D": 15.9,
+      "total_hours": 17.43
+    },
+    "materials": {
+      "consumed_p50": 96.0,
+      "preserved_p50": 44.0,
+      "preserve_rate": 0.314
+    },
+    "skip_used_p50": 347.0,
+    "destructions_p50": 1351.0,
+    "score": 35
+  },
+  "V11_B_SetA": {
+    "curve": "V11_B",
+    "protect_set": "SetA",
+    "prot_indom": 0.3,
+    "prot_saint": 0.55,
+    "n": 3000,
+    "completion_rate": 0.993,
+    "total_hours": {
+      "p25": 12.588,
+      "p50": 20.684,
+      "p75": 32.556,
+      "p90": 50.055
+    },
+    "phase_a_hours": {
+      "p25": 0.357,
+      "p50": 0.625,
+      "p75": 0.903
+    },
+    "phase_b_hours": {
+      "p25": 1.986,
+      "p50": 4.022,
+      "p75": 7.184
+    },
+    "phase_c_hours": {
+      "p25": 2.768,
+      "p50": 6.056,
+      "p75": 12.6
+    },
+    "phase_d_hours": {
+      "p25": 0.694,
+      "p50": 3.226,
+      "p75": 14.086
+    },
+    "phase_ratios_p50": {
+      "A": 3.0,
+      "B": 19.4,
+      "C": 29.3,
+      "D": 15.6,
+      "total_hours": 20.68
+    },
+    "materials": {
+      "consumed_p50": 97.0,
+      "preserved_p50": 36.0,
+      "preserve_rate": 0.271
+    },
+    "skip_used_p50": 455.0,
+    "destructions_p50": 1843.5,
+    "score": 35
+  },
+  "V11_B_SetB": {
+    "curve": "V11_B",
+    "protect_set": "SetB",
+    "prot_indom": 0.35,
+    "prot_saint": 0.6,
+    "n": 3000,
+    "completion_rate": 1.0,
+    "total_hours": {
+      "p25": 9.567,
+      "p50": 14.965,
+      "p75": 23.468,
+      "p90": 34.841
+    },
+    "phase_a_hours": {
+      "p25": 0.362,
+      "p50": 0.603,
+      "p75": 0.848
+    },
+    "phase_b_hours": {
+      "p25": 1.513,
+      "p50": 2.908,
+      "p75": 5.264
+    },
+    "phase_c_hours": {
+      "p25": 2.231,
+      "p50": 4.502,
+      "p75": 8.828
+    },
+    "phase_d_hours": {
+      "p25": 0.694,
+      "p50": 2.301,
+      "p75": 10.061
+    },
+    "phase_ratios_p50": {
+      "A": 4.0,
+      "B": 19.4,
+      "C": 30.1,
+      "D": 15.4,
+      "total_hours": 14.96
+    },
+    "materials": {
+      "consumed_p50": 79.0,
+      "preserved_p50": 33.0,
+      "preserve_rate": 0.295
+    },
+    "skip_used_p50": 298.0,
+    "destructions_p50": 1144.5,
+    "score": 35
+  },
+  "V11_C_SetA": {
+    "curve": "V11_C",
+    "protect_set": "SetA",
+    "prot_indom": 0.3,
+    "prot_saint": 0.55,
+    "n": 3000,
+    "completion_rate": 1.0,
+    "total_hours": {
+      "p25": 6.604,
+      "p50": 11.261,
+      "p75": 18.863,
+      "p90": 28.082
+    },
+    "phase_a_hours": {
+      "p25": 0.221,
+      "p50": 0.424,
+      "p75": 0.654
+    },
+    "phase_b_hours": {
+      "p25": 0.866,
+      "p50": 1.603,
+      "p75": 2.817
+    },
+    "phase_c_hours": {
+      "p25": 1.646,
+      "p50": 3.392,
+      "p75": 6.716
+    },
+    "phase_d_hours": {
+      "p25": 0.419,
+      "p50": 2.657,
+      "p75": 9.836
+    },
+    "phase_ratios_p50": {
+      "A": 3.8,
+      "B": 14.2,
+      "C": 30.1,
+      "D": 23.6,
+      "total_hours": 11.26
+    },
+    "materials": {
+      "consumed_p50": 92.0,
+      "preserved_p50": 32.0,
+      "preserve_rate": 0.258
+    },
+    "skip_used_p50": 229.5,
+    "destructions_p50": 848.0,
+    "score": 35
+  },
+  "V11_C_SetB": {
+    "curve": "V11_C",
+    "protect_set": "SetB",
+    "prot_indom": 0.35,
+    "prot_saint": 0.6,
+    "n": 3000,
+    "completion_rate": 1.0,
+    "total_hours": {
+      "p25": 5.128,
+      "p50": 8.139,
+      "p75": 12.879,
+      "p90": 19.546
+    },
+    "phase_a_hours": {
+      "p25": 0.214,
+      "p50": 0.411,
+      "p75": 0.63
+    },
+    "phase_b_hours": {
+      "p25": 0.75,
+      "p50": 1.345,
+      "p75": 2.264
+    },
+    "phase_c_hours": {
+      "p25": 1.393,
+      "p50": 2.589,
+      "p75": 4.749
+    },
+    "phase_d_hours": {
+      "p25": 0.419,
+      "p50": 1.594,
+      "p75": 5.987
+    },
+    "phase_ratios_p50": {
+      "A": 5.0,
+      "B": 16.5,
+      "C": 31.8,
+      "D": 19.6,
+      "total_hours": 8.14
+    },
+    "materials": {
+      "consumed_p50": 73.0,
+      "preserved_p50": 28.0,
+      "preserve_rate": 0.277
+    },
+    "skip_used_p50": 161.0,
+    "destructions_p50": 549.0,
+    "score": 60
+  }
+}

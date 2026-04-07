@@ -1,0 +1,561 @@
+{
+  "scenario": "V11_C_SetB",
+  "n_users": 3000,
+  "n_completed": 3000,
+  "curve": "V11_C",
+  "protect": {
+    "indom": 0.35,
+    "saint": 0.6
+  },
+  "sell_at": 12,
+  "push_chance": 0.25,
+  "summary": {
+    "completion_rate": 1.0,
+    "n_completed": 3000,
+    "total_hours": {
+      "p25": 6.281,
+      "p50": 9.908,
+      "p75": 15.683,
+      "p90": 23.115,
+      "mean": 12.214
+    },
+    "destructions_p50": 842.0,
+    "skip_used_p50": 197.0,
+    "mats_consumed_p50": 63.0,
+    "mats_preserved_p50": 23.0,
+    "total_clicks_mean": 14656.8
+  },
+  "phase_clicks_mean": {
+    "A": 724.8,
+    "B": 2728.1,
+    "C": 4903.3,
+    "D": 6300.5
+  },
+  "visits_mean": {
+    "0": 1209.6,
+    "1": 959.3,
+    "2": 921.21,
+    "3": 868.33,
+    "4": 803.29,
+    "5": 733.66,
+    "6": 636.62,
+    "7": 557.36,
+    "8": 647.51,
+    "9": 536.9,
+    "10": 428.43,
+    "11": 327.96,
+    "12": 254.92,
+    "13": 40.44,
+    "14": 33.43,
+    "15": 26.73,
+    "16": 20.46,
+    "17": 14.74,
+    "18": 10.54,
+    "19": 7.35,
+    "20": 5.05,
+    "21": 3.32,
+    "22": 2.31,
+    "23": 1.65,
+    "24": 1.21,
+    "25": 1.0
+  },
+  "destroy_at_mean": {
+    "0": 27.52,
+    "1": 37.51,
+    "2": 51.9,
+    "3": 63.68,
+    "4": 77.88,
+    "5": 94.11,
+    "6": 100.7,
+    "7": 79.36,
+    "8": 107.44,
+    "9": 105.64,
+    "10": 98.42,
+    "11": 86.84,
+    "12": 17.55,
+    "13": 7.17,
+    "14": 6.93,
+    "15": 6.6,
+    "16": 6.12,
+    "17": 4.61,
+    "18": 3.74,
+    "19": 2.86,
+    "20": 2.36,
+    "21": 1.83,
+    "22": 1.45,
+    "23": 1.3,
+    "24": 1.23
+  },
+  "destroy_rate": {
+    "0": 0.0228,
+    "1": 0.0391,
+    "2": 0.0563,
+    "3": 0.0733,
+    "4": 0.097,
+    "5": 0.1283,
+    "6": 0.1582,
+    "7": 0.1424,
+    "8": 0.1659,
+    "9": 0.1968,
+    "10": 0.2297,
+    "11": 0.2648,
+    "12": 0.0688,
+    "13": 0.1773,
+    "14": 0.2073,
+    "15": 0.2469,
+    "16": 0.2991,
+    "17": 0.3128,
+    "18": 0.3548,
+    "19": 0.3891,
+    "20": 0.4673,
+    "21": 0.5512,
+    "22": 0.6277,
+    "23": 0.7879,
+    "24": 1.0165,
+    "25": 0.0
+  },
+  "frag_earned_mean": {
+    "rusty_iron": 299.19,
+    "refined_iron": 34.95,
+    "enchanted_iron": 178.04,
+    "moonlight": 81.9,
+    "unknown_mineral": 16.4,
+    "spirit": 89.55,
+    "swordmaster": 232.68,
+    "twisted_mana": 5.11
+  },
+  "frag_spent_mean": {
+    "refined_iron": 34.95,
+    "enchanted_iron": 172.8,
+    "unknown_mineral": 17.2
+  },
+  "frag_net_mean": {
+    "rusty_iron": 299.19,
+    "refined_iron": 0.0,
+    "enchanted_iron": 5.24,
+    "moonlight": 81.9,
+    "unknown_mineral": -0.8,
+    "spirit": 89.55,
+    "swordmaster": 232.68,
+    "twisted_mana": 5.11
+  },
+  "frag_by_phase_mean": {
+    "A": {
+      "rusty_iron": 94.63,
+      "enchanted_iron": 38.77,
+      "refined_iron": 10.72,
+      "spirit": 9.42,
+      "moonlight": 6.32,
+      "swordmaster": 4.27,
+      "unknown_mineral": 2.51,
+      "twisted_mana": 2.14
+    },
+    "B": {
+      "spirit": 22.1,
+      "swordmaster": 15.59,
+      "rusty_iron": 95.95,
+      "enchanted_iron": 51.57,
+      "unknown_mineral": 3.55,
+      "moonlight": 19.35,
+      "refined_iron": 11.78,
+      "twisted_mana": 1.25
+    },
+    "C": {
+      "swordmaster": 102.74,
+      "spirit": 30.41,
+      "enchanted_iron": 42.15,
+      "moonlight": 29.44,
+      "twisted_mana": 2.92,
+      "unknown_mineral": 7.53,
+      "rusty_iron": 63.84,
+      "refined_iron": 8.66
+    },
+    "D": {
+      "rusty_iron": 128.04,
+      "enchanted_iron": 89.13,
+      "spirit": 55.28,
+      "swordmaster": 210.46,
+      "moonlight": 54.22,
+      "unknown_mineral": 13.27,
+      "refined_iron": 16.42,
+      "twisted_mana": 4.83
+    }
+  },
+  "gold_flow_mean": {
+    "A": {
+      "income": 36389.0,
+      "forge_expense": 26429.0,
+      "skip_expense": 1055.0,
+      "mat_expense": 136.0,
+      "expense": 27619.0
+    },
+    "B": {
+      "income": 323916.0,
+      "forge_expense": 225072.0,
+      "skip_expense": 1903.0,
+      "mat_expense": 8317.0,
+      "expense": 235293.0
+    },
+    "C": {
+      "income": 1309739.0,
+      "forge_expense": 647271.0,
+      "skip_expense": 62224.0,
+      "mat_expense": 242906.0,
+      "expense": 952402.0
+    },
+    "D": {
+      "income": 1364775.0,
+      "forge_expense": 791842.0,
+      "skip_expense": 47222.0,
+      "mat_expense": 330479.0,
+      "expense": 1169543.0
+    }
+  },
+  "gold_totals_mean": {
+    "income": 3034819.0,
+    "expense": 2384857.0
+  },
+  "title_equip_mean": {
+    "none": 6.49,
+    "beginners_luck": 121.54,
+    "scavenger": 454.49,
+    "indomitable_smith": 2775.89,
+    "sword_saint": 6321.03
+  },
+  "effort_per_frag": {
+    "rusty_iron": 49.0,
+    "refined_iron": 419.4,
+    "enchanted_iron": 82.3,
+    "moonlight": 179.0,
+    "unknown_mineral": 893.7,
+    "spirit": 163.7,
+    "swordmaster": 63.0,
+    "twisted_mana": 2868.3
+  },
+  "effort_per_frag_by_phase": {
+    "A": {
+      "rusty_iron": 7.7,
+      "refined_iron": 67.6,
+      "enchanted_iron": 18.7,
+      "moonlight": 114.7,
+      "unknown_mineral": 288.8,
+      "spirit": 76.9,
+      "swordmaster": 169.7,
+      "twisted_mana": 338.7
+    },
+    "B": {
+      "rusty_iron": 28.4,
+      "refined_iron": 231.6,
+      "enchanted_iron": 52.9,
+      "moonlight": 141.0,
+      "unknown_mineral": 768.5,
+      "spirit": 123.4,
+      "swordmaster": 175.0,
+      "twisted_mana": 2182.5
+    },
+    "C": {
+      "rusty_iron": 76.8,
+      "refined_iron": 566.2,
+      "enchanted_iron": 116.3,
+      "moonlight": 166.6,
+      "unknown_mineral": 651.2,
+      "spirit": 161.2,
+      "swordmaster": 47.7,
+      "twisted_mana": 1679.2
+    },
+    "D": {
+      "rusty_iron": 49.2,
+      "refined_iron": 383.7,
+      "enchanted_iron": 70.7,
+      "moonlight": 116.2,
+      "unknown_mineral": 474.8,
+      "spirit": 114.0,
+      "swordmaster": 29.9,
+      "twisted_mana": 1304.5
+    }
+  },
+  "gold_per_effort": {
+    "A": {
+      "income_per_effort": 50.21,
+      "expense_per_effort": 38.11,
+      "net_per_effort": 12.1
+    },
+    "B": {
+      "income_per_effort": 118.73,
+      "expense_per_effort": 86.25,
+      "net_per_effort": 32.49
+    },
+    "C": {
+      "income_per_effort": 267.11,
+      "expense_per_effort": 194.24,
+      "net_per_effort": 72.88
+    },
+    "D": {
+      "income_per_effort": 216.61,
+      "expense_per_effort": 185.63,
+      "net_per_effort": 30.99
+    }
+  },
+  "e_farm_analytical": {
+    "p00": {
+      "2": {
+        "clicks": 2.2,
+        "gold": 16.0,
+        "hours": 0.002
+      },
+      "5": {
+        "clicks": 7.5,
+        "gold": 117.0,
+        "hours": 0.006
+      },
+      "7": {
+        "clicks": 16.3,
+        "gold": 389.0,
+        "hours": 0.014
+      },
+      "8": {
+        "clicks": 23.1,
+        "gold": 663.0,
+        "hours": 0.019
+      },
+      "11": {
+        "clicks": 92.6,
+        "gold": 4183.0,
+        "hours": 0.077
+      },
+      "12": {
+        "clicks": 170.2,
+        "gold": 8478.0,
+        "hours": 0.142
+      },
+      "16": {
+        "clicks": 1386.2,
+        "gold": 84547.0,
+        "hours": 1.155
+      },
+      "17": {
+        "clicks": 2667.6,
+        "gold": 167784.0,
+        "hours": 2.223
+      },
+      "22": {
+        "clicks": 82273.6,
+        "gold": 5501737.0,
+        "hours": 68.561
+      },
+      "25": {
+        "clicks": 358171.4,
+        "gold": 24107340.0,
+        "hours": 298.476
+      }
+    },
+    "p30": {
+      "2": {
+        "clicks": 2.2,
+        "gold": 16.0,
+        "hours": 0.002
+      },
+      "5": {
+        "clicks": 6.9,
+        "gold": 111.0,
+        "hours": 0.006
+      },
+      "7": {
+        "clicks": 13.4,
+        "gold": 343.0,
+        "hours": 0.011
+      },
+      "8": {
+        "clicks": 17.8,
+        "gold": 567.0,
+        "hours": 0.015
+      },
+      "11": {
+        "clicks": 53.6,
+        "gold": 3047.0,
+        "hours": 0.045
+      },
+      "12": {
+        "clicks": 86.1,
+        "gold": 5665.0,
+        "hours": 0.072
+      },
+      "16": {
+        "clicks": 426.9,
+        "gold": 40575.0,
+        "hours": 0.356
+      },
+      "17": {
+        "clicks": 704.7,
+        "gold": 71985.0,
+        "hours": 0.587
+      },
+      "22": {
+        "clicks": 9740.5,
+        "gold": 1210929.0,
+        "hours": 8.117
+      },
+      "25": {
+        "clicks": 29294.4,
+        "gold": 3772167.0,
+        "hours": 24.412
+      }
+    },
+    "p35": {
+      "2": {
+        "clicks": 2.2,
+        "gold": 16.0,
+        "hours": 0.002
+      },
+      "5": {
+        "clicks": 6.8,
+        "gold": 110.0,
+        "hours": 0.006
+      },
+      "7": {
+        "clicks": 12.9,
+        "gold": 336.0,
+        "hours": 0.011
+      },
+      "8": {
+        "clicks": 17.1,
+        "gold": 553.0,
+        "hours": 0.014
+      },
+      "11": {
+        "clicks": 48.9,
+        "gold": 2894.0,
+        "hours": 0.041
+      },
+      "12": {
+        "clicks": 76.7,
+        "gold": 5306.0,
+        "hours": 0.064
+      },
+      "16": {
+        "clicks": 348.0,
+        "gold": 36140.0,
+        "hours": 0.29
+      },
+      "17": {
+        "clicks": 558.8,
+        "gold": 63016.0,
+        "hours": 0.466
+      },
+      "22": {
+        "clicks": 6670.9,
+        "gold": 953311.0,
+        "hours": 5.559
+      },
+      "25": {
+        "clicks": 18775.7,
+        "gold": 2809366.0,
+        "hours": 15.646
+      }
+    },
+    "p55": {
+      "2": {
+        "clicks": 2.2,
+        "gold": 16.0,
+        "hours": 0.002
+      },
+      "5": {
+        "clicks": 6.4,
+        "gold": 105.0,
+        "hours": 0.005
+      },
+      "7": {
+        "clicks": 11.3,
+        "gold": 309.0,
+        "hours": 0.009
+      },
+      "8": {
+        "clicks": 14.3,
+        "gold": 499.0,
+        "hours": 0.012
+      },
+      "11": {
+        "clicks": 33.5,
+        "gold": 2368.0,
+        "hours": 0.028
+      },
+      "12": {
+        "clicks": 47.7,
+        "gold": 4112.0,
+        "hours": 0.04
+      },
+      "16": {
+        "clicks": 150.9,
+        "gold": 23358.0,
+        "hours": 0.126
+      },
+      "17": {
+        "clicks": 215.4,
+        "gold": 38253.0,
+        "hours": 0.18
+      },
+      "22": {
+        "clicks": 1373.5,
+        "gold": 394082.0,
+        "hours": 1.145
+      },
+      "25": {
+        "clicks": 2922.3,
+        "gold": 948350.0,
+        "hours": 2.435
+      }
+    },
+    "p60": {
+      "2": {
+        "clicks": 2.2,
+        "gold": 16.0,
+        "hours": 0.002
+      },
+      "5": {
+        "clicks": 6.3,
+        "gold": 104.0,
+        "hours": 0.005
+      },
+      "7": {
+        "clicks": 10.9,
+        "gold": 303.0,
+        "hours": 0.009
+      },
+      "8": {
+        "clicks": 13.7,
+        "gold": 487.0,
+        "hours": 0.011
+      },
+      "11": {
+        "clicks": 30.5,
+        "gold": 2255.0,
+        "hours": 0.025
+      },
+      "12": {
+        "clicks": 42.3,
+        "gold": 3865.0,
+        "hours": 0.035
+      },
+      "16": {
+        "clicks": 122.0,
+        "gold": 21102.0,
+        "hours": 0.102
+      },
+      "17": {
+        "clicks": 168.9,
+        "gold": 34086.0,
+        "hours": 0.141
+      },
+      "22": {
+        "clicks": 911.3,
+        "gold": 323361.0,
+        "hours": 0.759
+      },
+      "25": {
+        "clicks": 1801.3,
+        "gold": 745012.0,
+        "hours": 1.501
+      }
+    }
+  }
+}

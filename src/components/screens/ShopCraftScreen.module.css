@@ -1,0 +1,290 @@
+/* ── ShopCraftScreen 레이아웃 ───────────────────────────────── */
+
+.screen {
+  display: grid;
+  grid-template-rows: 52px 3px 1fr;
+  height: 100%;
+  min-height: 0;
+  background: var(--c-bg);
+  position: relative;
+}
+
+/* ── 헤더 ──────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  border-bottom: none;
+  background: var(--c-surface);
+  flex-shrink: 0;
+}
+
+/* ── 탭 ─────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: var(--c-text-dim);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0 24px;
+  height: 52px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: color 0.15s;
+  position: relative;
+}
+.tab:hover    { color: var(--c-text); }
+.tabActive    { color: var(--c-gold-bright); }
+
+/* 탭 하단 인디케이터 바 */
+.tabBar {
+  background: var(--c-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.tabIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--c-gold);
+  transition: transform 0.2s ease;
+}
+
+/* ── headerStats ──────────────────────────────────────────── */
+.headerStats {
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.hStat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+}
+.hStatLabel { color: var(--c-text-dim); font-size: 0.65rem; }
+.hStatVal   { font-family: 'Courier New', monospace; font-weight: 700; color: var(--c-text); }
+
+/* ── 콘텐츠 영역 ──────────────────────────────────────────── */
+.body {
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.tabContent {
+  padding: 0 0 40px;
+}
+
+/* ── 섹션 헤더 ────────────────────────────────────────────── */
+.sectionHeader {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-text-dim);
+  padding: 16px 20px 8px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* ── 상점 탭 ──────────────────────────────────────────────── */
+.shopGoldBar,
+.shopScrollBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.shopGoldLabel { font-size: 0.72rem; color: var(--c-text-dim); letter-spacing: 0.06em; }
+.shopGoldVal   {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+}
+
+.shopList {
+  list-style: none;
+}
+
+.shopItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+  transition: background 0.1s;
+}
+.shopItem:hover { background: var(--c-surface2); }
+
+.shopItemIcon { font-size: 1.4rem; flex-shrink: 0; }
+
+.shopItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.shopItemName  { font-size: 0.88rem; color: var(--c-text); }
+.shopItemPrice { font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 700; color: var(--c-gold-bright); }
+.shopItemTbd   { font-size: 0.75rem; color: var(--c-text-faint); font-style: italic; }
+.shopItemWarn  { font-size: 0.68rem; color: var(--c-fail); }
+
+/* ── 조각 인벤토리 바 ─────────────────────────────────────── */
+.fragBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.fragChip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px 4px 6px;
+  background: var(--c-surface2);
+  border: 1px solid var(--c-border);
+  font-size: 0.72rem;
+}
+.fragChipEmpty { opacity: 0.4; }
+
+.fragDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fragLabel { color: var(--c-text-dim); }
+.fragCount { font-family: 'Courier New', monospace; font-weight: 700; min-width: 1.2rem; text-align: right; }
+.fragNone  { font-size: 0.75rem; color: var(--c-text-faint); align-self: center; }
+
+/* ── 조합소 리스트 공통 ───────────────────────────────────── */
+.craftList {
+  list-style: none;
+}
+
+.craftItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+  transition: background 0.1s;
+}
+.craftItem:hover { background: var(--c-surface2); }
+
+.craftItemLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.craftFragDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.craftSwordLevel {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 2.8rem;
+  flex-shrink: 0;
+}
+
+.craftItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.craftItemName {
+  font-size: 0.88rem;
+  color: var(--c-text);
+}
+
+.craftItemMat {
+  font-size: 0.75rem;
+  color: var(--c-text-dim);
+}
+
+.craftTbd { color: var(--c-text-faint); font-style: italic; }
+.craftHave { color: var(--c-text-dim); }
+
+/* 검 재료 칩 */
+.craftMaterials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.craftMatChip {
+  font-size: 0.72rem;
+  color: var(--c-text-dim);
+  background: var(--c-surface2);
+  border: 1px solid var(--c-border);
+  padding: 2px 8px;
+}
+.craftMatOk  { border-color: var(--c-success); color: var(--c-text); }
+.craftMatTbd { border-style: dashed; color: var(--c-text-faint); }
+
+/* 검 제작 불가 경고 */
+.craftWarning {
+  margin: 10px 20px;
+  padding: 10px 14px;
+  background: rgba(176, 40, 32, 0.12);
+  border: 1px solid var(--c-fail);
+  font-size: 0.75rem;
+  color: var(--c-fail);
+  opacity: 0.85;
+}
+
+/* ── 토스트 ───────────────────────────────────────────────── */
+.toast {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--c-surface);
+  border: 2px solid var(--c-gold);
+  color: var(--c-gold-bright);
+  font-size: 0.82rem;
+  padding: 10px 24px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 20;
+  animation: toast-in 0.2s ease;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

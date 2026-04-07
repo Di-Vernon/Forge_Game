@@ -1,0 +1,267 @@
+{
+  "_comment": "v11 확정 수치 — 최적 시나리오: V11_C_SetB (score=60)",
+  "_generated": "2026-04-07 17:08",
+  "upgradeSuccessRates": [
+    {
+      "from": 0,
+      "to": 1,
+      "rate": 0.95,
+      "nearMiss": false
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "rate": 0.93,
+      "nearMiss": false
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "rate": 0.9,
+      "nearMiss": false
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "rate": 0.87,
+      "nearMiss": false
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "rate": 0.83,
+      "nearMiss": false
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "rate": 0.78,
+      "nearMiss": false
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "rate": 0.73,
+      "nearMiss": false
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "rate": 0.75,
+      "nearMiss": false
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "rate": 0.7,
+      "nearMiss": false
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "rate": 0.65,
+      "nearMiss": false
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "rate": 0.6,
+      "nearMiss": false
+    },
+    {
+      "from": 11,
+      "to": 12,
+      "rate": 0.55,
+      "nearMiss": false
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "rate": 0.5,
+      "nearMiss": false
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "rate": 0.68,
+      "nearMiss": false
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "rate": 0.63,
+      "nearMiss": false
+    },
+    {
+      "from": 15,
+      "to": 16,
+      "rate": 0.58,
+      "nearMiss": true
+    },
+    {
+      "from": 16,
+      "to": 17,
+      "rate": 0.52,
+      "nearMiss": true
+    },
+    {
+      "from": 17,
+      "to": 18,
+      "rate": 0.52,
+      "nearMiss": true
+    },
+    {
+      "from": 18,
+      "to": 19,
+      "rate": 0.5,
+      "nearMiss": true
+    },
+    {
+      "from": 19,
+      "to": 20,
+      "rate": 0.5,
+      "nearMiss": true
+    },
+    {
+      "from": 20,
+      "to": 21,
+      "rate": 0.48,
+      "nearMiss": true
+    },
+    {
+      "from": 21,
+      "to": 22,
+      "rate": 0.52,
+      "nearMiss": true
+    },
+    {
+      "from": 22,
+      "to": 23,
+      "rate": 0.57,
+      "nearMiss": true
+    },
+    {
+      "from": 23,
+      "to": 24,
+      "rate": 0.62,
+      "nearMiss": true
+    },
+    {
+      "from": 24,
+      "to": 25,
+      "rate": 0.65,
+      "nearMiss": true
+    }
+  ],
+  "titleProtection": {
+    "indomitable_smith": {
+      "chance": 0.35
+    },
+    "sword_saint": {
+      "chance": 0.6,
+      "fragmentDropChance": 0.5,
+      "materialPreserveOnProtect": true
+    }
+  },
+  "skipCosts": {
+    "scavenger": {
+      "targetLevel": 5,
+      "gold": 100,
+      "fragmentId": "refined_iron",
+      "fragmentCount": 1
+    },
+    "indomitable_smith": {
+      "targetLevel": 7,
+      "gold": 116,
+      "fragmentId": "refined_iron",
+      "fragmentCount": 1
+    },
+    "sword_saint": {
+      "targetLevel": 8,
+      "gold": 238,
+      "fragmentId": "enchanted_iron",
+      "fragmentCount": 1
+    },
+    "master_smith": {
+      "targetLevel": 12,
+      "gold": 4418,
+      "fragmentId": "unknown_mineral",
+      "fragmentCount": 1
+    },
+    "refine_peak": {
+      "targetLevel": 12,
+      "gold": 4418,
+      "fragmentId": "unknown_mineral",
+      "fragmentCount": 1
+    },
+    "legend_smith": {
+      "targetLevel": 25,
+      "gold": 0,
+      "fragmentId": null,
+      "fragmentCount": 0
+    }
+  },
+  "shop": {
+    "scrollPrices": {
+      "x1": {
+        "count": 1,
+        "price": 150
+      },
+      "x5": {
+        "count": 5,
+        "price": 637
+      },
+      "x10": {
+        "count": 10,
+        "price": 1125
+      }
+    }
+  },
+  "crafting_scroll_amounts": [
+    {
+      "fragmentId": "rusty_iron",
+      "amount": 6,
+      "yield": 1
+    },
+    {
+      "fragmentId": "refined_iron",
+      "amount": 4,
+      "yield": 1
+    },
+    {
+      "fragmentId": "enchanted_iron",
+      "amount": 3,
+      "yield": 1
+    },
+    {
+      "fragmentId": "moonlight",
+      "amount": 2,
+      "yield": 1
+    },
+    {
+      "fragmentId": "spirit",
+      "amount": 2,
+      "yield": 1
+    },
+    {
+      "fragmentId": "twisted_mana",
+      "amount": 1,
+      "yield": 1
+    }
+  ],
+  "crafting_sword_amounts": {
+    "+8_enchanted": 1,
+    "+12_enchanted": 17,
+    "+12_mineral": 13,
+    "+15_moonlight": 126,
+    "+16_mineral": 200,
+    "+18_twisted": 1538,
+    "+19_twisted": 3420,
+    "+20_twisted": 8360
+  },
+  "dropBaseChance": 0.6,
+  "fragmentQuantityChance": {
+    "single": 0.8,
+    "double": 0.19999999999999996
+  }
+}

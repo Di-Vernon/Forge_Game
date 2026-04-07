@@ -1,0 +1,228 @@
+/* ── TitleUnlockModal ─────────────────────────────────────────── */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: backdrop-in 0.2s ease;
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  background: var(--c-surface);
+  border: 2px solid var(--c-gold);
+  box-shadow:
+    0 0 20px rgba(200, 160, 32, 0.35),
+    0 0 60px rgba(200, 160, 32, 0.12),
+    0 16px 48px rgba(0, 0, 0, 0.85);
+  width: min(340px, 88%);
+  padding: 32px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: modal-in 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modal-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* ── 별 장식 ───────────────────────────────────────────────────── */
+.starRow {
+  display: flex;
+  gap: 14px;
+}
+
+.star {
+  font-size: 1.3rem;
+  color: var(--c-gold-bright);
+  animation: star-pulse 1.6s ease-in-out infinite;
+}
+.star:nth-child(1) { animation-delay: 0s;    }
+.star:nth-child(2) { animation-delay: 0.35s; }
+.star:nth-child(3) { animation-delay: 0.7s;  }
+
+@keyframes star-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1);   }
+  50%       { opacity: 1;    transform: scale(1.25); }
+}
+
+/* ── 텍스트 ────────────────────────────────────────────────────── */
+.acquired {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-text-dim);
+}
+
+.titleName {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--c-gold-bright);
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow:
+    0 0 10px var(--c-gold),
+    0 0 28px rgba(200, 144, 40, 0.35);
+}
+
+.divider {
+  width: 60%;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.effect {
+  font-size: 0.82rem;
+  color: var(--c-text);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.condition {
+  font-size: 0.7rem;
+  color: var(--c-text-dim);
+  text-align: center;
+}
+
+/* ── 확인 버튼 ─────────────────────────────────────────────────── */
+.confirmBtn {
+  margin-top: 8px;
+  background: var(--c-gold);
+  border: none;
+  color: #1a1000;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 10px 44px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: background 0.12s;
+}
+
+.confirmBtn:hover,
+.confirmBtn:focus-visible {
+  background: var(--c-gold-bright);
+  outline: none;
+}
+
+/* ── 이스터에그 모달 변형 ──────────────────────────────────────── */
+
+/* bronze 단계: 칙칙한 동색 */
+.eggModal {
+  border-color: #7a5030;
+  box-shadow:
+    0 0 12px rgba(120, 80, 48, 0.4),
+    0 16px 48px rgba(0, 0, 0, 0.9);
+  transition:
+    border-color 0.6s ease,
+    box-shadow   0.6s ease,
+    background   0.6s ease;
+}
+
+/* glitching 단계: 클립 슬라이스 + RGB 색수차 */
+.eggGlitching {
+  animation: glitch-container 0.9s steps(1) forwards;
+}
+
+@keyframes glitch-container {
+  0%   { transform: translate(0); filter: none; }
+  10%  { transform: translate(-4px, 2px); filter: hue-rotate(90deg) saturate(2); }
+  20%  { transform: translate(4px, -2px); filter: hue-rotate(-90deg); }
+  30%  { transform: translate(-2px, 4px); clip-path: polygon(0 15%, 100% 15%, 100% 40%, 0 40%); }
+  40%  { transform: translate(2px, -4px); clip-path: polygon(0 60%, 100% 60%, 100% 85%, 0 85%); }
+  50%  { transform: translate(-6px, 0);   filter: invert(0.3) hue-rotate(180deg); }
+  60%  { transform: translate(6px, 2px);  filter: none; clip-path: none; }
+  70%  { transform: translate(0, -2px); }
+  80%  { transform: translate(-2px, 0); }
+  90%  { transform: translate(2px, 2px); }
+  100% { transform: translate(0); clip-path: none; filter: none; }
+}
+
+/* glitch 텍스트 — 색수차 레이어 */
+.eggGlitchText {
+  position: relative;
+  animation: glitch-text 0.9s steps(1) forwards;
+}
+
+@keyframes glitch-text {
+  0%   { text-shadow: none; }
+  15%  { text-shadow: 3px 0 #ff0040, -3px 0 #00ffcc; }
+  30%  { text-shadow: -4px 0 #ff0040,  4px 0 #00ffcc; }
+  45%  { text-shadow: 2px 0 #ff0040, -2px 0 #00ffcc; }
+  60%  { text-shadow: -2px 0 #ff0040,  2px 0 #00ffcc; }
+  75%  { text-shadow: 4px 0 #ff0040, -4px 0 #00ffcc; }
+  90%  { text-shadow: 1px 0 #ff0040, -1px 0 #00ffcc; }
+  100% { text-shadow: none; }
+}
+
+/* gold 단계: 전설 금색 */
+.eggGold {
+  border-color: var(--c-gold-bright);
+  box-shadow:
+    0 0 30px rgba(232, 176, 64, 0.6),
+    0 0 80px rgba(200, 144, 40, 0.25),
+    0 16px 48px rgba(0, 0, 0, 0.9);
+  animation: gold-reveal 0.5s ease forwards;
+}
+
+@keyframes gold-reveal {
+  from { transform: scale(0.97); opacity: 0.7; }
+  to   { transform: scale(1);    opacity: 1;   }
+}
+
+.eggStar {
+  color: var(--c-gold-bright);
+  animation: egg-star-burst 0.6s ease forwards;
+}
+
+@keyframes egg-star-burst {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.8); }
+  100% { transform: scale(1.1); }
+}
+
+.eggAcquired {
+  color: var(--c-gold);
+  letter-spacing: 0.2em;
+}
+
+.eggTitleName {
+  font-size: 1.55rem;
+  text-shadow:
+    0 0 16px var(--c-gold-bright),
+    0 0 40px rgba(232, 176, 64, 0.5);
+  animation: gold-pulse 2s ease-in-out infinite;
+}
+
+@keyframes gold-pulse {
+  0%, 100% { text-shadow: 0 0 16px var(--c-gold-bright), 0 0 40px rgba(232,176,64,0.5); }
+  50%       { text-shadow: 0 0 28px var(--c-gold-bright), 0 0 60px rgba(232,176,64,0.8); }
+}
+
+.eggConfirmBtn {
+  background: linear-gradient(135deg, var(--c-gold) 0%, var(--c-gold-bright) 100%);
+  box-shadow: 0 0 16px rgba(232, 176, 64, 0.5);
+  animation: confirm-appear 0.4s ease forwards;
+}
+
+@keyframes confirm-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.eggConfirmHidden {
+  opacity: 0;
+  pointer-events: none;
+}

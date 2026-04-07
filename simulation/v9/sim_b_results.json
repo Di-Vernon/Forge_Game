@@ -1,0 +1,891 @@
+{
+  "sim": "B",
+  "description": "약한 보호 시대 (검성 획득까지)",
+  "initial_state_from_sim_a": {
+    "gold_p50": 5790.5,
+    "fragments_mean": {
+      "녹슨철조각": 7.917000000000001,
+      "마력부여철조각": 2.6386666666666665,
+      "정제된철조각": 1.079,
+      "사령조각": 0.32133333333333325,
+      "달빛조각": 0.12533333333333332,
+      "검성의파편": 0.050333333333333334,
+      "광물파편": 0.014999999999999998,
+      "뒤틀린마력파편": 0.0
+    }
+  },
+  "scenarios": {
+    "C1_p20": {
+      "curve": "C1",
+      "curve_name": "깊은골짜기",
+      "protect_indom": 0.2,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 316.8264,
+        "p50": 268.0,
+        "p90": 583.0
+      },
+      "hours": {
+        "mean": 0.26402200000000003,
+        "p50": 0.22333333333333333,
+        "p90": 0.48583333333333334
+      },
+      "gold_at_end": {
+        "mean": 50619.2624,
+        "p50": 3972.5
+      },
+      "completion_rate": 0.8824,
+      "route_distribution": {
+        "baekya": 0.007,
+        "mugyeom_x3": 0.875,
+        "incomplete": 0.118
+      },
+      "skip_mean": 0.5486,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C1_p25": {
+      "curve": "C1",
+      "curve_name": "깊은골짜기",
+      "protect_indom": 0.25,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 290.75,
+        "p50": 243.0,
+        "p90": 538.0
+      },
+      "hours": {
+        "mean": 0.2422916666666667,
+        "p50": 0.2025,
+        "p90": 0.4483333333333333
+      },
+      "gold_at_end": {
+        "mean": 55106.874,
+        "p50": 5623.5
+      },
+      "completion_rate": 0.907,
+      "route_distribution": {
+        "baekya": 0.006,
+        "mugyeom_x3": 0.901,
+        "incomplete": 0.093
+      },
+      "skip_mean": 0.4948,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C1_p30": {
+      "curve": "C1",
+      "curve_name": "깊은골짜기",
+      "protect_indom": 0.3,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 256.413,
+        "p50": 219.0,
+        "p90": 459.10000000000036
+      },
+      "hours": {
+        "mean": 0.21367749999999996,
+        "p50": 0.1825,
+        "p90": 0.38258333333333366
+      },
+      "gold_at_end": {
+        "mean": 55485.5528,
+        "p50": 6830.0
+      },
+      "completion_rate": 0.9266,
+      "route_distribution": {
+        "baekya": 0.009,
+        "mugyeom_x3": 0.917,
+        "incomplete": 0.073
+      },
+      "skip_mean": 0.4188,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C1_p35": {
+      "curve": "C1",
+      "curve_name": "깊은골짜기",
+      "protect_indom": 0.35,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 230.8568,
+        "p50": 198.0,
+        "p90": 417.0
+      },
+      "hours": {
+        "mean": 0.19238066666666667,
+        "p50": 0.165,
+        "p90": 0.3475
+      },
+      "gold_at_end": {
+        "mean": 66434.4418,
+        "p50": 7795.5
+      },
+      "completion_rate": 0.947,
+      "route_distribution": {
+        "baekya": 0.014,
+        "mugyeom_x3": 0.933,
+        "incomplete": 0.053
+      },
+      "skip_mean": 0.387,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C1_p40": {
+      "curve": "C1",
+      "curve_name": "깊은골짜기",
+      "protect_indom": 0.4,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 206.3074,
+        "p50": 177.0,
+        "p90": 367.10000000000036
+      },
+      "hours": {
+        "mean": 0.17192283333333336,
+        "p50": 0.1475,
+        "p90": 0.305916666666667
+      },
+      "gold_at_end": {
+        "mean": 76164.5228,
+        "p50": 8856.0
+      },
+      "completion_rate": 0.9654,
+      "route_distribution": {
+        "baekya": 0.014,
+        "mugyeom_x3": 0.951,
+        "incomplete": 0.035
+      },
+      "skip_mean": 0.3274,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C2_p20": {
+      "curve": "C2",
+      "curve_name": "완만학습",
+      "protect_indom": 0.2,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 246.4152,
+        "p50": 209.0,
+        "p90": 448.0
+      },
+      "hours": {
+        "mean": 0.205346,
+        "p50": 0.17416666666666666,
+        "p90": 0.37333333333333335
+      },
+      "gold_at_end": {
+        "mean": 69016.4428,
+        "p50": 8466.0
+      },
+      "completion_rate": 0.9354,
+      "route_distribution": {
+        "baekya": 0.012,
+        "mugyeom_x3": 0.924,
+        "incomplete": 0.065
+      },
+      "skip_mean": 0.4314,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C2_p25": {
+      "curve": "C2",
+      "curve_name": "완만학습",
+      "protect_indom": 0.25,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 222.8306,
+        "p50": 190.0,
+        "p90": 396.10000000000036
+      },
+      "hours": {
+        "mean": 0.18569216666666666,
+        "p50": 0.15833333333333333,
+        "p90": 0.3300833333333337
+      },
+      "gold_at_end": {
+        "mean": 75904.0682,
+        "p50": 8905.5
+      },
+      "completion_rate": 0.9448,
+      "route_distribution": {
+        "baekya": 0.013,
+        "mugyeom_x3": 0.932,
+        "incomplete": 0.055
+      },
+      "skip_mean": 0.3836,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C2_p30": {
+      "curve": "C2",
+      "curve_name": "완만학습",
+      "protect_indom": 0.3,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 201.2142,
+        "p50": 174.0,
+        "p90": 356.0
+      },
+      "hours": {
+        "mean": 0.1676785,
+        "p50": 0.145,
+        "p90": 0.2966666666666667
+      },
+      "gold_at_end": {
+        "mean": 81971.826,
+        "p50": 9234.0
+      },
+      "completion_rate": 0.9616,
+      "route_distribution": {
+        "baekya": 0.018,
+        "mugyeom_x3": 0.944,
+        "incomplete": 0.038
+      },
+      "skip_mean": 0.3382,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C2_p35": {
+      "curve": "C2",
+      "curve_name": "완만학습",
+      "protect_indom": 0.35,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 183.3744,
+        "p50": 156.0,
+        "p90": 324.10000000000036
+      },
+      "hours": {
+        "mean": 0.15281199999999998,
+        "p50": 0.13,
+        "p90": 0.2700833333333337
+      },
+      "gold_at_end": {
+        "mean": 90875.374,
+        "p50": 19577.5
+      },
+      "completion_rate": 0.9718,
+      "route_distribution": {
+        "baekya": 0.024,
+        "mugyeom_x3": 0.948,
+        "incomplete": 0.028
+      },
+      "skip_mean": 0.2926,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C2_p40": {
+      "curve": "C2",
+      "curve_name": "완만학습",
+      "protect_indom": 0.4,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 165.1618,
+        "p50": 143.0,
+        "p90": 289.0
+      },
+      "hours": {
+        "mean": 0.13763483333333335,
+        "p50": 0.11916666666666667,
+        "p90": 0.24083333333333334
+      },
+      "gold_at_end": {
+        "mean": 95451.9082,
+        "p50": 22846.5
+      },
+      "completion_rate": 0.9766,
+      "route_distribution": {
+        "baekya": 0.028,
+        "mugyeom_x3": 0.949,
+        "incomplete": 0.023
+      },
+      "skip_mean": 0.2476,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C3_p20": {
+      "curve": "C3",
+      "curve_name": "극적반전",
+      "protect_indom": 0.2,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 325.0378,
+        "p50": 271.0,
+        "p90": 609.1000000000004
+      },
+      "hours": {
+        "mean": 0.27086483333333333,
+        "p50": 0.22583333333333333,
+        "p90": 0.5075833333333336
+      },
+      "gold_at_end": {
+        "mean": 54108.4726,
+        "p50": 3596.0
+      },
+      "completion_rate": 0.881,
+      "route_distribution": {
+        "baekya": 0.008,
+        "mugyeom_x3": 0.873,
+        "incomplete": 0.119
+      },
+      "skip_mean": 0.5672,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C3_p25": {
+      "curve": "C3",
+      "curve_name": "극적반전",
+      "protect_indom": 0.25,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 285.75,
+        "p50": 241.0,
+        "p90": 528.0
+      },
+      "hours": {
+        "mean": 0.238125,
+        "p50": 0.20083333333333334,
+        "p90": 0.44
+      },
+      "gold_at_end": {
+        "mean": 57362.9908,
+        "p50": 5497.5
+      },
+      "completion_rate": 0.9108,
+      "route_distribution": {
+        "baekya": 0.011,
+        "mugyeom_x3": 0.9,
+        "incomplete": 0.089
+      },
+      "skip_mean": 0.4882,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C3_p30": {
+      "curve": "C3",
+      "curve_name": "극적반전",
+      "protect_indom": 0.3,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 262.3306,
+        "p50": 224.0,
+        "p90": 474.0
+      },
+      "hours": {
+        "mean": 0.2186088333333333,
+        "p50": 0.18666666666666668,
+        "p90": 0.395
+      },
+      "gold_at_end": {
+        "mean": 59959.3044,
+        "p50": 6385.5
+      },
+      "completion_rate": 0.9292,
+      "route_distribution": {
+        "baekya": 0.009,
+        "mugyeom_x3": 0.92,
+        "incomplete": 0.071
+      },
+      "skip_mean": 0.442,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C3_p35": {
+      "curve": "C3",
+      "curve_name": "극적반전",
+      "protect_indom": 0.35,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 231.3962,
+        "p50": 195.0,
+        "p90": 416.0
+      },
+      "hours": {
+        "mean": 0.19283016666666666,
+        "p50": 0.1625,
+        "p90": 0.3466666666666667
+      },
+      "gold_at_end": {
+        "mean": 70577.4362,
+        "p50": 7690.0
+      },
+      "completion_rate": 0.9464,
+      "route_distribution": {
+        "baekya": 0.013,
+        "mugyeom_x3": 0.934,
+        "incomplete": 0.054
+      },
+      "skip_mean": 0.3782,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C3_p40": {
+      "curve": "C3",
+      "curve_name": "극적반전",
+      "protect_indom": 0.4,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 206.6044,
+        "p50": 174.0,
+        "p90": 369.0
+      },
+      "hours": {
+        "mean": 0.17217033333333334,
+        "p50": 0.145,
+        "p90": 0.3075
+      },
+      "gold_at_end": {
+        "mean": 75220.0944,
+        "p50": 8538.0
+      },
+      "completion_rate": 0.9628,
+      "route_distribution": {
+        "baekya": 0.02,
+        "mugyeom_x3": 0.942,
+        "incomplete": 0.037
+      },
+      "skip_mean": 0.3062,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C4_p20": {
+      "curve": "C4",
+      "curve_name": "높은바닥",
+      "protect_indom": 0.2,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 245.249,
+        "p50": 208.0,
+        "p90": 448.0
+      },
+      "hours": {
+        "mean": 0.2043741666666667,
+        "p50": 0.17333333333333334,
+        "p90": 0.37333333333333335
+      },
+      "gold_at_end": {
+        "mean": 79054.5624,
+        "p50": 8326.0
+      },
+      "completion_rate": 0.9334,
+      "route_distribution": {
+        "baekya": 0.014,
+        "mugyeom_x3": 0.919,
+        "incomplete": 0.067
+      },
+      "skip_mean": 0.4318,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C4_p25": {
+      "curve": "C4",
+      "curve_name": "높은바닥",
+      "protect_indom": 0.25,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 224.2346,
+        "p50": 190.0,
+        "p90": 405.0
+      },
+      "hours": {
+        "mean": 0.18686216666666666,
+        "p50": 0.15833333333333333,
+        "p90": 0.3375
+      },
+      "gold_at_end": {
+        "mean": 80686.1246,
+        "p50": 8858.0
+      },
+      "completion_rate": 0.9476,
+      "route_distribution": {
+        "baekya": 0.017,
+        "mugyeom_x3": 0.93,
+        "incomplete": 0.052
+      },
+      "skip_mean": 0.3944,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C4_p30": {
+      "curve": "C4",
+      "curve_name": "높은바닥",
+      "protect_indom": 0.3,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 203.1904,
+        "p50": 174.0,
+        "p90": 360.10000000000036
+      },
+      "hours": {
+        "mean": 0.16932533333333333,
+        "p50": 0.145,
+        "p90": 0.30008333333333365
+      },
+      "gold_at_end": {
+        "mean": 88799.997,
+        "p50": 9130.5
+      },
+      "completion_rate": 0.9624,
+      "route_distribution": {
+        "baekya": 0.021,
+        "mugyeom_x3": 0.941,
+        "incomplete": 0.038
+      },
+      "skip_mean": 0.3374,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C4_p35": {
+      "curve": "C4",
+      "curve_name": "높은바닥",
+      "protect_indom": 0.35,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 180.822,
+        "p50": 154.0,
+        "p90": 321.0
+      },
+      "hours": {
+        "mean": 0.150685,
+        "p50": 0.12833333333333333,
+        "p90": 0.2675
+      },
+      "gold_at_end": {
+        "mean": 98211.5356,
+        "p50": 19840.5
+      },
+      "completion_rate": 0.9656,
+      "route_distribution": {
+        "baekya": 0.033,
+        "mugyeom_x3": 0.933,
+        "incomplete": 0.034
+      },
+      "skip_mean": 0.2798,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C4_p40": {
+      "curve": "C4",
+      "curve_name": "높은바닥",
+      "protect_indom": 0.4,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 160.4894,
+        "p50": 139.0,
+        "p90": 279.0
+      },
+      "hours": {
+        "mean": 0.13374116666666666,
+        "p50": 0.11583333333333333,
+        "p90": 0.2325
+      },
+      "gold_at_end": {
+        "mean": 107284.2798,
+        "p50": 24274.5
+      },
+      "completion_rate": 0.975,
+      "route_distribution": {
+        "baekya": 0.033,
+        "mugyeom_x3": 0.942,
+        "incomplete": 0.025
+      },
+      "skip_mean": 0.2488,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C5_p20": {
+      "curve": "C5",
+      "curve_name": "이중골짜기",
+      "protect_indom": 0.2,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 320.5518,
+        "p50": 270.0,
+        "p90": 592.0
+      },
+      "hours": {
+        "mean": 0.2671265,
+        "p50": 0.225,
+        "p90": 0.49333333333333335
+      },
+      "gold_at_end": {
+        "mean": 53067.9438,
+        "p50": 4137.5
+      },
+      "completion_rate": 0.8916,
+      "route_distribution": {
+        "baekya": 0.007,
+        "mugyeom_x3": 0.884,
+        "incomplete": 0.108
+      },
+      "skip_mean": 0.5518,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C5_p25": {
+      "curve": "C5",
+      "curve_name": "이중골짜기",
+      "protect_indom": 0.25,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 289.8818,
+        "p50": 244.0,
+        "p90": 534.0
+      },
+      "hours": {
+        "mean": 0.24156816666666664,
+        "p50": 0.20333333333333334,
+        "p90": 0.445
+      },
+      "gold_at_end": {
+        "mean": 53976.5268,
+        "p50": 5311.0
+      },
+      "completion_rate": 0.9042,
+      "route_distribution": {
+        "baekya": 0.008,
+        "mugyeom_x3": 0.896,
+        "incomplete": 0.096
+      },
+      "skip_mean": 0.5002,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C5_p30": {
+      "curve": "C5",
+      "curve_name": "이중골짜기",
+      "protect_indom": 0.3,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 258.8596,
+        "p50": 221.0,
+        "p90": 469.0
+      },
+      "hours": {
+        "mean": 0.21571633333333334,
+        "p50": 0.18416666666666667,
+        "p90": 0.3908333333333333
+      },
+      "gold_at_end": {
+        "mean": 61528.9766,
+        "p50": 6522.0
+      },
+      "completion_rate": 0.9296,
+      "route_distribution": {
+        "baekya": 0.013,
+        "mugyeom_x3": 0.916,
+        "incomplete": 0.07
+      },
+      "skip_mean": 0.4278,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C5_p35": {
+      "curve": "C5",
+      "curve_name": "이중골짜기",
+      "protect_indom": 0.35,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 228.1974,
+        "p50": 194.0,
+        "p90": 410.10000000000036
+      },
+      "hours": {
+        "mean": 0.1901645,
+        "p50": 0.16166666666666665,
+        "p90": 0.34175000000000033
+      },
+      "gold_at_end": {
+        "mean": 61863.68,
+        "p50": 7943.0
+      },
+      "completion_rate": 0.9446,
+      "route_distribution": {
+        "baekya": 0.017,
+        "mugyeom_x3": 0.927,
+        "incomplete": 0.055
+      },
+      "skip_mean": 0.3554,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C5_p40": {
+      "curve": "C5",
+      "curve_name": "이중골짜기",
+      "protect_indom": 0.4,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 207.306,
+        "p50": 177.0,
+        "p90": 375.0
+      },
+      "hours": {
+        "mean": 0.17275500000000002,
+        "p50": 0.1475,
+        "p90": 0.3125
+      },
+      "gold_at_end": {
+        "mean": 73866.0982,
+        "p50": 8811.0
+      },
+      "completion_rate": 0.9618,
+      "route_distribution": {
+        "baekya": 0.023,
+        "mugyeom_x3": 0.939,
+        "incomplete": 0.038
+      },
+      "skip_mean": 0.3196,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C6_p20": {
+      "curve": "C6",
+      "curve_name": "후반관대",
+      "protect_indom": 0.2,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 256.9702,
+        "p50": 219.0,
+        "p90": 474.10000000000036
+      },
+      "hours": {
+        "mean": 0.2141418333333333,
+        "p50": 0.1825,
+        "p90": 0.3950833333333337
+      },
+      "gold_at_end": {
+        "mean": 60382.1268,
+        "p50": 6607.5
+      },
+      "completion_rate": 0.9238,
+      "route_distribution": {
+        "baekya": 0.009,
+        "mugyeom_x3": 0.915,
+        "incomplete": 0.076
+      },
+      "skip_mean": 0.4416,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C6_p25": {
+      "curve": "C6",
+      "curve_name": "후반관대",
+      "protect_indom": 0.25,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 233.1576,
+        "p50": 198.0,
+        "p90": 421.0
+      },
+      "hours": {
+        "mean": 0.194298,
+        "p50": 0.165,
+        "p90": 0.35083333333333333
+      },
+      "gold_at_end": {
+        "mean": 59565.0834,
+        "p50": 7491.0
+      },
+      "completion_rate": 0.9406,
+      "route_distribution": {
+        "baekya": 0.009,
+        "mugyeom_x3": 0.932,
+        "incomplete": 0.059
+      },
+      "skip_mean": 0.3892,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C6_p30": {
+      "curve": "C6",
+      "curve_name": "후반관대",
+      "protect_indom": 0.3,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 206.8464,
+        "p50": 177.0,
+        "p90": 373.0
+      },
+      "hours": {
+        "mean": 0.172372,
+        "p50": 0.1475,
+        "p90": 0.31083333333333335
+      },
+      "gold_at_end": {
+        "mean": 71677.2702,
+        "p50": 8424.5
+      },
+      "completion_rate": 0.955,
+      "route_distribution": {
+        "baekya": 0.014,
+        "mugyeom_x3": 0.941,
+        "incomplete": 0.045
+      },
+      "skip_mean": 0.348,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C6_p35": {
+      "curve": "C6",
+      "curve_name": "후반관대",
+      "protect_indom": 0.35,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 188.717,
+        "p50": 160.0,
+        "p90": 333.0
+      },
+      "hours": {
+        "mean": 0.15726416666666668,
+        "p50": 0.13333333333333333,
+        "p90": 0.2775
+      },
+      "gold_at_end": {
+        "mean": 79292.6054,
+        "p50": 8831.0
+      },
+      "completion_rate": 0.9634,
+      "route_distribution": {
+        "baekya": 0.019,
+        "mugyeom_x3": 0.945,
+        "incomplete": 0.037
+      },
+      "skip_mean": 0.2976,
+      "hit_max_clicks_pct": 0.0
+    },
+    "C6_p40": {
+      "curve": "C6",
+      "curve_name": "후반관대",
+      "protect_indom": 0.4,
+      "n_users": 5000,
+      "clicks": {
+        "mean": 169.433,
+        "p50": 146.0,
+        "p90": 295.0
+      },
+      "hours": {
+        "mean": 0.14119416666666665,
+        "p50": 0.12166666666666667,
+        "p90": 0.24583333333333332
+      },
+      "gold_at_end": {
+        "mean": 83039.3312,
+        "p50": 16152.5
+      },
+      "completion_rate": 0.9744,
+      "route_distribution": {
+        "baekya": 0.022,
+        "mugyeom_x3": 0.952,
+        "incomplete": 0.026
+      },
+      "skip_mean": 0.2606,
+      "hit_max_clicks_pct": 0.0
+    }
+  },
+  "curve_summary": {
+    "C1": {
+      "curve_name": "깊은골짜기",
+      "hours_mean_avg": 0.217,
+      "completion_rate_avg": 0.926
+    },
+    "C2": {
+      "curve_name": "완만학습",
+      "hours_mean_avg": 0.17,
+      "completion_rate_avg": 0.958
+    },
+    "C3": {
+      "curve_name": "극적반전",
+      "hours_mean_avg": 0.219,
+      "completion_rate_avg": 0.926
+    },
+    "C4": {
+      "curve_name": "높은바닥",
+      "hours_mean_avg": 0.169,
+      "completion_rate_avg": 0.957
+    },
+    "C5": {
+      "curve_name": "이중골짜기",
+      "hours_mean_avg": 0.217,
+      "completion_rate_avg": 0.926
+    },
+    "C6": {
+      "curve_name": "후반관대",
+      "hours_mean_avg": 0.176,
+      "completion_rate_avg": 0.951
+    }
+  }
+}

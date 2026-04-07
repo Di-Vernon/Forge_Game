@@ -1,0 +1,1778 @@
+{
+  "C1_p50": {
+    "curve": "C1",
+    "protect_pct": 0.5,
+    "e_farm": {
+      "2": 2.17,
+      "11": 40.55,
+      "12": 66.52,
+      "16": 307.95
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 140.099,
+        "count": 1,
+        "e_farm": 66.52,
+        "mat_clicks": 9319.3
+      },
+      "+18_req+12x1": {
+        "visits_n": 85.278,
+        "count": 1,
+        "e_farm": 66.52,
+        "mat_clicks": 5672.6
+      },
+      "+19_req+12x2": {
+        "visits_n": 48.008,
+        "count": 2,
+        "e_farm": 66.52,
+        "mat_clicks": 6386.9
+      },
+      "+20_req+16x1": {
+        "visits_n": 24.893,
+        "count": 1,
+        "e_farm": 307.95,
+        "mat_clicks": 7665.8
+      },
+      "+21_req+11x1": {
+        "visits_n": 12.908,
+        "count": 1,
+        "e_farm": 40.55,
+        "mat_clicks": 523.4
+      },
+      "+22_req+16x1": {
+        "visits_n": 6.363,
+        "count": 1,
+        "e_farm": 307.95,
+        "mat_clicks": 1959.5
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.563,
+        "count": 1,
+        "e_farm": 2.17,
+        "mat_clicks": 7.7
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.27,
+        "count": 1,
+        "e_farm": 307.95,
+        "mat_clicks": 699.0
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 307.95,
+        "mat_clicks": 977.4
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 66.52,
+        "mat_clicks": 105.6
+      }
+    },
+    "total_mat_clicks": 33317.2,
+    "total_mat_hours": 27.764
+  },
+  "C1_p55": {
+    "curve": "C1",
+    "protect_pct": 0.55,
+    "e_farm": {
+      "2": 2.16,
+      "11": 36.67,
+      "12": 58.22,
+      "16": 240.43
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 101.698,
+        "count": 1,
+        "e_farm": 58.22,
+        "mat_clicks": 5921.1
+      },
+      "+18_req+12x1": {
+        "visits_n": 64.815,
+        "count": 1,
+        "e_farm": 58.22,
+        "mat_clicks": 3773.7
+      },
+      "+19_req+12x2": {
+        "visits_n": 38.334,
+        "count": 2,
+        "e_farm": 58.22,
+        "mat_clicks": 4463.8
+      },
+      "+20_req+16x1": {
+        "visits_n": 20.882,
+        "count": 1,
+        "e_farm": 240.43,
+        "mat_clicks": 5020.7
+      },
+      "+21_req+11x1": {
+        "visits_n": 11.376,
+        "count": 1,
+        "e_farm": 36.67,
+        "mat_clicks": 417.2
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.847,
+        "count": 1,
+        "e_farm": 240.43,
+        "mat_clicks": 1405.8
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.387,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 7.3
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.218,
+        "count": 1,
+        "e_farm": 240.43,
+        "mat_clicks": 533.3
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 240.43,
+        "mat_clicks": 763.1
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 58.22,
+        "mat_clicks": 92.4
+      }
+    },
+    "total_mat_clicks": 22398.4,
+    "total_mat_hours": 18.665
+  },
+  "C1_p57": {
+    "curve": "C1",
+    "protect_pct": 0.58,
+    "e_farm": {
+      "2": 2.16,
+      "11": 34.52,
+      "12": 53.71,
+      "16": 206.92
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 83.35,
+        "count": 1,
+        "e_farm": 53.71,
+        "mat_clicks": 4476.8
+      },
+      "+18_req+12x1": {
+        "visits_n": 54.665,
+        "count": 1,
+        "e_farm": 53.71,
+        "mat_clicks": 2936.1
+      },
+      "+19_req+12x2": {
+        "visits_n": 33.343,
+        "count": 2,
+        "e_farm": 53.71,
+        "mat_clicks": 3581.8
+      },
+      "+20_req+16x1": {
+        "visits_n": 18.732,
+        "count": 1,
+        "e_farm": 206.92,
+        "mat_clicks": 3876.0
+      },
+      "+21_req+11x1": {
+        "visits_n": 10.524,
+        "count": 1,
+        "e_farm": 34.52,
+        "mat_clicks": 363.3
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.55,
+        "count": 1,
+        "e_farm": 206.92,
+        "mat_clicks": 1148.4
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.283,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 7.1
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.187,
+        "count": 1,
+        "e_farm": 206.92,
+        "mat_clicks": 452.5
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 206.92,
+        "mat_clicks": 656.8
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 53.71,
+        "mat_clicks": 85.2
+      }
+    },
+    "total_mat_clicks": 17584.0,
+    "total_mat_hours": 14.653
+  },
+  "C1_p60": {
+    "curve": "C1",
+    "protect_pct": 0.6,
+    "e_farm": {
+      "2": 2.16,
+      "11": 33.15,
+      "12": 50.88,
+      "16": 187.1
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 72.779,
+        "count": 1,
+        "e_farm": 50.88,
+        "mat_clicks": 3703.3
+      },
+      "+18_req+12x1": {
+        "visits_n": 48.674,
+        "count": 1,
+        "e_farm": 50.88,
+        "mat_clicks": 2476.8
+      },
+      "+19_req+12x2": {
+        "visits_n": 30.321,
+        "count": 2,
+        "e_farm": 50.88,
+        "mat_clicks": 3085.7
+      },
+      "+20_req+16x1": {
+        "visits_n": 17.398,
+        "count": 1,
+        "e_farm": 187.1,
+        "mat_clicks": 3255.1
+      },
+      "+21_req+11x1": {
+        "visits_n": 9.982,
+        "count": 1,
+        "e_farm": 33.15,
+        "mat_clicks": 330.9
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.359,
+        "count": 1,
+        "e_farm": 187.1,
+        "mat_clicks": 1002.7
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.215,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.9
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.167,
+        "count": 1,
+        "e_farm": 187.1,
+        "mat_clicks": 405.4
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 187.1,
+        "mat_clicks": 593.8
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 50.88,
+        "mat_clicks": 80.8
+      }
+    },
+    "total_mat_clicks": 14941.5,
+    "total_mat_hours": 12.451
+  },
+  "C2_p50": {
+    "curve": "C2",
+    "protect_pct": 0.5,
+    "e_farm": {
+      "2": 2.17,
+      "11": 34.26,
+      "12": 50.1,
+      "16": 196.2
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 89.933,
+        "count": 1,
+        "e_farm": 50.1,
+        "mat_clicks": 4505.5
+      },
+      "+18_req+12x1": {
+        "visits_n": 57.0,
+        "count": 1,
+        "e_farm": 50.1,
+        "mat_clicks": 2855.6
+      },
+      "+19_req+12x2": {
+        "visits_n": 34.2,
+        "count": 2,
+        "e_farm": 50.1,
+        "mat_clicks": 3426.7
+      },
+      "+20_req+16x1": {
+        "visits_n": 19.826,
+        "count": 1,
+        "e_farm": 196.2,
+        "mat_clicks": 3889.9
+      },
+      "+21_req+11x1": {
+        "visits_n": 10.919,
+        "count": 1,
+        "e_farm": 34.26,
+        "mat_clicks": 374.1
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.723,
+        "count": 1,
+        "e_farm": 196.2,
+        "mat_clicks": 1122.9
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.389,
+        "count": 1,
+        "e_farm": 2.17,
+        "mat_clicks": 7.3
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.23,
+        "count": 1,
+        "e_farm": 196.2,
+        "mat_clicks": 437.5
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 196.2,
+        "mat_clicks": 622.7
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 50.1,
+        "mat_clicks": 79.5
+      }
+    },
+    "total_mat_clicks": 17321.8,
+    "total_mat_hours": 14.435
+  },
+  "C2_p55": {
+    "curve": "C2",
+    "protect_pct": 0.55,
+    "e_farm": {
+      "2": 2.16,
+      "11": 31.36,
+      "12": 44.73,
+      "16": 158.46
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 66.75,
+        "count": 1,
+        "e_farm": 44.73,
+        "mat_clicks": 2985.7
+      },
+      "+18_req+12x1": {
+        "visits_n": 44.108,
+        "count": 1,
+        "e_farm": 44.73,
+        "mat_clicks": 1973.0
+      },
+      "+19_req+12x2": {
+        "visits_n": 27.65,
+        "count": 2,
+        "e_farm": 44.73,
+        "mat_clicks": 2473.6
+      },
+      "+20_req+16x1": {
+        "visits_n": 16.783,
+        "count": 1,
+        "e_farm": 158.46,
+        "mat_clicks": 2659.4
+      },
+      "+21_req+11x1": {
+        "visits_n": 9.678,
+        "count": 1,
+        "e_farm": 31.36,
+        "mat_clicks": 303.5
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.272,
+        "count": 1,
+        "e_farm": 158.46,
+        "mat_clicks": 835.4
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.224,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 7.0
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.18,
+        "count": 1,
+        "e_farm": 158.46,
+        "mat_clicks": 345.4
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 158.46,
+        "mat_clicks": 502.9
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 44.73,
+        "mat_clicks": 71.0
+      }
+    },
+    "total_mat_clicks": 12156.9,
+    "total_mat_hours": 10.131
+  },
+  "C2_p57": {
+    "curve": "C2",
+    "protect_pct": 0.58,
+    "e_farm": {
+      "2": 2.16,
+      "11": 29.74,
+      "12": 41.78,
+      "16": 139.28
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 55.497,
+        "count": 1,
+        "e_farm": 41.78,
+        "mat_clicks": 2318.4
+      },
+      "+18_req+12x1": {
+        "visits_n": 37.634,
+        "count": 1,
+        "e_farm": 41.78,
+        "mat_clicks": 1572.2
+      },
+      "+19_req+12x2": {
+        "visits_n": 24.242,
+        "count": 2,
+        "e_farm": 41.78,
+        "mat_clicks": 2025.4
+      },
+      "+20_req+16x1": {
+        "visits_n": 15.142,
+        "count": 1,
+        "e_farm": 139.28,
+        "mat_clicks": 2108.9
+      },
+      "+21_req+11x1": {
+        "visits_n": 8.985,
+        "count": 1,
+        "e_farm": 29.74,
+        "mat_clicks": 267.2
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.014,
+        "count": 1,
+        "e_farm": 139.28,
+        "mat_clicks": 698.3
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.127,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.8
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.149,
+        "count": 1,
+        "e_farm": 139.28,
+        "mat_clicks": 299.3
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 139.28,
+        "mat_clicks": 442.1
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 41.78,
+        "mat_clicks": 66.3
+      }
+    },
+    "total_mat_clicks": 9804.9,
+    "total_mat_hours": 8.171
+  },
+  "C2_p60": {
+    "curve": "C2",
+    "protect_pct": 0.6,
+    "e_farm": {
+      "2": 2.16,
+      "11": 28.7,
+      "12": 39.91,
+      "16": 127.76
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 48.945,
+        "count": 1,
+        "e_farm": 39.91,
+        "mat_clicks": 1953.4
+      },
+      "+18_req+12x1": {
+        "visits_n": 33.781,
+        "count": 1,
+        "e_farm": 39.91,
+        "mat_clicks": 1348.2
+      },
+      "+19_req+12x2": {
+        "visits_n": 22.169,
+        "count": 2,
+        "e_farm": 39.91,
+        "mat_clicks": 1769.5
+      },
+      "+20_req+16x1": {
+        "visits_n": 14.12,
+        "count": 1,
+        "e_farm": 127.76,
+        "mat_clicks": 1804.0
+      },
+      "+21_req+11x1": {
+        "visits_n": 8.544,
+        "count": 1,
+        "e_farm": 28.7,
+        "mat_clicks": 245.2
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.846,
+        "count": 1,
+        "e_farm": 127.76,
+        "mat_clicks": 619.1
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.063,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.6
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.129,
+        "count": 1,
+        "e_farm": 127.76,
+        "mat_clicks": 272.0
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.587,
+        "count": 2,
+        "e_farm": 127.76,
+        "mat_clicks": 405.5
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.587,
+        "count": 1,
+        "e_farm": 39.91,
+        "mat_clicks": 63.3
+      }
+    },
+    "total_mat_clicks": 8486.8,
+    "total_mat_hours": 7.072
+  },
+  "C3_p50": {
+    "curve": "C3",
+    "protect_pct": 0.5,
+    "e_farm": {
+      "2": 2.17,
+      "11": 40.55,
+      "12": 67.55,
+      "16": 269.29
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 79.649,
+        "count": 1,
+        "e_farm": 67.55,
+        "mat_clicks": 5380.0
+      },
+      "+18_req+12x1": {
+        "visits_n": 53.471,
+        "count": 1,
+        "e_farm": 67.55,
+        "mat_clicks": 3611.8
+      },
+      "+19_req+12x2": {
+        "visits_n": 32.846,
+        "count": 2,
+        "e_farm": 67.55,
+        "mat_clicks": 4437.3
+      },
+      "+20_req+16x1": {
+        "visits_n": 19.041,
+        "count": 1,
+        "e_farm": 269.29,
+        "mat_clicks": 5127.5
+      },
+      "+21_req+11x1": {
+        "visits_n": 10.487,
+        "count": 1,
+        "e_farm": 40.55,
+        "mat_clicks": 425.2
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.496,
+        "count": 1,
+        "e_farm": 269.29,
+        "mat_clicks": 1480.0
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.254,
+        "count": 1,
+        "e_farm": 2.17,
+        "mat_clicks": 7.1
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.115,
+        "count": 1,
+        "e_farm": 269.29,
+        "mat_clicks": 569.5
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 269.29,
+        "mat_clicks": 828.3
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 67.55,
+        "mat_clicks": 103.9
+      }
+    },
+    "total_mat_clicks": 21970.6,
+    "total_mat_hours": 18.309
+  },
+  "C3_p55": {
+    "curve": "C3",
+    "protect_pct": 0.55,
+    "e_farm": {
+      "2": 2.16,
+      "11": 36.67,
+      "12": 59.07,
+      "16": 212.55
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 59.365,
+        "count": 1,
+        "e_farm": 59.07,
+        "mat_clicks": 3506.6
+      },
+      "+18_req+12x1": {
+        "visits_n": 41.508,
+        "count": 1,
+        "e_farm": 59.07,
+        "mat_clicks": 2451.8
+      },
+      "+19_req+12x2": {
+        "visits_n": 26.639,
+        "count": 2,
+        "e_farm": 59.07,
+        "mat_clicks": 3147.0
+      },
+      "+20_req+16x1": {
+        "visits_n": 16.17,
+        "count": 1,
+        "e_farm": 212.55,
+        "mat_clicks": 3437.0
+      },
+      "+21_req+11x1": {
+        "visits_n": 9.324,
+        "count": 1,
+        "e_farm": 36.67,
+        "mat_clicks": 342.0
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.08,
+        "count": 1,
+        "e_farm": 212.55,
+        "mat_clicks": 1079.8
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.106,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.7
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.071,
+        "count": 1,
+        "e_farm": 212.55,
+        "mat_clicks": 440.2
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 212.55,
+        "mat_clicks": 653.8
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 59.07,
+        "mat_clicks": 90.8
+      }
+    },
+    "total_mat_clicks": 15155.6,
+    "total_mat_hours": 12.63
+  },
+  "C3_p57": {
+    "curve": "C3",
+    "protect_pct": 0.58,
+    "e_farm": {
+      "2": 2.16,
+      "11": 34.52,
+      "12": 54.46,
+      "16": 184.16
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 49.486,
+        "count": 1,
+        "e_farm": 54.46,
+        "mat_clicks": 2695.0
+      },
+      "+18_req+12x1": {
+        "visits_n": 35.484,
+        "count": 1,
+        "e_farm": 54.46,
+        "mat_clicks": 1932.4
+      },
+      "+19_req+12x2": {
+        "visits_n": 23.402,
+        "count": 2,
+        "e_farm": 54.46,
+        "mat_clicks": 2548.9
+      },
+      "+20_req+16x1": {
+        "visits_n": 14.617,
+        "count": 1,
+        "e_farm": 184.16,
+        "mat_clicks": 2691.8
+      },
+      "+21_req+11x1": {
+        "visits_n": 8.674,
+        "count": 1,
+        "e_farm": 34.52,
+        "mat_clicks": 299.4
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.84,
+        "count": 1,
+        "e_farm": 184.16,
+        "mat_clicks": 891.3
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.018,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.5
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.044,
+        "count": 1,
+        "e_farm": 184.16,
+        "mat_clicks": 376.4
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 184.16,
+        "mat_clicks": 566.5
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 54.46,
+        "mat_clicks": 83.8
+      }
+    },
+    "total_mat_clicks": 12092.1,
+    "total_mat_hours": 10.077
+  },
+  "C3_p60": {
+    "curve": "C3",
+    "protect_pct": 0.6,
+    "e_farm": {
+      "2": 2.16,
+      "11": 33.15,
+      "12": 51.57,
+      "16": 167.28
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 43.722,
+        "count": 1,
+        "e_farm": 51.57,
+        "mat_clicks": 2254.9
+      },
+      "+18_req+12x1": {
+        "visits_n": 31.895,
+        "count": 1,
+        "e_farm": 51.57,
+        "mat_clicks": 1644.9
+      },
+      "+19_req+12x2": {
+        "visits_n": 21.429,
+        "count": 2,
+        "e_farm": 51.57,
+        "mat_clicks": 2210.3
+      },
+      "+20_req+16x1": {
+        "visits_n": 13.649,
+        "count": 1,
+        "e_farm": 167.28,
+        "mat_clicks": 2283.2
+      },
+      "+21_req+11x1": {
+        "visits_n": 8.259,
+        "count": 1,
+        "e_farm": 33.15,
+        "mat_clicks": 273.8
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.684,
+        "count": 1,
+        "e_farm": 167.28,
+        "mat_clicks": 783.5
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.961,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.4
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.026,
+        "count": 1,
+        "e_farm": 167.28,
+        "mat_clicks": 338.9
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 167.28,
+        "mat_clicks": 514.5
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 51.57,
+        "mat_clicks": 79.3
+      }
+    },
+    "total_mat_clicks": 10389.8,
+    "total_mat_hours": 8.658
+  },
+  "C4_p50": {
+    "curve": "C4",
+    "protect_pct": 0.5,
+    "e_farm": {
+      "2": 2.17,
+      "11": 34.26,
+      "12": 50.1,
+      "16": 174.4
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 43.683,
+        "count": 1,
+        "e_farm": 50.1,
+        "mat_clicks": 2188.4
+      },
+      "+18_req+12x1": {
+        "visits_n": 30.696,
+        "count": 1,
+        "e_farm": 50.1,
+        "mat_clicks": 1537.8
+      },
+      "+19_req+12x2": {
+        "visits_n": 20.184,
+        "count": 2,
+        "e_farm": 50.1,
+        "mat_clicks": 2022.4
+      },
+      "+20_req+16x1": {
+        "visits_n": 12.806,
+        "count": 1,
+        "e_farm": 174.4,
+        "mat_clicks": 2233.4
+      },
+      "+21_req+11x1": {
+        "visits_n": 7.949,
+        "count": 1,
+        "e_farm": 34.26,
+        "mat_clicks": 272.4
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.769,
+        "count": 1,
+        "e_farm": 174.4,
+        "mat_clicks": 831.7
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.077,
+        "count": 1,
+        "e_farm": 2.17,
+        "mat_clicks": 6.7
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.115,
+        "count": 1,
+        "e_farm": 174.4,
+        "mat_clicks": 368.9
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 174.4,
+        "mat_clicks": 536.5
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 50.1,
+        "mat_clicks": 77.1
+      }
+    },
+    "total_mat_clicks": 10075.1,
+    "total_mat_hours": 8.396
+  },
+  "C4_p55": {
+    "curve": "C4",
+    "protect_pct": 0.55,
+    "e_farm": {
+      "2": 2.16,
+      "11": 31.36,
+      "12": 44.73,
+      "16": 142.1
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 33.651,
+        "count": 1,
+        "e_farm": 44.73,
+        "mat_clicks": 1505.2
+      },
+      "+18_req+12x1": {
+        "visits_n": 24.508,
+        "count": 1,
+        "e_farm": 44.73,
+        "mat_clicks": 1096.2
+      },
+      "+19_req+12x2": {
+        "visits_n": 16.734,
+        "count": 2,
+        "e_farm": 44.73,
+        "mat_clicks": 1497.0
+      },
+      "+20_req+16x1": {
+        "visits_n": 11.036,
+        "count": 1,
+        "e_farm": 142.1,
+        "mat_clicks": 1568.2
+      },
+      "+21_req+11x1": {
+        "visits_n": 7.12,
+        "count": 1,
+        "e_farm": 31.36,
+        "mat_clicks": 223.3
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.419,
+        "count": 1,
+        "e_farm": 142.1,
+        "mat_clicks": 627.9
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.936,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.4
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.071,
+        "count": 1,
+        "e_farm": 142.1,
+        "mat_clicks": 294.3
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 142.1,
+        "mat_clicks": 437.1
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 44.73,
+        "mat_clicks": 68.8
+      }
+    },
+    "total_mat_clicks": 7324.5,
+    "total_mat_hours": 6.104
+  },
+  "C4_p57": {
+    "curve": "C4",
+    "protect_pct": 0.58,
+    "e_farm": {
+      "2": 2.16,
+      "11": 29.74,
+      "12": 41.78,
+      "16": 125.59
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 28.65,
+        "count": 1,
+        "e_farm": 41.78,
+        "mat_clicks": 1196.9
+      },
+      "+18_req+12x1": {
+        "visits_n": 21.332,
+        "count": 1,
+        "e_farm": 41.78,
+        "mat_clicks": 891.1
+      },
+      "+19_req+12x2": {
+        "visits_n": 14.909,
+        "count": 2,
+        "e_farm": 41.78,
+        "mat_clicks": 1245.7
+      },
+      "+20_req+16x1": {
+        "visits_n": 10.07,
+        "count": 1,
+        "e_farm": 125.59,
+        "mat_clicks": 1264.7
+      },
+      "+21_req+11x1": {
+        "visits_n": 6.654,
+        "count": 1,
+        "e_farm": 29.74,
+        "mat_clicks": 197.9
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.218,
+        "count": 1,
+        "e_farm": 125.59,
+        "mat_clicks": 529.7
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.854,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.2
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.044,
+        "count": 1,
+        "e_farm": 125.59,
+        "mat_clicks": 256.7
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 125.59,
+        "mat_clicks": 386.3
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 41.78,
+        "mat_clicks": 64.3
+      }
+    },
+    "total_mat_clicks": 6039.3,
+    "total_mat_hours": 5.033
+  },
+  "C4_p60": {
+    "curve": "C4",
+    "protect_pct": 0.6,
+    "e_farm": {
+      "2": 2.16,
+      "11": 28.7,
+      "12": 39.91,
+      "16": 115.63
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 25.687,
+        "count": 1,
+        "e_farm": 39.91,
+        "mat_clicks": 1025.2
+      },
+      "+18_req+12x1": {
+        "visits_n": 19.415,
+        "count": 1,
+        "e_farm": 39.91,
+        "mat_clicks": 774.8
+      },
+      "+19_req+12x2": {
+        "visits_n": 13.786,
+        "count": 2,
+        "e_farm": 39.91,
+        "mat_clicks": 1100.4
+      },
+      "+20_req+16x1": {
+        "visits_n": 9.465,
+        "count": 1,
+        "e_farm": 115.63,
+        "mat_clicks": 1094.5
+      },
+      "+21_req+11x1": {
+        "visits_n": 6.357,
+        "count": 1,
+        "e_farm": 28.7,
+        "mat_clicks": 182.4
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.087,
+        "count": 1,
+        "e_farm": 115.63,
+        "mat_clicks": 472.6
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.799,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.0
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.026,
+        "count": 1,
+        "e_farm": 115.63,
+        "mat_clicks": 234.3
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 115.63,
+        "mat_clicks": 355.7
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 39.91,
+        "mat_clicks": 61.4
+      }
+    },
+    "total_mat_clicks": 5307.3,
+    "total_mat_hours": 4.423
+  },
+  "C5_p50": {
+    "curve": "C5",
+    "protect_pct": 0.5,
+    "e_farm": {
+      "2": 2.17,
+      "11": 40.55,
+      "12": 66.52,
+      "16": 280.88
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 91.94,
+        "count": 1,
+        "e_farm": 66.52,
+        "mat_clicks": 6115.8
+      },
+      "+18_req+12x1": {
+        "visits_n": 63.407,
+        "count": 1,
+        "e_farm": 66.52,
+        "mat_clicks": 4217.8
+      },
+      "+19_req+12x2": {
+        "visits_n": 40.762,
+        "count": 2,
+        "e_farm": 66.52,
+        "mat_clicks": 5422.9
+      },
+      "+20_req+16x1": {
+        "visits_n": 24.155,
+        "count": 1,
+        "e_farm": 280.88,
+        "mat_clicks": 6784.6
+      },
+      "+21_req+11x1": {
+        "visits_n": 12.525,
+        "count": 1,
+        "e_farm": 40.55,
+        "mat_clicks": 507.8
+      },
+      "+22_req+16x1": {
+        "visits_n": 6.174,
+        "count": 1,
+        "e_farm": 280.88,
+        "mat_clicks": 1734.1
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.458,
+        "count": 1,
+        "e_farm": 2.17,
+        "mat_clicks": 7.5
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.188,
+        "count": 1,
+        "e_farm": 280.88,
+        "mat_clicks": 614.6
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 280.88,
+        "mat_clicks": 864.0
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 66.52,
+        "mat_clicks": 102.3
+      }
+    },
+    "total_mat_clicks": 26371.4,
+    "total_mat_hours": 21.976
+  },
+  "C5_p55": {
+    "curve": "C5",
+    "protect_pct": 0.55,
+    "e_farm": {
+      "2": 2.16,
+      "11": 36.67,
+      "12": 58.22,
+      "16": 220.76
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 67.761,
+        "count": 1,
+        "e_farm": 58.22,
+        "mat_clicks": 3945.2
+      },
+      "+18_req+12x1": {
+        "visits_n": 48.574,
+        "count": 1,
+        "e_farm": 58.22,
+        "mat_clicks": 2828.1
+      },
+      "+19_req+12x2": {
+        "visits_n": 32.624,
+        "count": 2,
+        "e_farm": 58.22,
+        "mat_clicks": 3798.9
+      },
+      "+20_req+16x1": {
+        "visits_n": 20.311,
+        "count": 1,
+        "e_farm": 220.76,
+        "mat_clicks": 4483.8
+      },
+      "+21_req+11x1": {
+        "visits_n": 11.064,
+        "count": 1,
+        "e_farm": 36.67,
+        "mat_clicks": 405.8
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.687,
+        "count": 1,
+        "e_farm": 220.76,
+        "mat_clicks": 1255.5
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.294,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 7.1
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.142,
+        "count": 1,
+        "e_farm": 220.76,
+        "mat_clicks": 472.9
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 220.76,
+        "mat_clicks": 679.1
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 58.22,
+        "mat_clicks": 89.5
+      }
+    },
+    "total_mat_clicks": 17965.8,
+    "total_mat_hours": 14.972
+  },
+  "C5_p57": {
+    "curve": "C5",
+    "protect_pct": 0.58,
+    "e_farm": {
+      "2": 2.16,
+      "11": 34.52,
+      "12": 53.71,
+      "16": 190.78
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 56.08,
+        "count": 1,
+        "e_farm": 53.71,
+        "mat_clicks": 3012.1
+      },
+      "+18_req+12x1": {
+        "visits_n": 41.175,
+        "count": 1,
+        "e_farm": 53.71,
+        "mat_clicks": 2211.5
+      },
+      "+19_req+12x2": {
+        "visits_n": 28.418,
+        "count": 2,
+        "e_farm": 53.71,
+        "mat_clicks": 3052.7
+      },
+      "+20_req+16x1": {
+        "visits_n": 18.246,
+        "count": 1,
+        "e_farm": 190.78,
+        "mat_clicks": 3481.0
+      },
+      "+21_req+11x1": {
+        "visits_n": 10.251,
+        "count": 1,
+        "e_farm": 34.52,
+        "mat_clicks": 353.8
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.406,
+        "count": 1,
+        "e_farm": 190.78,
+        "mat_clicks": 1031.4
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.198,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.9
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.114,
+        "count": 1,
+        "e_farm": 190.78,
+        "mat_clicks": 403.3
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 190.78,
+        "mat_clicks": 586.8
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 53.71,
+        "mat_clicks": 82.6
+      }
+    },
+    "total_mat_clicks": 14222.2,
+    "total_mat_hours": 11.852
+  },
+  "C5_p60": {
+    "curve": "C5",
+    "protect_pct": 0.6,
+    "e_farm": {
+      "2": 2.16,
+      "11": 33.15,
+      "12": 50.88,
+      "16": 172.99
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 49.3,
+        "count": 1,
+        "e_farm": 50.88,
+        "mat_clicks": 2508.6
+      },
+      "+18_req+12x1": {
+        "visits_n": 36.791,
+        "count": 1,
+        "e_farm": 50.88,
+        "mat_clicks": 1872.1
+      },
+      "+19_req+12x2": {
+        "visits_n": 25.869,
+        "count": 2,
+        "e_farm": 50.88,
+        "mat_clicks": 2632.7
+      },
+      "+20_req+16x1": {
+        "visits_n": 16.963,
+        "count": 1,
+        "e_farm": 172.99,
+        "mat_clicks": 2934.5
+      },
+      "+21_req+11x1": {
+        "visits_n": 9.733,
+        "count": 1,
+        "e_farm": 33.15,
+        "mat_clicks": 322.6
+      },
+      "+22_req+16x1": {
+        "visits_n": 5.225,
+        "count": 1,
+        "e_farm": 172.99,
+        "mat_clicks": 903.9
+      },
+      "+23_req+2x1": {
+        "visits_n": 3.135,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 6.8
+      },
+      "+24_req+16x1": {
+        "visits_n": 2.095,
+        "count": 1,
+        "e_farm": 172.99,
+        "mat_clicks": 362.4
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.538,
+        "count": 2,
+        "e_farm": 172.99,
+        "mat_clicks": 532.1
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.538,
+        "count": 1,
+        "e_farm": 50.88,
+        "mat_clicks": 78.3
+      }
+    },
+    "total_mat_clicks": 12153.9,
+    "total_mat_hours": 10.128
+  },
+  "C6_p50": {
+    "curve": "C6",
+    "protect_pct": 0.5,
+    "e_farm": {
+      "2": 2.17,
+      "11": 35.02,
+      "12": 54.53,
+      "16": 228.84
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 85.248,
+        "count": 1,
+        "e_farm": 54.53,
+        "mat_clicks": 4649.0
+      },
+      "+18_req+12x1": {
+        "visits_n": 54.802,
+        "count": 1,
+        "e_farm": 54.53,
+        "mat_clicks": 2988.6
+      },
+      "+19_req+12x2": {
+        "visits_n": 32.001,
+        "count": 2,
+        "e_farm": 54.53,
+        "mat_clicks": 3490.3
+      },
+      "+20_req+16x1": {
+        "visits_n": 17.541,
+        "count": 1,
+        "e_farm": 228.84,
+        "mat_clicks": 4014.1
+      },
+      "+21_req+11x1": {
+        "visits_n": 9.096,
+        "count": 1,
+        "e_farm": 35.02,
+        "mat_clicks": 318.6
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.302,
+        "count": 1,
+        "e_farm": 228.84,
+        "mat_clicks": 984.5
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.614,
+        "count": 1,
+        "e_farm": 2.17,
+        "mat_clicks": 5.7
+      },
+      "+24_req+16x1": {
+        "visits_n": 1.838,
+        "count": 1,
+        "e_farm": 228.84,
+        "mat_clicks": 420.6
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.389,
+        "count": 2,
+        "e_farm": 228.84,
+        "mat_clicks": 635.7
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.389,
+        "count": 1,
+        "e_farm": 54.53,
+        "mat_clicks": 75.7
+      }
+    },
+    "total_mat_clicks": 17582.8,
+    "total_mat_hours": 14.652
+  },
+  "C6_p55": {
+    "curve": "C6",
+    "protect_pct": 0.55,
+    "e_farm": {
+      "2": 2.16,
+      "11": 32.01,
+      "12": 48.42,
+      "16": 182.78
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 63.779,
+        "count": 1,
+        "e_farm": 48.42,
+        "mat_clicks": 3088.0
+      },
+      "+18_req+12x1": {
+        "visits_n": 42.837,
+        "count": 1,
+        "e_farm": 48.42,
+        "mat_clicks": 2074.1
+      },
+      "+19_req+12x2": {
+        "visits_n": 26.22,
+        "count": 2,
+        "e_farm": 48.42,
+        "mat_clicks": 2539.0
+      },
+      "+20_req+16x1": {
+        "visits_n": 15.099,
+        "count": 1,
+        "e_farm": 182.78,
+        "mat_clicks": 2759.7
+      },
+      "+21_req+11x1": {
+        "visits_n": 8.225,
+        "count": 1,
+        "e_farm": 32.01,
+        "mat_clicks": 263.3
+      },
+      "+22_req+16x1": {
+        "visits_n": 4.032,
+        "count": 1,
+        "e_farm": 182.78,
+        "mat_clicks": 737.0
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.517,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 5.4
+      },
+      "+24_req+16x1": {
+        "visits_n": 1.808,
+        "count": 1,
+        "e_farm": 182.78,
+        "mat_clicks": 330.5
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.389,
+        "count": 2,
+        "e_farm": 182.78,
+        "mat_clicks": 507.8
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.389,
+        "count": 1,
+        "e_farm": 48.42,
+        "mat_clicks": 67.3
+      }
+    },
+    "total_mat_clicks": 12372.1,
+    "total_mat_hours": 10.31
+  },
+  "C6_p57": {
+    "curve": "C6",
+    "protect_pct": 0.58,
+    "e_farm": {
+      "2": 2.16,
+      "11": 30.32,
+      "12": 45.06,
+      "16": 159.54
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 53.278,
+        "count": 1,
+        "e_farm": 45.06,
+        "mat_clicks": 2400.8
+      },
+      "+18_req+12x1": {
+        "visits_n": 36.772,
+        "count": 1,
+        "e_farm": 45.06,
+        "mat_clicks": 1657.0
+      },
+      "+19_req+12x2": {
+        "visits_n": 23.178,
+        "count": 2,
+        "e_farm": 45.06,
+        "mat_clicks": 2088.9
+      },
+      "+20_req+16x1": {
+        "visits_n": 13.765,
+        "count": 1,
+        "e_farm": 159.54,
+        "mat_clicks": 2196.0
+      },
+      "+21_req+11x1": {
+        "visits_n": 7.733,
+        "count": 1,
+        "e_farm": 30.32,
+        "mat_clicks": 234.5
+      },
+      "+22_req+16x1": {
+        "visits_n": 3.876,
+        "count": 1,
+        "e_farm": 159.54,
+        "mat_clicks": 618.4
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.459,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 5.3
+      },
+      "+24_req+16x1": {
+        "visits_n": 1.79,
+        "count": 1,
+        "e_farm": 159.54,
+        "mat_clicks": 285.6
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.389,
+        "count": 2,
+        "e_farm": 159.54,
+        "mat_clicks": 443.2
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.389,
+        "count": 1,
+        "e_farm": 45.06,
+        "mat_clicks": 62.6
+      }
+    },
+    "total_mat_clicks": 9992.2,
+    "total_mat_hours": 8.327
+  },
+  "C6_p60": {
+    "curve": "C6",
+    "protect_pct": 0.6,
+    "e_farm": {
+      "2": 2.16,
+      "11": 29.25,
+      "12": 42.95,
+      "16": 145.65
+    },
+    "breakdown": {
+      "+17_req+12x1": {
+        "visits_n": 47.135,
+        "count": 1,
+        "e_farm": 42.95,
+        "mat_clicks": 2024.2
+      },
+      "+18_req+12x1": {
+        "visits_n": 33.142,
+        "count": 1,
+        "e_farm": 42.95,
+        "mat_clicks": 1423.3
+      },
+      "+19_req+12x2": {
+        "visits_n": 21.313,
+        "count": 2,
+        "e_farm": 42.95,
+        "mat_clicks": 1830.6
+      },
+      "+20_req+16x1": {
+        "visits_n": 12.928,
+        "count": 1,
+        "e_farm": 145.65,
+        "mat_clicks": 1883.0
+      },
+      "+21_req+11x1": {
+        "visits_n": 7.417,
+        "count": 1,
+        "e_farm": 29.25,
+        "mat_clicks": 216.9
+      },
+      "+22_req+16x1": {
+        "visits_n": 3.773,
+        "count": 1,
+        "e_farm": 145.65,
+        "mat_clicks": 549.5
+      },
+      "+23_req+2x1": {
+        "visits_n": 2.421,
+        "count": 1,
+        "e_farm": 2.16,
+        "mat_clicks": 5.2
+      },
+      "+24_req+16x1": {
+        "visits_n": 1.778,
+        "count": 1,
+        "e_farm": 145.65,
+        "mat_clicks": 259.0
+      },
+      "+25_req+16x2": {
+        "visits_n": 1.389,
+        "count": 2,
+        "e_farm": 145.65,
+        "mat_clicks": 404.6
+      },
+      "+25_req+12x1": {
+        "visits_n": 1.389,
+        "count": 1,
+        "e_farm": 42.95,
+        "mat_clicks": 59.7
+      }
+    },
+    "total_mat_clicks": 8656.0,
+    "total_mat_hours": 7.213
+  }
+}

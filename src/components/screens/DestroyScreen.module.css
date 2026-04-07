@@ -1,0 +1,357 @@
+/* ── DestroyScreen 레이아웃 ────────────────────────────────── */
+
+.screen {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 52px;
+  height: 100%;
+  min-height: 0;
+  background: var(--c-bg);
+  overflow: hidden;
+}
+
+/* ── 배경 그리드 (ForgeScreen과 동일) ──────────────────────── */
+.gridBg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--c-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 어두운 분위기 오버레이 ──────────────────────────────────── */
+.darkOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── 진입 / 복원 플래시 ──────────────────────────────────────── */
+.destroyFlash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8;
+  animation: destroy-flash 0.75s ease-out forwards;
+}
+
+.restoreFlash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8;
+  animation: restore-flash 0.7s ease-out forwards;
+}
+
+@keyframes destroy-flash {
+  0%   { background: rgba(200, 50, 30, 0.70); }
+  35%  { background: rgba(200, 50, 30, 0.45); }
+  100% { background: transparent; }
+}
+
+@keyframes restore-flash {
+  0%   { background: rgba(220, 170, 50, 0.60); }
+  60%  { background: rgba(220, 170, 50, 0.20); }
+  100% { background: transparent; }
+}
+
+/* ── 우측 상단 stats ─────────────────────────────────────────── */
+.statsCorner {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+.stat         { display: flex; align-items: center; gap: 6px; }
+.statLabel    { font-size: 0.68rem; color: var(--c-text-dim); letter-spacing: 0.06em; }
+.statValue    { font-family: 'Courier New', monospace; font-size: 0.88rem; font-weight: 700; color: var(--c-text); }
+.statValue.gold { color: var(--c-gold-bright); }
+
+/* ── 메인 영역 ──────────────────────────────────────────────── */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px 24px;
+  position: relative;
+  z-index: 5;
+  min-height: 0;
+}
+
+/* ── 검 + 모루 ─────────────────────────────────────────────── */
+.swordArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.brokenWrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* overflow visible so rotated SVG parts don't clip */
+}
+
+/* 모루 */
+.anvil {
+  width: 120px;
+  height: 20px;
+  background: var(--c-surface2);
+  border: 2px solid var(--c-border);
+  margin-top: -10px;
+  position: relative;
+  z-index: 1;
+}
+
+.anvil::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 12px;
+  background: var(--c-surface2);
+  border: 2px solid var(--c-border);
+  border-bottom: none;
+}
+
+/* ── 페이즈별 스크린 클래스 ─────────────────────────────────── */
+
+/* Phase 3 (level 13~16) */
+.screenMid {
+  /* 배경을 약간 더 어둡게 */
+}
+
+/* Phase 4+ (level 17+) — CSS 저주파 진동 (드론 대체) */
+.screenHigh {
+  animation: drone-vibrate 0.13s linear 0s 30;
+}
+
+@keyframes drone-vibrate {
+  0%, 100% { transform: translate(0, 0); }
+  25%       { transform: translate(-1px, 0); }
+  75%       { transform: translate(1px, 0); }
+}
+
+/* ── 균열 오버레이 (Phase 4+) ────────────────────────────────── */
+.crackOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 7;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.85),
+    inset 0 0 20px rgba(176, 40, 32, 0.35);
+  animation: crack-fade 3s ease-out forwards;
+}
+
+.crackOverlayIntense {
+  box-shadow:
+    inset 0 0 80px rgba(0, 0, 0, 0.95),
+    inset 0 0 30px rgba(176, 40, 32, 0.55),
+    inset 4px 4px 0 rgba(200, 50, 20, 0.2),
+    inset -4px -4px 0 rgba(200, 50, 20, 0.2);
+}
+
+@keyframes crack-fade {
+  0%   { opacity: 1; }
+  70%  { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+/* ── 검 애니메이션 상태 ──────────────────────────────────────── */
+.swordEntering {
+  /* 기존 global shake 키프레임 사용 */
+  animation: shake 0.5s ease, fade-in-sword 0.3s ease;
+}
+
+/* Phase 3: 더 강한 셰이크 */
+.swordEnteringMid {
+  animation: shake-strong 0.55s ease, fade-in-sword 0.3s ease;
+}
+
+/* Phase 4+: 진입 셰이크 없음 (이미 tap-to-reveal에서 연출 완료) */
+.swordEnteringHigh {
+  animation: fade-in-sword 0.45s ease;
+}
+
+@keyframes shake-strong {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-11px); }
+  30%       { transform: translateX(11px); }
+  45%       { transform: translateX(-8px); }
+  60%       { transform: translateX(8px); }
+  75%       { transform: translateX(-5px); }
+  90%       { transform: translateX(5px); }
+}
+
+.swordBroken {
+  animation: broken-drift 5s ease-in-out infinite;
+}
+
+/* Phase 4+: 더 느린 드리프트 */
+.swordBrokenHigh {
+  animation: broken-drift-slow 7s ease-in-out infinite;
+}
+
+@keyframes broken-drift-slow {
+  0%, 100% { transform: translateY(0px);  opacity: 0.75; }
+  50%       { transform: translateY(6px);  opacity: 0.55; }
+}
+
+.swordRestoring {
+  animation: restore-scale 0.65s ease forwards;
+}
+
+@keyframes fade-in-sword {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes broken-drift {
+  0%, 100% { transform: translateY(0px);   opacity: 0.85; }
+  50%       { transform: translateY(4px);   opacity: 0.72; }
+}
+
+@keyframes restore-scale {
+  0%   { filter: brightness(1);   opacity: 1; }
+  50%  { filter: brightness(2.8); opacity: 1; }
+  100% { filter: brightness(0.2); opacity: 0; }
+}
+
+/* ── 선택 버튼 패널 ──────────────────────────────────────────── */
+.choiceRow {
+  display: flex;
+  align-items: stretch;
+  background: var(--c-surface);
+  border: 2px solid var(--c-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  animation: panel-enter 0.22s ease;
+}
+
+@keyframes panel-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Phase 3: 아웃라인 펄스 */
+.choiceRowMid {
+  animation: panel-enter 0.22s ease, outline-pulse 1.5s ease-out forwards;
+}
+
+@keyframes outline-pulse {
+  0%   { box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 0 3px var(--c-fail); }
+  50%  { box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 0 2px var(--c-fail); }
+  100% { box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 0 0px transparent; }
+}
+
+.choiceSlot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 28px;
+  min-width: 158px;
+}
+
+.choiceDivider {
+  width: 2px;
+  background: var(--c-border);
+  flex-shrink: 0;
+}
+
+.choiceNote {
+  font-size: 0.65rem;
+  color: var(--c-text-dim);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.noteWarn {
+  color: var(--c-fail);
+  opacity: 0.8;
+}
+
+/* ── 결과 토스트 ─────────────────────────────────────────────── */
+.resultToast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 40px;
+  background: var(--c-surface);
+  border: 2px solid var(--c-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  animation: toast-enter 0.2s ease;
+}
+
+@keyframes toast-enter {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.toastLabel {
+  font-size: 0.7rem;
+  color: var(--c-text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.toastItem {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+}
+
+.toastEmpty {
+  font-size: 0.9rem;
+  color: var(--c-text-dim);
+  font-style: italic;
+}
+
+/* ── 푸터 ──────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  border-top: 2px solid var(--c-border);
+  background: var(--c-surface);
+  position: relative;
+  z-index: 10;
+}
+
+.levelTag {
+  font-family: 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--c-fail);
+}
+
+.swordName {
+  font-size: 0.9rem;
+  color: var(--c-text-dim);
+  letter-spacing: 0.03em;
+}
+
+.destroyBadge {
+  margin-left: auto;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-fail);
+  opacity: 0.65;
+}
