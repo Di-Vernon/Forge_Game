@@ -48,9 +48,20 @@ html, body {
 #root {
   width: 100%;
   height: 100%;
-  min-height: 100svh;
+  max-width: 960px;
+  max-height: 720px;
+  margin: auto;
   display: flex;
   flex-direction: column;
+  position: relative;
+  border: 1px solid var(--c-border);
+}
+
+@media (max-width: 960px) {
+  #root { max-width: 100%; border-left: none; border-right: none; }
+}
+@media (max-height: 720px) {
+  #root { max-height: 100%; border-top: none; border-bottom: none; }
 }
 
 body {

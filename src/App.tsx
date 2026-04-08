@@ -5,6 +5,7 @@ import ForgeScreen from './components/screens/ForgeScreen'
 import DestroyScreen from './components/screens/DestroyScreen'
 import ShopCraftScreen from './components/screens/ShopCraftScreen'
 import StorageScreen from './components/screens/StorageScreen'
+import DexScreen from './components/screens/DexScreen'
 import TitleUnlockModal from './components/ui/TitleUnlockModal'
 import ParticleCanvas from './effects/ParticleCanvas'
 import {
@@ -176,6 +177,7 @@ export default function App() {
           onGoForge={actions.goForge}
           onGoShopCraft={actions.goShopCraft}
           onGoStorage={actions.goStorage}
+          onGoDex={actions.goDex}
           onEquipTitle={actions.equipTitle}
         />
       )
@@ -223,6 +225,10 @@ export default function App() {
 
     if (screen === 'storage') {
       return <StorageScreen state={state} onBack={actions.goHome} />
+    }
+
+    if (screen === 'dex') {
+      return <DexScreen state={state} onBack={actions.goHome} />
     }
 
     return null

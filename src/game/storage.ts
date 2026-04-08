@@ -14,7 +14,7 @@ import { createEmptyInventory } from './fragments'
 // ────────────────────────────────────────────────────────────────
 
 const SAVE_KEY = 'forge_game_save'
-export const SAVE_VERSION = 1
+export const SAVE_VERSION = 2
 
 // ────────────────────────────────────────────────────────────────
 // 초기 상태
@@ -45,6 +45,7 @@ export function createInitialState(): GameState {
     baekYaCrafted: false,
     rounds: [],
     currentRound: null,
+    discoveredLevels: [0],
     version: SAVE_VERSION,
   }
 }
@@ -71,7 +72,31 @@ export function load(): GameState | null {
   if (raw === null) return null
 
   try {
-    const parsed = JSON.parse(raw) as GameState
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const parsed = JSON.parse(raw) as any
+
+    // v1 → v2 마이그레이션: discoveredLevels 추가
+    if (parsed.version === 1) {
+      const discovered = new Set<number>([0])
+      if (parsed.currentLevel != null) {
+        for (let i = 0; i <= parsed.currentLevel; i++) discovered.add(i)
+      }
+      if (Array.isArray(parsed.storage)) {
+        for (const lvl of parsed.storage) {
+          for (let i = 0; i <= lvl; i++) discovered.add(i)
+        }
+      }
+      if (Array.isArray(parsed.rounds)) {
+        for (const r of parsed.rounds) {
+          if (r.peakLevel != null) {
+            for (let i = 0; i <= r.peakLevel; i++) discovered.add(i)
+          }
+        }
+      }
+      parsed.discoveredLevels = [...discovered].sort((a, b) => a - b)
+      parsed.version = 2
+    }
+
     if (parsed.version !== SAVE_VERSION) {
       console.warn(`세이브 버전 불일치: 저장=${parsed.version}, 현재=${SAVE_VERSION}. 초기화.`)
       return null
@@ -81,7 +106,7 @@ export function load(): GameState | null {
       ...createEmptyInventory(),
       ...parsed.fragments,
     }
-    return { ...parsed, fragments }
+    return { ...parsed, fragments } as GameState
   } catch {
     console.warn('세이브 데이터 파싱 실패. 초기화.')
     return null

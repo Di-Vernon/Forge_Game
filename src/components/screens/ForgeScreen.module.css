@@ -60,7 +60,7 @@
 /* ── 메인 영역 ─────────────────────────────────────────── */
 .main {
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
+  grid-template-columns: 180px 1fr 180px;
   min-height: 0;
   overflow: hidden;
 }
@@ -72,7 +72,7 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 24px 16px;
+  padding: 16px 12px;
   border-right: 2px solid var(--c-border);
   background: var(--c-surface);
 }
@@ -138,7 +138,7 @@
   justify-content: center;
   position: relative;
   background: var(--c-bg);
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* 대장간 배경 그리드 패턴 */
@@ -270,13 +270,14 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   padding: 0 20px;
+  min-height: 52px;
   border-top: 2px solid var(--c-border);
   background: var(--c-surface);
 }
 
 .swordInfo {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
 }
 
@@ -285,6 +286,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--c-gold-bright);
+  text-shadow: 0 0 4px var(--c-gold);
 }
 
 .swordName {

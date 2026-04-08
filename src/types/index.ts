@@ -172,6 +172,8 @@ export interface GameState {
   rounds: Round[]
   /** 현재 진행 중인 라운드 */
   currentRound: Round | null
+  /** 도감: 도달한 적 있는 검 레벨 목록 */
+  discoveredLevels: number[]
   /** 저장 버전 (마이그레이션 대비) */
   version: number
 }

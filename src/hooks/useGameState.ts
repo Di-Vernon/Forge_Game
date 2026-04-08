@@ -10,6 +10,20 @@ import { canSkip, executeSkip } from '../game/skip'
 import { getNewlyUnlockedTitles, unlockTitles } from '../game/titles'
 import configJson from '../data/config.json'
 
+// 도감: 레벨을 발견 목록에 추가
+function addDiscovered(existing: number[], level: number): number[] {
+  if (existing.includes(level)) return existing
+  return [...existing, level].sort((a, b) => a - b)
+}
+
+// 도감: 0~target까지 모든 레벨을 발견 목록에 추가
+function addDiscoveredRange(existing: number[], target: number): number[] {
+  const set = new Set(existing)
+  for (let i = 0; i <= target; i++) set.add(i)
+  if (set.size === existing.length) return existing
+  return [...set].sort((a, b) => a - b)
+}
+
 // name이 null인 칭호(미정 슬롯)는 알림 제외
 const NOTIFIABLE_TITLES = new Set<TitleId>(
   (Object.entries(configJson.titles) as [TitleId, { name: string | null }][])
@@ -17,7 +31,7 @@ const NOTIFIABLE_TITLES = new Set<TitleId>(
     .map(([id]) => id)
 )
 
-export type Screen = 'home' | 'forge' | 'destroy' | 'shop_craft' | 'storage'
+export type Screen = 'home' | 'forge' | 'destroy' | 'shop_craft' | 'storage' | 'dex'
 export type ForgePhase = 'idle' | 'forging' | 'waiting_reveal' | 'success' | 'fail' | 'near_miss'
 
 export interface UseGameStateReturn {
@@ -43,6 +57,7 @@ export interface UseGameStateReturn {
     craftScroll: (fragmentId: FragmentId, amount: number, yieldCount: number) => void
     craftSword: (level: number, materials: { fragmentId: FragmentId; amount: number }[]) => void
     skip: () => void
+    goDex: () => void
     dismissTitleUnlock: () => void
   }
 }
@@ -183,6 +198,7 @@ export function useGameState(): UseGameStateReturn {
           gold: newGold,
           craftCount: prevState.craftCount + 1,
           baekYaCrafted,
+          discoveredLevels: addDiscovered(prevState.discoveredLevels, newLevel),
           currentRound: {
             ...updatedRound,
             peakLevel: Math.max(updatedRound.peakLevel, newLevel),
@@ -400,6 +416,7 @@ export function useGameState(): UseGameStateReturn {
         craftCount: prev.craftCount + 1,
         craftCountCombine: prev.craftCountCombine + 1,
         baekYaCrafted,
+        discoveredLevels: addDiscovered(prev.discoveredLevels, level),
       }
       const newTitles = getNewlyUnlockedTitles(next)
       return unlockTitles(next, newTitles)
@@ -413,8 +430,12 @@ export function useGameState(): UseGameStateReturn {
     setState((prev) => {
       if (!canSkip(prev)) return prev
       const next = executeSkip(prev)
-      const newTitles = getNewlyUnlockedTitles(next)
-      return unlockTitles(next, newTitles)
+      const withDex: GameState = {
+        ...next,
+        discoveredLevels: addDiscoveredRange(prev.discoveredLevels, next.currentLevel!),
+      }
+      const newTitles = getNewlyUnlockedTitles(withDex)
+      return unlockTitles(withDex, newTitles)
     })
   }, [])
 
@@ -422,6 +443,7 @@ export function useGameState(): UseGameStateReturn {
   const goForge = useCallback(() => setScreen('forge'), [])
   const goShopCraft = useCallback(() => setScreen('shop_craft'), [])
   const goStorage = useCallback(() => setScreen('storage'), [])
+  const goDex = useCallback(() => setScreen('dex'), [])
 
   // 칭호 획득 알림 닫기 (순차 표시: slice(1))
   const dismissTitleUnlock = useCallback(() => {
@@ -445,7 +467,7 @@ export function useGameState(): UseGameStateReturn {
     actions: {
       startRound, forge, reveal, sell, storeCurrentSword, useScroll, pickFragment,
       goHome, goForge, goShopCraft, goStorage, equipTitle,
-      buyScroll, craftScroll, craftSword, skip, dismissTitleUnlock,
+      buyScroll, craftScroll, craftSword, skip, goDex, dismissTitleUnlock,
     },
   }
 }

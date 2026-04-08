@@ -140,6 +140,7 @@ interface Props {
   onGoForge: () => void
   onGoShopCraft: () => void
   onGoStorage: () => void
+  onGoDex: () => void
   onEquipTitle: (id: TitleId | null) => void
 }
 
@@ -152,6 +153,7 @@ export default function HomeScreen({
   onGoForge,
   onGoShopCraft,
   onGoStorage,
+  onGoDex,
   onEquipTitle,
 }: Props) {
   const [showTitleModal, setShowTitleModal] = useState(false)
@@ -223,6 +225,9 @@ export default function HomeScreen({
           </Button>
           <Button variant="primary" size="md" onClick={onGoStorage}>
             보관함 {uniqueStorageCount}/25
+          </Button>
+          <Button variant="primary" size="md" onClick={onGoDex}>
+            도감 {state.discoveredLevels.length}/26
           </Button>
         </div>
       </main>
