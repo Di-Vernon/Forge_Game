@@ -1,0 +1,85 @@
+/* ── 검별 고유 idle 이펙트 @keyframes ──────────────────────────── */
+
+/* +8 인챈티드 소드: 룬 푸른 glow 일렁임 */
+@keyframes rune-flow {
+  0%, 100% { opacity: 0.15; transform: translateY(0); }
+  50%      { opacity: 0.45; transform: translateY(-3px); }
+}
+
+/* +11 무형검: 흰색 아지랑이 */
+@keyframes mist-drift {
+  0%, 100% { transform: translateX(0) scaleY(1);    opacity: 0.08; }
+  25%      { transform: translateX(3px) scaleY(1.1);  opacity: 0.18; }
+  50%      { transform: translateX(-2px) scaleY(0.9);  opacity: 0.12; }
+  75%      { transform: translateX(4px) scaleY(1.05); opacity: 0.20; }
+}
+
+/* +13 사월도: 검은 안개 */
+@keyframes dark-mist {
+  0%, 100% { opacity: 0.10; transform: translateY(0); }
+  50%      { opacity: 0.25; transform: translateY(-2px); }
+}
+
+/* +15 암월의 대검: 달빛 glow 호흡 */
+@keyframes moonlight-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(128,144,192,0.25)); }
+  50%      { filter: drop-shadow(0 0 16px rgba(128,144,192,0.5)); }
+}
+
+/* +16 블러디 쇼텔: 핏물 흐름 */
+@keyframes blood-drip {
+  0%   { transform: translateY(-5px); opacity: 0.2; }
+  40%  { transform: translateY(0);    opacity: 0.5; }
+  100% { transform: translateY(8px);  opacity: 0.1; }
+}
+
+/* +17 백야: 백색 glow 맥동 */
+@keyframes white-pulse {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(224,232,255,0.5)); }
+  50%      { filter: drop-shadow(0 0 20px rgba(224,232,255,0.75)); }
+}
+
+/* +18 하운드 기사의 검: 번개 깜빡임 */
+@keyframes lightning-flicker {
+  0%, 100% { opacity: 0.15; }
+  10% { opacity: 0.5; }
+  12% { opacity: 0.1; }
+  30% { opacity: 0.4; }
+  32% { opacity: 0.2; }
+  70% { opacity: 0.45; }
+  72% { opacity: 0.1; }
+}
+
+/* +19 억겁의 사선: 마력 맥 drift */
+@keyframes magic-vein-drift {
+  0%, 100% { opacity: 0.15; transform: translateY(0); }
+  50%      { opacity: 0.35; transform: translateY(-2px); }
+}
+
+/* +22 아크라이트: LED 깜빡임 */
+@keyframes led-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.3; }
+}
+
+/* +24 태초의 획: 초록 안개 일렁임 */
+@keyframes eerie-glow {
+  0%, 100% { opacity: 0.08; transform: translateX(0) scaleY(1); }
+  30%      { opacity: 0.22; transform: translateX(-3px) scaleY(1.15); }
+  60%      { opacity: 0.12; transform: translateX(2px) scaleY(0.9); }
+  85%      { opacity: 0.25; transform: translateX(-1px) scaleY(1.05); }
+}
+
+/* +25 여명: 실린더 회전 (구멍 순차 점멸) */
+@keyframes cylinder-rotate {
+  0%   { opacity: 0.2; }
+  16%  { opacity: 0.7; }
+  33%  { opacity: 0.2; }
+  100% { opacity: 0.2; }
+}
+
+/* +25 여명: glow pulse */
+@keyframes dawn-pulse {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(32,160,64,0.5)); }
+  50%      { filter: drop-shadow(0 0 28px rgba(32,160,64,0.75)); }
+}

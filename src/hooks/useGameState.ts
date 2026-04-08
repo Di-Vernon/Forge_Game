@@ -53,6 +53,8 @@ export interface UseGameStateReturn {
     goForge: () => void
     goShopCraft: () => void
     goStorage: () => void
+    sellFromStorage: (slotIndex: number) => void
+    continueFromStorage: (slotIndex: number) => void
     equipTitle: (id: TitleId | null) => void
     buyScroll: (count: number, totalPrice: number) => void
     craftScroll: (fragmentId: FragmentId, amount: number, yieldCount: number) => void
@@ -445,6 +447,59 @@ export function useGameState(): UseGameStateReturn {
     })
   }, [])
 
+  // 보관함에서 판매
+  const sellFromStorage = useCallback((slotIndex: number) => {
+    setState((prev) => {
+      if (slotIndex < 0 || slotIndex >= prev.storage.length) return prev
+      const level = prev.storage[slotIndex]
+      if (!canSell(level)) return prev
+
+      const earned = getSellPrice(level, prev.equippedTitle)
+      const newStorage = [...prev.storage]
+      newStorage.splice(slotIndex, 1)
+
+      const next: GameState = {
+        ...prev,
+        gold: prev.gold + earned,
+        storage: newStorage,
+        sellCount: prev.sellCount + 1,
+      }
+      const newTitles = getNewlyUnlockedTitles(next)
+      return unlockTitles(next, newTitles)
+    })
+  }, [])
+
+  // 보관함에서 강화 계속
+  const continueFromStorage = useCallback((slotIndex: number) => {
+    setState((prev) => {
+      if (prev.currentRound !== null) return prev // 라운드 진행 중이면 불가
+      if (slotIndex < 0 || slotIndex >= prev.storage.length) return prev
+
+      const level = prev.storage[slotIndex]
+      const newStorage = [...prev.storage]
+      newStorage.splice(slotIndex, 1)
+
+      const newRound: Round = {
+        id: Date.now(),
+        startedAt: Date.now(),
+        endedAt: null,
+        peakLevel: level,
+        endReason: null,
+        totalSpent: 0,
+        totalEarned: 0,
+      }
+
+      return {
+        ...prev,
+        currentLevel: level,
+        currentRound: newRound,
+        storage: newStorage,
+      }
+    })
+    setScreen('forge')
+    setLastOutcome(null)
+  }, [])
+
   const goHome = useCallback(() => setScreen('home'), [])
   const goForge = useCallback(() => setScreen('forge'), [])
   const goShopCraft = useCallback(() => setScreen('shop_craft'), [])
@@ -472,6 +527,7 @@ export function useGameState(): UseGameStateReturn {
     pendingTitleUnlocks,
     actions: {
       startRound, forge, reveal, sell, storeCurrentSword, useScroll, pickFragment,
+      sellFromStorage, continueFromStorage,
       goHome, goForge, goShopCraft, goStorage, equipTitle,
       buyScroll, craftScroll, craftSword, skip, goDex, dismissTitleUnlock,
     },

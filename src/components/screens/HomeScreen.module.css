@@ -86,12 +86,6 @@
 .titleDecor {
   font-size: 2.2rem;
   opacity: 0.6;
-  animation: sword-float 3s ease-in-out infinite;
-}
-
-@keyframes sword-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-5px); }
 }
 
 .gameTitle {

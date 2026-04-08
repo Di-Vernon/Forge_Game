@@ -75,6 +75,8 @@
   padding: 16px 12px;
   border-right: 2px solid var(--c-border);
   background: var(--c-surface);
+  position: relative;
+  z-index: 5;
 }
 
 .rightPanel {

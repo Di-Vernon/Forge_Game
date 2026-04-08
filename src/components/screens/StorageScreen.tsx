@@ -8,72 +8,29 @@ import { useState } from 'react'
 import styles from './StorageScreen.module.css'
 import Button from '../ui/Button'
 import type { GameState } from '../../types'
+import { getSwordImagePath, getSwordGlowColor } from '../../utils/swordImage'
+import { getSellPrice, canSell } from '../../game/economy'
 import swordsData from '../../data/swords.json'
 
-// ── 색상 설정 (SwordDisplay와 동일 체계) ────────────────────────
-
-interface SwordCfg {
-  bladeColor: string
-  guardColor: string
-  gripColor: string
-  accentColor: string
-  glowColor: string | null
-}
-
-function getSwordCfg(level: number): SwordCfg {
-  if (level >= 25) return { bladeColor: '#f0f4ff', guardColor: '#c8d8ff', gripColor: '#a0b8e8', accentColor: '#ffffff', glowColor: '#c0d8ff' }
-  if (level >= 23) return { bladeColor: '#cc3010', guardColor: '#882010', gripColor: '#601808', accentColor: '#ff5030', glowColor: '#ff4020' }
-  if (level >= 17) return { bladeColor: '#d4a820', guardColor: '#a07810', gripColor: '#705008', accentColor: '#ffe060', glowColor: '#ffd030' }
-  if (level >= 13) return { bladeColor: '#9040c0', guardColor: '#602880', gripColor: '#401860', accentColor: '#c070ff', glowColor: '#a050e0' }
-  if (level >= 8)  return { bladeColor: '#3870c8', guardColor: '#204880', gripColor: '#182858', accentColor: '#60a0ff', glowColor: '#4488dd' }
-  if (level >= 4)  return { bladeColor: '#408840', guardColor: '#285828', gripColor: '#503820', accentColor: '#80cc60', glowColor: null }
-  if (level >= 2)  return { bladeColor: '#c8c8c8', guardColor: '#909090', gripColor: '#503820', accentColor: '#e8e8e8', glowColor: null }
-  return               { bladeColor: '#908060', guardColor: '#605040', gripColor: '#503820', accentColor: '#b0a080', glowColor: null }
-}
-
-// ── 미니 검 SVG ─────────────────────────────────────────────────
+// ── 미니 검 PNG ─────────────────────────────────────────────────
 
 function MiniSword({ level }: { level: number }) {
-  const cfg = getSwordCfg(level)
-  const filterStyle: React.CSSProperties = cfg.glowColor
-    ? { filter: `drop-shadow(0 0 3px ${cfg.glowColor}) drop-shadow(0 0 8px ${cfg.glowColor}50)` }
-    : {}
-
+  const glowColor = getSwordGlowColor(level)
   return (
-    <svg
-      viewBox="0 0 64 200"
-      width="24"
-      height="75"
-      style={{ ...filterStyle, shapeRendering: 'crispEdges' }}
-      aria-hidden="true"
-    >
-      <polygon points="32,0 28,20 36,20" fill={cfg.bladeColor} />
-      <rect x="28" y="18" width="8" height="108" fill={cfg.bladeColor} />
-      {level >= 8 && (
-        <rect x="31" y="28" width="2" height="88" fill={cfg.accentColor} opacity="0.5" />
-      )}
-      <rect x="10" y="118" width="44" height="10" fill={cfg.guardColor} />
-      {level >= 13 && (
-        <>
-          <rect x="6"  y="120" width="8" height="6" fill={cfg.accentColor} />
-          <rect x="50" y="120" width="8" height="6" fill={cfg.accentColor} />
-        </>
-      )}
-      <rect x="29" y="128" width="6" height="44" fill={cfg.gripColor} />
-      {[134, 142, 150, 158].map((y) => (
-        <rect key={y} x="27" y={y} width="10" height="3" fill={cfg.guardColor} opacity="0.7" />
-      ))}
-      <rect x="24" y="172" width="16" height="14" fill={cfg.guardColor} />
-      {level >= 17 && (
-        <rect x="28" y="174" width="8" height="10" fill={cfg.accentColor} opacity="0.8" />
-      )}
-      {level === 25 && (
-        <>
-          <line x1="32" y1="-10" x2="32" y2="210" stroke="#c0d8ff" strokeWidth="1" opacity="0.4" />
-          <line x1="-10" y1="128" x2="74" y2="128" stroke="#c0d8ff" strokeWidth="1" opacity="0.4" />
-        </>
-      )}
-    </svg>
+    <img
+      src={getSwordImagePath(level)}
+      alt={`+${level}`}
+      draggable={false}
+      style={{
+        width: 48,
+        height: 48,
+        imageRendering: 'pixelated',
+        filter: glowColor
+          ? `drop-shadow(0 0 3px ${glowColor}) drop-shadow(0 0 8px ${glowColor}50)`
+          : undefined,
+        userSelect: 'none',
+      }}
+    />
   )
 }
 
@@ -88,8 +45,8 @@ interface SlotProps {
 function Slot({ level, count, onClick }: SlotProps) {
   const owned = count > 0
   const sword = swordsData.find((s) => s.level === level)!
-  const cfg = getSwordCfg(level)
-  const levelColor = cfg.glowColor ?? cfg.accentColor
+  const glowColor = getSwordGlowColor(level)
+  const levelColor = glowColor ?? '#b0a080'
   const isLegendary = level === 25
 
   return (
@@ -133,8 +90,8 @@ interface LoreModalProps {
 
 function LoreModal({ level, onClose }: LoreModalProps) {
   const sword = swordsData.find((s) => s.level === level)!
-  const cfg = getSwordCfg(level)
-  const levelColor = cfg.glowColor ?? cfg.accentColor
+  const glowColor = getSwordGlowColor(level)
+  const levelColor = glowColor ?? '#b0a080'
 
   return (
     <div className={styles.loreBackdrop} onClick={onClose}>
@@ -152,15 +109,92 @@ function LoreModal({ level, onClose }: LoreModalProps) {
   )
 }
 
+// ── 액션 모달 (판매/강화 계속) ───────────────────────────────────
+
+interface ActionModalProps {
+  level: number
+  count: number
+  equippedTitle: GameState['equippedTitle']
+  isRoundActive: boolean
+  onSell: () => void
+  onContinue: () => void
+  onViewLore: () => void
+  onClose: () => void
+}
+
+function ActionModal({
+  level, count, equippedTitle, isRoundActive,
+  onSell, onContinue, onViewLore, onClose,
+}: ActionModalProps) {
+  const sword = swordsData.find((s) => s.level === level)!
+  const glowColor = getSwordGlowColor(level)
+  const levelColor = glowColor ?? '#b0a080'
+  const sellable = canSell(level)
+  const price = sellable ? getSellPrice(level, equippedTitle) : 0
+
+  return (
+    <div className={styles.loreBackdrop} onClick={onClose}>
+      <div className={styles.loreModal} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.loreHeader}>
+          <span className={styles.loreLevel} style={{ color: levelColor }}>+{level}</span>
+          <span className={styles.loreName}>{sword.name}</span>
+          {count > 1 && <span className={styles.loreCount}>x{count}</span>}
+          <button className={styles.loreClose} onClick={onClose}>✕</button>
+        </div>
+        <div className={styles.actionBody}>
+          <div className={styles.actionSword}>
+            <MiniSword level={level} />
+          </div>
+          <div className={styles.actionButtons}>
+            <Button
+              variant="ghost"
+              size="lg"
+              disabled={!sellable}
+              onClick={onSell}
+              fullWidth
+            >
+              {sellable ? `판매 (${price.toLocaleString('ko-KR')} G)` : '판매 불가'}
+            </Button>
+            <Button
+              variant="gold"
+              size="lg"
+              disabled={isRoundActive}
+              onClick={onContinue}
+              fullWidth
+            >
+              {isRoundActive ? '라운드 진행 중' : '강화 계속'}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onViewLore}
+              fullWidth
+            >
+              도안 보기
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── 메인 컴포넌트 ────────────────────────────────────────────────
 
 interface Props {
   state: GameState
+  isRoundActive: boolean
   onBack: () => void
+  onSellFromStorage: (slotIndex: number) => void
+  onContinueFromStorage: (slotIndex: number) => void
 }
 
-export default function StorageScreen({ state, onBack }: Props) {
+export default function StorageScreen({
+  state, isRoundActive, onBack,
+  onSellFromStorage, onContinueFromStorage,
+}: Props) {
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null)
+  const [viewingLore, setViewingLore] = useState<number | null>(null)
 
   // 레벨별 보유 수량
   const countByLevel: Record<number, number> = {}
@@ -169,6 +203,22 @@ export default function StorageScreen({ state, onBack }: Props) {
   }
 
   const uniqueCount = Object.keys(countByLevel).length
+
+  function handleSell(level: number) {
+    const idx = state.storage.indexOf(level)
+    if (idx >= 0) {
+      onSellFromStorage(idx)
+      setSelectedLevel(null)
+    }
+  }
+
+  function handleContinue(level: number) {
+    const idx = state.storage.indexOf(level)
+    if (idx >= 0) {
+      onContinueFromStorage(idx)
+      setSelectedLevel(null)
+    }
+  }
 
   return (
     <div className={styles.screen}>
@@ -202,11 +252,25 @@ export default function StorageScreen({ state, onBack }: Props) {
         </div>
       </main>
 
-      {/* ── 상세 모달 ────────────────────── */}
+      {/* ── 액션 모달 ────────────────────── */}
       {selectedLevel !== null && (
-        <LoreModal
+        <ActionModal
           level={selectedLevel}
+          count={countByLevel[selectedLevel] ?? 0}
+          equippedTitle={state.equippedTitle}
+          isRoundActive={isRoundActive}
+          onSell={() => handleSell(selectedLevel)}
+          onContinue={() => handleContinue(selectedLevel)}
+          onViewLore={() => { setViewingLore(selectedLevel); setSelectedLevel(null) }}
           onClose={() => setSelectedLevel(null)}
+        />
+      )}
+
+      {/* ── 도안 모달 ────────────────────── */}
+      {viewingLore !== null && (
+        <LoreModal
+          level={viewingLore}
+          onClose={() => setViewingLore(null)}
         />
       )}
     </div>

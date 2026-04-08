@@ -8,9 +8,10 @@
 > - **색상, 형태 컨셉, 고유 이펙트, Block별 스케일링, 뼽맛 가이드는 여전히 유효**
 >
 > ### 이미지 파일
-> - 원본: `public/sprites/swords/grid_XX.png` (4분할, 256×256)
-> - 분리 후: `public/sprites/swords/sword_XX.png` (개별, 128×128)
+> - `public/sprites/swords/sword_XX.png` (개별, 128×128 픽셀아트)
+> - grid 원본은 분리 후 삭제됨. sword_03.png 없음 (sword_02.png으로 fallback)
 > - PixelLab 프롬프트: `docs/pixellab_prompts.md`
+> - 검별 CSS 회전값: `src/data/swordOrientations.json` (PCA 기반 자동 감지)
 >
 > **idle 애니메이션(sword-float) 삭제.** 검은 정지 상태. 검별 고유 CSS 이펙트만 유지.
 
@@ -18,12 +19,13 @@
 
 ## 공통 규칙
 
-- **viewBox**: Block별 스케일 다름
-  - Block 1~2: `0 0 200 340` (maxWidth 260px, maxHeight 360px)
-  - Block 3: `0 0 240 400` (maxWidth 300px, maxHeight 420px) — 스케일 업
-  - Block 4: `0 0 280 440` (maxWidth 340px, maxHeight 460px) — 더 크게
-  - Block 5~6: `0 0 300 480` (maxWidth 380px, maxHeight 500px) — 최대 스케일
-- **대각선**: wrapper div에 `transform: rotate(-45deg)`
+- **표시 크기**: `SwordDisplay.tsx`의 `SWORD_SIZES` 맵 기준. 128px PNG를 `image-rendering: pixelated`로 확대.
+  - Block 1 (+0~+7): 310~410px (기본 존재감)
+  - Block 2 (+8~+12): 420~480px (마법 영역 진입)
+  - Block 3 (+13~+16): 490~540px (눈에 띄는 스케일 점프)
+  - Block 4 (+17~+22): 440~580px (화면 압도, +22 단검은 의도적 작음)
+  - Block 5~6 (+23~+25): 560~620px (최대 스케일)
+- **방향**: 검별 `swordOrientations.json`의 CSS rotation 값 적용. 원본 이미지 무손실.
 - **idle 애니메이션**: Block 1~2는 기본 정지. Block 3부터 검별 고유 효과 적극 활용.
 - **그라디언트**: 각 검마다 blade/guard/grip에 linearGradient 적용
 - **명암**: 날 좌→우 (밝은면→어두운면), 그립 좌→우 (원통 쉐이딩)
@@ -1154,16 +1156,17 @@ glowColor:         #20a040  (초록 오오라 — +24보다 강렬)
 
 > **이 섹션의 수치가 위 본문의 수치보다 우선한다. 충돌 시 이 섹션을 따를 것.**
 
-### viewBox 스케일링
+### 표시 크기 (실제 CSS px)
 
-| Block | viewBox | maxWidth | maxHeight | 배율 (대비 Block 1) |
-|-------|---------|----------|-----------|---|
-| 1~2 | 200×340 | 260px | 360px | 1.0x |
-| 3 | 240×400 | 300px | 420px | 1.2x |
-| 4 | 280×440 | 340px | 460px | 1.4x |
-| 5~6 | 300×480 | 380px | 500px | 1.5x |
+| Block | 크기 범위 | 대표 검 | 비고 |
+|-------|----------|---------|------|
+| Block 1 (+0~+7) | 310~410px | +0 목검 310px, +5 클레이모어 410px | 기본 존재감 |
+| Block 2 (+8~+12) | 420~480px | +12 엑스칼리버 480px | 마법 영역 진입 |
+| Block 3 (+13~+16) | 490~540px | +14 드래곤소드 540px | 눈에 띄는 스케일 점프 |
+| Block 4 (+17~+22) | 440~580px | +21 잊혀진 대검 580px, +22 아크라이트 440px | 화면 압도 |
+| Block 5~6 (+23~+25) | 560~620px | +25 여명 620px | 최대 스케일 |
 
-각 Block의 모든 px 수치(blade 길이/폭, guard 폭 등)는 **해당 viewBox 기준**으로 해석.
+각 Block의 날 길이/폭 등 본문 SVG 수치는 형태 컴셉 참조용. 실제 표시 크기는 SWORD_SIZES 맵 기준.
 
 ### Block 3 (+13~+16) 스케일 업 수치
 

@@ -282,6 +282,39 @@
   line-height: 1.85;
 }
 
+/* ── 액션 모달 ─────────────────────────────────────────────────── */
+.actionBody {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.actionSword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.loreCount {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: var(--c-gold);
+  font-weight: 700;
+}
+
 /* ── 반응형 ──────────────────────────────────────────────────── */
 @media (max-width: 360px) {
   .grid { gap: 5px; }

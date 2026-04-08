@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import styles from './ForgeScreen.module.css'
 import Button from '../ui/Button'
-import SwordDisplay from './SwordDisplay'
+import SwordDisplay from './swords/SwordDisplay'
 import type { GameState, ForgeOutcome } from '../../types'
 import type { ForgePhase } from '../../hooks/useGameState'
 import {
@@ -261,7 +261,7 @@ export default function ForgeScreen({
                 variant="ghost"
                 size="lg"
                 disabled={isBusy || sellPrice == null}
-                onClick={onSell}
+                onClick={(e: React.MouseEvent) => { e.stopPropagation(); onSell() }}
                 fullWidth
               >
                 SELL

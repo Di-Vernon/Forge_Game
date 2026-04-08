@@ -224,7 +224,15 @@ export default function App() {
     }
 
     if (screen === 'storage') {
-      return <StorageScreen state={state} onBack={actions.goHome} />
+      return (
+        <StorageScreen
+          state={state}
+          isRoundActive={state.currentRound !== null}
+          onBack={actions.goHome}
+          onSellFromStorage={actions.sellFromStorage}
+          onContinueFromStorage={actions.continueFromStorage}
+        />
+      )
     }
 
     if (screen === 'dex') {

@@ -22,7 +22,7 @@
 ## Tech Stack
 
 React 18 + Vite + TypeScript, localStorage, GSAP, jsfxr, Howler.js, Galmuri, simplex-noise.
-렌더링: React DOM + SVG + CSS (PixiJS 보류). 파티클/셰이크는 useRef + rAF (React state 금지).
+렌더링: React DOM + PNG(픽셀아트) + CSS 이펙트 (PixiJS 보류). 검 표시: 128px PNG → image-rendering: pixelated 확대. 파티클/셰이크는 useRef + rAF (React state 금지).
 
 ## Commands
 
@@ -32,10 +32,11 @@ React 18 + Vite + TypeScript, localStorage, GSAP, jsfxr, Howler.js, Galmuri, sim
 
 ```
 src/game/       순수 함수 (React 무의존): engine, economy, titles, fragments, storage, materials, skip
-src/components/ screens/ (Home,Forge,Destroy,ShopCraft,Storage) + ui/ (Button,TitleUnlockModal)
+src/components/ screens/ (Home,Forge,Destroy,ShopCraft,Storage,Dex) + screens/swords/ (SwordDisplay,SwordEffects,swordAnimations.css) + ui/ (Button,TitleUnlockModal)
 src/effects/    ForgeEffects, ScreenShake, ParticleSystem (DOM pool 200개)
 src/audio/      SoundManager (Web Audio), sounds (jsfxr 7종)
-src/data/       swords.json (26검), config.json (확률,드랍,칭호,조합소)
+src/data/       swords.json (26검), config.json (확률,드랍,칭호,조합소), swordOrientations.json (검별 CSS 회전값)
+src/utils/      swordImage.ts (getSwordImagePath, getSwordGlowColor)
 src/types/      Sword, Title, Fragment, GameState, ForgeOutcome
 src/hooks/      useGameState
 ```

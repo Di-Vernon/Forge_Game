@@ -12,6 +12,7 @@ import styles from './DestroyScreen.module.css'
 import Button from '../ui/Button'
 import type { GameState, FragmentId } from '../../types'
 import { rollFragmentDrop, type FragmentDropResult } from '../../game/fragments'
+import { getSwordImagePath, getSwordGlowColor } from '../../utils/swordImage'
 import swordsData from '../../data/swords.json'
 import configJson from '../../data/config.json'
 
@@ -26,125 +27,43 @@ function formatGold(g: number): string {
   return g.toLocaleString('ko-KR') + ' G'
 }
 
-// ── 검 색상 (SwordDisplay와 동일한 로직) ───────────────────────
-
-interface SwordCfg {
-  bladeColor: string
-  bladeHighlight: string
-  bladeShadow: string
-  guardColor: string
-  guardHighlight: string
-  guardShadow: string
-  gripColor: string
-  accentColor: string
-  glowColor: string | null
-}
-
-function getSwordCfg(level: number): SwordCfg {
-  if (level >= 25) return { bladeColor: '#e8f0ff', bladeHighlight: '#ffffff', bladeShadow: '#a0b8e8', guardColor: '#c8d8ff', guardHighlight: '#e0ecff', guardShadow: '#90a8d8', gripColor: '#a0b8e8', accentColor: '#ffffff',  glowColor: '#c0d8ff' }
-  if (level >= 23) return { bladeColor: '#cc3010', bladeHighlight: '#ff7050', bladeShadow: '#701808', guardColor: '#882010', guardHighlight: '#aa3018', guardShadow: '#601008', gripColor: '#601808', accentColor: '#ff5030',  glowColor: '#ff4020' }
-  if (level >= 17) return { bladeColor: '#d4a820', bladeHighlight: '#ffe880', bladeShadow: '#886010', guardColor: '#a07810', guardHighlight: '#c89820', guardShadow: '#705008', gripColor: '#705008', accentColor: '#ffe060',  glowColor: '#ffd030' }
-  if (level >= 13) return { bladeColor: '#9040c0', bladeHighlight: '#d090ff', bladeShadow: '#502070', guardColor: '#602880', guardHighlight: '#8040a0', guardShadow: '#401860', gripColor: '#401860', accentColor: '#c070ff',  glowColor: '#a050e0' }
-  if (level >= 8)  return { bladeColor: '#3870c8', bladeHighlight: '#80b8ff', bladeShadow: '#183878', guardColor: '#204880', guardHighlight: '#3068a0', guardShadow: '#182858', gripColor: '#182858', accentColor: '#60a0ff',  glowColor: '#4488dd' }
-  if (level >= 4)  return { bladeColor: '#408840', bladeHighlight: '#80cc60', bladeShadow: '#205020', guardColor: '#285828', guardHighlight: '#387838', guardShadow: '#1a3a1a', gripColor: '#503820', accentColor: '#80cc60',  glowColor: null }
-  if (level >= 2)  return { bladeColor: '#b0b0b0', bladeHighlight: '#e0e0e0', bladeShadow: '#707878', guardColor: '#909090', guardHighlight: '#b0b0b0', guardShadow: '#686868', gripColor: '#503820', accentColor: '#e8e8e8',  glowColor: null }
-  return                  { bladeColor: '#908060', bladeHighlight: '#c0a878', bladeShadow: '#685838', guardColor: '#605040', guardHighlight: '#786858', guardShadow: '#483828', gripColor: '#503820', accentColor: '#b0a080',  glowColor: null }
-}
-
-// ── BrokenSwordDisplay ─────────────────────────────────────────
-// 크로스가드(y≈123) 기준으로 두 조각으로 분리
-// 날 부분: rotate(-22 32 123) — 왼쪽으로 기울어짐
-// 그립 부분: rotate(-14 32 123) — 오른쪽으로 쓰러짐
+// ── BrokenSwordDisplay — PNG + grayscale + 균열 오버레이 ──────
 
 function BrokenSwordDisplay({ level, className }: { level: number; className?: string }) {
-  const cfg = getSwordCfg(level)
-  const glowStyle = cfg.glowColor
-    ? { filter: `drop-shadow(0 0 6px ${cfg.glowColor}90) drop-shadow(0 0 16px ${cfg.glowColor}40)` }
-    : {}
-
-  const uid = `bsw-${level}`
+  const glowColor = getSwordGlowColor(level)
+  const glowFilter = glowColor
+    ? `grayscale(1) brightness(0.5) drop-shadow(0 0 6px ${glowColor}90)`
+    : 'grayscale(1) brightness(0.5)'
 
   return (
-    <div className={`${styles.brokenWrap} ${className ?? ''}`}>
-      <svg
-        viewBox="0 0 64 200"
-        width="80"
-        height="240"
-        overflow="visible"
-        style={glowStyle}
-        aria-label={`파괴된 +${level}강 검`}
-      >
-        <defs>
-          <linearGradient id={`${uid}-blade`} x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor={cfg.bladeHighlight} />
-            <stop offset="40%" stopColor={cfg.bladeColor} />
-            <stop offset="100%" stopColor={cfg.bladeShadow} />
-          </linearGradient>
-          <linearGradient id={`${uid}-guard`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={cfg.guardHighlight} />
-            <stop offset="100%" stopColor={cfg.guardShadow} />
-          </linearGradient>
-        </defs>
-
-        {/* ── 날 조각 (위 ← 왼쪽으로 기울어짐) ── */}
-        <g transform="rotate(-22 32 123)">
-          {/* 날끝 */}
-          <polygon points="32,0 28,20 36,20" fill={`url(#${uid}-blade)`} opacity="0.88" />
-          {/* 날 몸통 */}
-          <rect x="28" y="18" width="8" height="103" fill={`url(#${uid}-blade)`} opacity="0.88" />
-          {/* 풀러 (Block 2+) */}
-          {level >= 8 && (
-            <rect x="31" y="28" width="2" height="83" fill={cfg.accentColor} opacity="0.4" />
-          )}
-          {/* 크로스가드 상단 절반 */}
-          <rect x="10" y="118" width="44" height="5" fill={`url(#${uid}-guard)`} opacity="0.88" />
-          {level >= 13 && (
-            <>
-              <rect x="6"  y="119" width="8" height="4" fill={cfg.accentColor} opacity="0.75" />
-              <rect x="50" y="119" width="8" height="4" fill={cfg.accentColor} opacity="0.75" />
-            </>
-          )}
-        </g>
-
-        {/* 파편 조각 1 (날 부근) */}
-        <rect
-          x="24" y="110"
-          width="5" height="3"
-          fill={cfg.bladeColor} opacity="0.45"
-          transform="rotate(-35 26 111) translate(-14 -6)"
-        />
-        <rect
-          x="36" y="114"
-          width="4" height="3"
-          fill={cfg.guardColor} opacity="0.35"
-          transform="rotate(20 38 115) translate(8 -4)"
-        />
-
-        {/* ── 그립 조각 (아래 → 오른쪽으로 쓰러짐) ── */}
-        <g transform="rotate(-14 32 123)">
-          {/* 크로스가드 하단 절반 */}
-          <rect x="10" y="123" width="44" height="5" fill={`url(#${uid}-guard)`} opacity="0.88" />
-          {/* 그립 */}
-          <rect x="29" y="128" width="6" height="44" fill={cfg.gripColor} />
-          {/* 그립 감김 */}
-          {[134, 142, 150, 158].map((y) => (
-            <rect key={y} x="27" y={y} width="10" height="3" fill={cfg.guardColor} opacity="0.6" />
-          ))}
-          {/* 포멜 */}
-          <ellipse cx="32" cy="175" rx="9" ry="7" fill={`url(#${uid}-guard)`} />
-          {level >= 17 && (
-            <circle cx="32" cy="175" r="3" fill={cfg.accentColor} opacity="0.7" />
-          )}
-        </g>
-
-        {/* 파편 조각 2 (그립 부근) */}
-        <rect
-          x="14" y="128"
-          width="4" height="3"
-          fill={cfg.guardColor} opacity="0.4"
-          transform="rotate(-15 16 129) translate(-6 8)"
-        />
-      </svg>
+    <div className={`${styles.brokenWrap} ${className ?? ''}`} style={{ position: 'relative' }}>
+      <img
+        src={getSwordImagePath(level)}
+        alt={`파괴된 +${level}강 검`}
+        draggable={false}
+        style={{
+          width: 120,
+          height: 120,
+          imageRendering: 'pixelated',
+          filter: glowFilter,
+          opacity: 0.7,
+          transform: 'rotate(-45deg)',
+          userSelect: 'none',
+        }}
+      />
+      {/* 균열 오버레이 */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background: `
+            linear-gradient(135deg, transparent 42%, rgba(0,0,0,0.35) 42.5%, rgba(0,0,0,0.35) 43%, transparent 43.5%),
+            linear-gradient(155deg, transparent 48%, rgba(0,0,0,0.25) 48.5%, rgba(0,0,0,0.25) 49%, transparent 49.5%),
+            linear-gradient(120deg, transparent 55%, rgba(0,0,0,0.2) 55.5%, rgba(0,0,0,0.2) 56%, transparent 56.5%)
+          `,
+        }}
+      />
     </div>
   )
 }

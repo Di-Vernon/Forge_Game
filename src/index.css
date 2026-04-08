@@ -116,11 +116,6 @@ body {
   50%       { opacity: 0.6; }
 }
 
-@keyframes sword-float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-6px); }
-}
-
 /* ────────────────────────────────────────
    prefers-reduced-motion 대체 연출
    셰이크 → 테두리 펄스 / 파티클 → 글로우 펄스
