@@ -3,7 +3,7 @@
 > 플레이테스트 중 발견된 UI/UX 이슈를 기록한다.
 > 일정 수량 모인 후 일괄 수정한다.
 >
-> 날짜: 2026-04-07
+> 날짜: 2026-04-08 (업데이트)
 
 ---
 
@@ -11,12 +11,20 @@
 
 | # | 화면 | 심각도 | 이슈 | 상태 |
 |---|------|--------|------|------|
-| 1 | ForgeScreen | Minor | SwordDisplay 포멜(pommel)이 검 본체와 분리되어 별도 사각형으로 보임. 그립-포멜 사이 간격 발생. | 수정완료 (#3과 함께) |
-| 2 | ForgeScreen | Minor | 하단 footer(+레벨, 검 이름)의 텍스트가 보이지 않음. 배경과 폰트 색상 대비 부족 또는 레이아웃 문제. | 수정완료 |
-| 3 | ForgeScreen | Major | 검 디자인이 단조롭고 크기가 너무 작음. 수정: (1) 대각선 배치(손잡이 우하단→검끝 좌상단), (2) 크기 대폭 확대, (3) 디테일 강화(날 테이퍼, 풀러, 가드 곡선 등), (4) SVG linearGradient로 명암 효과 추가. 2D 유지. | 수정완료 |
-| 4 | 전체 | Major | 화면 여백 과다. max-width/max-height로 컴팩트한 게임 영역 설정, 요소 간 간격 축소. max size 이하에서는 window 크기에 유동적 대응(반응형). | 수정완료 |
-| 5 | 밸런싱 | Info | 복원 스크롤 Block별 소모량 확정: Block 1: 1개, Block 2: 2개, Block 3: 3개, Block 4: 5개, Block 5: 8개. config.json#scrollCostByBlock. DestroyScreen에 필요 개수 표시 + 부족 시 비활성화. | 수정완료 |
-| 6 | HomeScreen | Info | 메인 화면에 '도감' 버튼 추가. 지금까지 해금한 검 목록을 열람할 수 있는 컨텐츠 스크린. 이름 후보: 도감 / 검보 / 도검록. | 수정완료 |
+| 1 | ForgeScreen | Minor | SwordDisplay 포멜(pommel)이 검 본체와 분리되어 별도 사각형으로 보임. | 미수정 (로컬 미반영) |
+| 2 | ForgeScreen | Minor | 하단 footer(+레벨, 검 이름)의 텍스트가 보이지 않음. | 미수정 (로컬 미반영) |
+| 3 | ForgeScreen | Major | 검 디자인 전면 개편. → **하이브리드 D방식으로 변경 확정**: PNG 이미지(PixelLab) + CSS/SVG 이펙트 오버레이. 26개 grid 이미지 생성 완료. | 이미지 완료, 코드 미구현 |
+| 4 | 전체 | Major | 화면 여백 과다. max-width/max-height 컨테이너 + 반응형. | 미수정 (로컬 미반영) |
+| 5 | 밸런싱 | Info | 복원 스크롤 Block별 소모량: 1/2/3/5/8/0. config.json#scrollCostByBlock. | 미수정 (로컬 미반영) |
+| 6 | HomeScreen | Info | 도감 스크린 + 버튼 추가. discoveredLevels 추적. | 미수정 (로컬 미반영) |
+| 7 | ForgeScreen | Major | SELL 버튼 클릭 시 판매 대신 검 도안 모달이 열리는 버그. onClick 이벤트 전파 문제. | 미수정 |
+| 8 | StorageScreen | Info | 보관함 검 클릭 시 판매/강화 선택 기능 추가. sellFromStorage + continueFromStorage 액션 필요. | 미수정 |
+| 9 | 전체 | Minor | sword-float idle 애니메이션 삭제. 검은 정지 상태가 기본. 검별 고유 이펙트만 유지. | 미수정 |
+
+---
+
+## 참고: 이슈 #1~#6은 이전 Claude Code remote 세션에서 수정되었으나 로컬에 반영되지 않음.
+## 다음 Claude Code 실행 시 (teleport to terminal) 모든 이슈를 일괄 처리할 것.
 
 ---
 

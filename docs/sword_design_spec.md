@@ -1,8 +1,18 @@
 # 검 만들기 게임 — 검 비주얼 디자인 스펙
 
-> 이 문서는 SwordDisplay.tsx에서 각 검(+0~+25)의 SVG 형태를 정의한다.
-> 모든 검은 동일한 viewBox="0 0 200 340" 기준, 대각선 45도 배치.
-> **idle 애니메이션(sword-float) 삭제.** 검은 정지 상태. forging/success/fail 애니메이션만 유지.
+> ## ⚠️ 구현 방식 변경 (2026-04-08)
+> **SVG 코드 렌더링 → 하이브리드 D방식으로 전환.**
+> - 검 본체: **PNG 이미지** (PixelLab AI로 생성, `public/sprites/swords/`)
+> - 이펙트 (glow, 핏물, 번개 등): **CSS/SVG 오버레이**로 코드에서 처리
+> - 이 문서의 SVG path/좌표 정보는 더 이상 직접 사용하지 않음
+> - **색상, 형태 컨셉, 고유 이펙트, Block별 스케일링, 뼽맛 가이드는 여전히 유효**
+>
+> ### 이미지 파일
+> - 원본: `public/sprites/swords/grid_XX.png` (4분할, 256×256)
+> - 분리 후: `public/sprites/swords/sword_XX.png` (개별, 128×128)
+> - PixelLab 프롬프트: `docs/pixellab_prompts.md`
+>
+> **idle 애니메이션(sword-float) 삭제.** 검은 정지 상태. 검별 고유 CSS 이펙트만 유지.
 
 ---
 
