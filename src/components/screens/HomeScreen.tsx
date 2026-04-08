@@ -8,6 +8,7 @@ import styles from './HomeScreen.module.css'
 import Button from '../ui/Button'
 import type { GameState, TitleId } from '../../types'
 import configJson from '../../data/config.json'
+import { getSkipInfo } from '../../game/skip'
 
 // ── 데이터 ─────────────────────────────────────────────────────
 
@@ -18,6 +19,11 @@ interface TitleEntry {
 }
 
 const titlesData = configJson.titles as Record<string, TitleEntry>
+const titleProtection = configJson.titleProtection as Record<string, { chance: number; materialPreserveOnProtect?: boolean }>
+
+// 조각 한국어 이름
+const fragmentNames = configJson.fragments as Record<string, { name: string }>
+function fragName(id: string): string { return fragmentNames[id]?.name ?? id }
 
 // 이름이 확정된 칭호만 UI에 표시 (title_8, title_9 제외)
 const DISPLAY_TITLE_IDS = (Object.entries(titlesData) as [TitleId, TitleEntry][])
@@ -83,6 +89,29 @@ function TitleModal({ unlockedTitles, equipped, onEquip, onClose }: TitleModalPr
                   <>
                     <span className={styles.cardName}>{data.name}</span>
                     <span className={styles.cardEffect}>{data.effectDescription}</span>
+                    {/* 보호율 표시 */}
+                    {titleProtection[id] && (
+                      <span className={styles.cardProtection}>
+                        🛡 {Math.round(titleProtection[id].chance * 100)}% 보호
+                        {titleProtection[id].materialPreserveOnProtect && ' + 재료 보존'}
+                      </span>
+                    )}
+                    {/* 건너뛰기 정보 */}
+                    {(() => {
+                      const skip = getSkipInfo(id)
+                      if (!skip) return null
+                      return (
+                        <span className={styles.cardSkip}>
+                          건너뛰기: +0→+{skip.targetLevel}
+                          {skip.gold != null && skip.gold > 0
+                            ? ` (${skip.gold.toLocaleString('ko-KR')}G`
+                            : ' (무료'}
+                          {skip.fragmentId && skip.fragmentCount > 0
+                            ? ` + ${fragName(skip.fragmentId)} ×${skip.fragmentCount})`
+                            : ')'}
+                        </span>
+                      )
+                    })()}
                     <span className={styles.cardCondition}>{data.condition}</span>
                     {isEquipped && <span className={styles.cardBadge}>장착 중</span>}
                   </>

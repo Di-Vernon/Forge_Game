@@ -452,3 +452,114 @@
   white-space: pre-wrap;
   word-break: keep-all;
 }
+
+/* ── 재료 검 요구사항 ───────────────────────────────────── */
+.materialReqs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 8px 0;
+  border-top: 1px solid var(--c-border);
+  margin-top: 4px;
+}
+
+.materialLabel {
+  font-size: 0.62rem;
+  color: var(--c-text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.materialItem {
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.materialOk  { color: var(--c-success); }
+.materialLack { color: var(--c-fail); }
+
+.materialHave {
+  font-size: 0.62rem;
+  color: var(--c-text-dim);
+  margin-left: 2px;
+}
+
+/* ── 보호 발동 배너 ─────────────────────────────────────── */
+.protectionBanner {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(200, 144, 40, 0.18);
+  border: 1px solid var(--c-gold);
+  box-shadow: 0 0 16px rgba(200, 144, 40, 0.3);
+  animation: protection-fade 2.5s ease forwards;
+}
+
+@keyframes protection-fade {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+.protectionIcon { font-size: 1.1rem; }
+.protectionText {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+  letter-spacing: 0.06em;
+}
+.protectionSub {
+  font-size: 0.68rem;
+  color: var(--c-gold);
+  opacity: 0.85;
+}
+
+/* ── 반응형: 480px 이하 ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .sidePanel {
+    border-right: none;
+    border-bottom: 1px solid var(--c-border);
+    padding: 12px 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .rightPanel {
+    border-left: none;
+    border-top: 1px solid var(--c-border);
+    border-bottom: none;
+    order: 3;
+  }
+
+  .swordCenter {
+    order: 1;
+    min-height: 200px;
+  }
+
+  .rateDisplay { font-size: 1.4rem; }
+
+  .header {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 8px;
+    gap: 4px;
+  }
+
+  .statsRow { gap: 8px; }
+
+  .materialReqs { padding: 4px 0; }
+}

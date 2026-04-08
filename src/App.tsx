@@ -215,6 +215,7 @@ export default function App() {
           state={state}
           onBack={actions.goHome}
           onBuyScroll={actions.buyScroll}
+          onCraftScroll={actions.craftScroll}
           onCraftSword={actions.craftSword}
         />
       )

@@ -14,7 +14,7 @@ import {
 } from '../../game/economy'
 import { getSuccessRate } from '../../game/engine'
 import { canSkip, getSkipInfo } from '../../game/skip'
-import { canAffordMaterials } from '../../game/materials'
+import { canAffordMaterials, getMaterialRequirements } from '../../game/materials'
 import { soundManager } from '../../audio/SoundManager'
 import swordsData from '../../data/swords.json'
 import configJson from '../../data/config.json'
@@ -26,6 +26,10 @@ import configJson from '../../data/config.json'
 function formatGold(g: number): string {
   return g.toLocaleString('ko-KR') + ' G'
 }
+
+// 조각 한국어 이름
+const fragmentNames = configJson.fragments as Record<string, { name: string }>
+function fragName(id: string): string { return fragmentNames[id]?.name ?? id }
 
 function rateClass(rate: number): string {
   if (rate >= 0.6) return styles.high
@@ -197,6 +201,19 @@ export default function ForgeScreen({
   const skipInfo = getSkipInfo(state.equippedTitle)
   const skipAvailable = canSkip(state) && !isBusy
 
+  // 재료 검 요구사항 (+17 이상)
+  const materialReqs = isRoundActive && !isMaxLevel
+    ? getMaterialRequirements(level + 1)
+    : []
+
+  // 보호 발동 여부
+  const showProtection =
+    forgePhase === 'idle' &&
+    lastOutcome !== null &&
+    lastOutcome.protectionTriggered === true
+
+  const protectionIsSwordSaint = lastOutcome?.protectionSource === 'sword_saint'
+
   return (
     <div className={styles.screen}>
       {/* ── 헤더 ──────────────────────────────── */}
@@ -286,6 +303,17 @@ export default function ForgeScreen({
             ].join(' ')}
           />
 
+          {/* 보호 발동 배너 */}
+          {showProtection && (
+            <div className={styles.protectionBanner}>
+              <span className={styles.protectionIcon}>🛡</span>
+              <span className={styles.protectionText}>보호 발동!</span>
+              {protectionIsSwordSaint && (
+                <span className={styles.protectionSub}>재료 보존됨</span>
+              )}
+            </div>
+          )}
+
           {/* 검 표시 */}
           <div
             ref={swordWrapperRef}
@@ -349,9 +377,27 @@ export default function ForgeScreen({
               {!canAffordUpgrade(state.gold, level) && (
                 <span className={styles.phaseNote}>골드 부족</span>
               )}
-              {!canAffordMaterials(state, level + 1) && (
-                <span className={styles.phaseNote}>재료 검 부족</span>
+              {/* 재료 검 요구사항 표시 (+17 이상) */}
+              {materialReqs.length > 0 && (
+                <div className={styles.materialReqs}>
+                  <span className={styles.materialLabel}>재료 필요</span>
+                  {materialReqs.map((mat) => {
+                    const matSword = swordsData.find((s) => s.level === mat.level)
+                    const haveCount = state.storage.filter((l) => l === mat.level).length
+                    const enough = haveCount >= mat.count
+                    return (
+                      <span
+                        key={mat.level}
+                        className={`${styles.materialItem} ${enough ? styles.materialOk : styles.materialLack}`}
+                      >
+                        {enough ? '✓' : '✗'} {matSword?.name ?? `+${mat.level}`} ×{mat.count}
+                        <span className={styles.materialHave}>({haveCount}/{mat.count})</span>
+                      </span>
+                    )
+                  })}
+                </div>
               )}
+              {/* 건너뛰기 */}
               {skipInfo !== null && level === 0 && (
                 <div className={styles.actionRow}>
                   <Button
@@ -361,12 +407,15 @@ export default function ForgeScreen({
                     onClick={onSkip}
                     fullWidth
                   >
-                    건너뛰기 +{skipInfo.targetLevel}
+                    건너뛰기 → +{skipInfo.targetLevel}
                   </Button>
                   <span className={styles.skipCost}>
-                    {skipInfo.fragmentId && skipInfo.fragmentCount > 0
-                      ? `조각 ×${skipInfo.fragmentCount}`
+                    {skipInfo.gold != null && skipInfo.gold > 0
+                      ? formatGold(skipInfo.gold)
                       : '무료'}
+                    {skipInfo.fragmentId && skipInfo.fragmentCount > 0
+                      ? ` + ${fragName(skipInfo.fragmentId)} ×${skipInfo.fragmentCount}`
+                      : ''}
                   </span>
                 </div>
               )}

@@ -4,7 +4,7 @@ import { getForgeEffectParams } from '../effects/ForgeEffects'
 import { load, save, createInitialState } from '../game/storage'
 import { attemptForge } from '../game/engine'
 import { getUpgradeCost, getSellPrice, canAffordUpgrade, canSell } from '../game/economy'
-import { addFragment, type FragmentDropResult } from '../game/fragments'
+import { addFragment, removeFragments, type FragmentDropResult } from '../game/fragments'
 import { canAffordMaterials, deductMaterials } from '../game/materials'
 import { canSkip, executeSkip } from '../game/skip'
 import { getNewlyUnlockedTitles, unlockTitles } from '../game/titles'
@@ -40,6 +40,7 @@ export interface UseGameStateReturn {
     goStorage: () => void
     equipTitle: (id: TitleId | null) => void
     buyScroll: (count: number, totalPrice: number) => void
+    craftScroll: (fragmentId: FragmentId, amount: number, yieldCount: number) => void
     craftSword: (level: number, materials: { fragmentId: FragmentId; amount: number }[]) => void
     skip: () => void
     dismissTitleUnlock: () => void
@@ -355,6 +356,18 @@ export function useGameState(): UseGameStateReturn {
     })
   }, [])
 
+  // 조합소: 조각 차감 + 스크롤 생성
+  const craftScroll = useCallback((fragmentId: FragmentId, amount: number, yieldCount: number) => {
+    setState((prev) => {
+      if (prev.fragments[fragmentId] < amount) return prev
+      return {
+        ...prev,
+        fragments: removeFragments(prev.fragments, fragmentId, amount),
+        scrolls: prev.scrolls + yieldCount,
+      }
+    })
+  }, [])
+
   // 조합소: 조각 차감 + 검 생성 + 강화소 이동
   const craftSword = useCallback((
     level: number,
@@ -432,7 +445,7 @@ export function useGameState(): UseGameStateReturn {
     actions: {
       startRound, forge, reveal, sell, storeCurrentSword, useScroll, pickFragment,
       goHome, goForge, goShopCraft, goStorage, equipTitle,
-      buyScroll, craftSword, skip, dismissTitleUnlock,
+      buyScroll, craftScroll, craftSword, skip, dismissTitleUnlock,
     },
   }
 }

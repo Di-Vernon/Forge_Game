@@ -59,6 +59,18 @@
   color: var(--c-text-dim);
 }
 
+.mythProgress {
+  font-size: 0.68rem;
+  color: var(--c-text-dim);
+  font-family: inherit;
+}
+
+.mythComplete {
+  font-size: 0.68rem;
+  color: var(--c-gold-bright);
+  font-family: inherit;
+}
+
 /* ── 메인 스크롤 영역 ─────────────────────────────────────────── */
 .main {
   overflow-y: auto;

@@ -179,6 +179,12 @@ export default function StorageScreen({ state, onBack }: Props) {
         <span className={styles.headerCount}>
           <span className={styles.countNum}>{uniqueCount}</span>
           <span className={styles.countDen}> / 25</span>
+          {uniqueCount > 0 && uniqueCount < 25 && (
+            <span className={styles.mythProgress}> · 신화 {uniqueCount}/25</span>
+          )}
+          {uniqueCount === 25 && (
+            <span className={styles.mythComplete}> · 신화 달성!</span>
+          )}
         </span>
       </header>
 

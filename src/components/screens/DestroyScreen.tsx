@@ -256,8 +256,8 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
         {/* 선택 버튼 (idle 상태) */}
         {phase === 'idle' && (
           <div className={`${styles.choiceRow} ${destroyTier === 'mid' ? styles.choiceRowMid : ''}`}>
-            {/* 줍기 — level 0, 1은 드랍 없음 → 슬롯 전체 숨김 */}
-            {canPickup && (
+            {/* 줍기 — level 0, 1은 드랍 없음 → "돌아가기"로 대체 */}
+            {canPickup ? (
               <>
                 <div className={styles.choiceSlot}>
                   <Button
@@ -269,6 +269,21 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
                     줍기
                   </Button>
                   <span className={styles.choiceNote}>조각 회수</span>
+                </div>
+                <div className={styles.choiceDivider} />
+              </>
+            ) : (
+              <>
+                <div className={styles.choiceSlot}>
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    onClick={() => onPickFragment([])}
+                    fullWidth
+                  >
+                    돌아가기
+                  </Button>
+                  <span className={styles.choiceNote}>드랍 없음</span>
                 </div>
                 <div className={styles.choiceDivider} />
               </>
@@ -286,7 +301,9 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
                 복원권 사용
               </Button>
               <span className={`${styles.choiceNote} ${state.scrolls <= 0 ? styles.noteWarn : ''}`}>
-                {state.scrolls > 0 ? '스크롤 1개 소모' : '복원 스크롤이 없습니다'}
+                {state.scrolls > 0
+                  ? `+${level}(으)로 복원 · 스크롤 1개 소모`
+                  : '복원 스크롤이 없습니다'}
               </span>
             </div>
           </div>

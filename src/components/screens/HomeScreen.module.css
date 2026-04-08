@@ -325,6 +325,18 @@
   letter-spacing: 0.06em;
 }
 
+.cardProtection {
+  font-size: 0.65rem;
+  color: var(--c-gold);
+  opacity: 0.9;
+}
+
+.cardSkip {
+  font-size: 0.62rem;
+  color: var(--c-blue);
+  line-height: 1.3;
+}
+
 .lockIcon {
   font-size: 1rem;
   position: absolute;

@@ -147,12 +147,19 @@ function ShopTab({ gold, scrolls, onBuy, showToast }: ShopTabProps) {
 
 interface CraftTabProps {
   state: GameState
+  onCraftScroll: (fragmentId: FragmentId, amount: number, yieldCount: number) => void
   onCraftSword: (level: number, materials: { fragmentId: FragmentId; amount: number }[]) => void
   showToast: (msg: string) => void
 }
 
-function CraftTab({ state, onCraftSword, showToast }: CraftTabProps) {
+function CraftTab({ state, onCraftScroll, onCraftSword, showToast }: CraftTabProps) {
   const hasSword = state.currentLevel !== null
+
+  function handleCraftScroll(recipe: ScrollCraftEntry) {
+    if (recipe.amount === null) return
+    onCraftScroll(recipe.fragmentId as FragmentId, recipe.amount, recipe.yield)
+    showToast(`복원 스크롤 ${recipe.yield}개 제작 완료`)
+  }
 
   function handleCraftSword(recipe: SwordRecipe) {
     const materials = recipe.materials as { fragmentId: FragmentId; amount: number }[]
@@ -198,6 +205,7 @@ function CraftTab({ state, onCraftSword, showToast }: CraftTabProps) {
                 variant={canCraft ? 'primary' : 'ghost'}
                 size="sm"
                 disabled={!canCraft}
+                onClick={() => handleCraftScroll(recipe)}
               >
                 제작
               </Button>
@@ -285,6 +293,7 @@ interface Props {
   state: GameState
   onBack: () => void
   onBuyScroll: (count: number, totalPrice: number) => void
+  onCraftScroll: (fragmentId: FragmentId, amount: number, yieldCount: number) => void
   onCraftSword: (level: number, materials: { fragmentId: FragmentId; amount: number }[]) => void
 }
 
@@ -292,7 +301,7 @@ interface Props {
 
 type Tab = 'shop' | 'craft'
 
-export default function ShopCraftScreen({ state, onBack, onBuyScroll, onCraftSword }: Props) {
+export default function ShopCraftScreen({ state, onBack, onBuyScroll, onCraftScroll, onCraftSword }: Props) {
   const [activeTab, setActiveTab] = useState<Tab>('shop')
   const [toast, setToast] = useState<string | null>(null)
 
@@ -356,6 +365,7 @@ export default function ShopCraftScreen({ state, onBack, onBuyScroll, onCraftSwo
         ) : (
           <CraftTab
             state={state}
+            onCraftScroll={onCraftScroll}
             onCraftSword={onCraftSword}
             showToast={showToast}
           />
