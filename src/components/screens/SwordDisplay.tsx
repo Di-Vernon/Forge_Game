@@ -14,6 +14,8 @@ interface SwordConfig {
   guardHighlight: string
   guardShadow: string
   gripColor: string
+  gripHighlight: string
+  gripShadow: string
   accentColor: string
   glowColor: string | null
 }
@@ -21,50 +23,58 @@ interface SwordConfig {
 function getConfig(level: number): SwordConfig {
   if (level >= 25)
     return {
-      bladeColor: '#f0f4ff', bladeHighlight: '#ffffff', bladeShadow: '#c0d0f0',
+      bladeColor: '#e8f0ff', bladeHighlight: '#ffffff', bladeShadow: '#a0b8e8',
       guardColor: '#c8d8ff', guardHighlight: '#e0ecff', guardShadow: '#90a8d8',
-      gripColor: '#a0b8e8', accentColor: '#ffffff', glowColor: '#c0d8ff',
+      gripColor: '#a0b8e8', gripHighlight: '#c0d0f0', gripShadow: '#7890c0',
+      accentColor: '#ffffff', glowColor: '#c0d8ff',
     }
   if (level >= 23)
     return {
-      bladeColor: '#cc3010', bladeHighlight: '#ff5535', bladeShadow: '#881808',
+      bladeColor: '#cc3010', bladeHighlight: '#ff7050', bladeShadow: '#701808',
       guardColor: '#882010', guardHighlight: '#aa3018', guardShadow: '#601008',
-      gripColor: '#601808', accentColor: '#ff5030', glowColor: '#ff4020',
+      gripColor: '#601808', gripHighlight: '#803020', gripShadow: '#401008',
+      accentColor: '#ff5030', glowColor: '#ff4020',
     }
   if (level >= 17)
     return {
-      bladeColor: '#d4a820', bladeHighlight: '#ffe060', bladeShadow: '#a07810',
+      bladeColor: '#d4a820', bladeHighlight: '#ffe880', bladeShadow: '#886010',
       guardColor: '#a07810', guardHighlight: '#c89820', guardShadow: '#705008',
-      gripColor: '#705008', accentColor: '#ffe060', glowColor: '#ffd030',
+      gripColor: '#705008', gripHighlight: '#907018', gripShadow: '#503800',
+      accentColor: '#ffe060', glowColor: '#ffd030',
     }
   if (level >= 13)
     return {
-      bladeColor: '#9040c0', bladeHighlight: '#c070ff', bladeShadow: '#602080',
+      bladeColor: '#9040c0', bladeHighlight: '#d090ff', bladeShadow: '#502070',
       guardColor: '#602880', guardHighlight: '#8040a0', guardShadow: '#401860',
-      gripColor: '#401860', accentColor: '#c070ff', glowColor: '#a050e0',
+      gripColor: '#401860', gripHighlight: '#603080', gripShadow: '#281048',
+      accentColor: '#c070ff', glowColor: '#a050e0',
     }
   if (level >= 8)
     return {
-      bladeColor: '#3870c8', bladeHighlight: '#60a0ff', bladeShadow: '#204080',
+      bladeColor: '#3870c8', bladeHighlight: '#80b8ff', bladeShadow: '#183878',
       guardColor: '#204880', guardHighlight: '#3068a0', guardShadow: '#182858',
-      gripColor: '#182858', accentColor: '#60a0ff', glowColor: '#4488dd',
+      gripColor: '#182858', gripHighlight: '#284070', gripShadow: '#101840',
+      accentColor: '#60a0ff', glowColor: '#4488dd',
     }
   if (level >= 4)
     return {
-      bladeColor: '#408840', bladeHighlight: '#60b060', bladeShadow: '#286828',
+      bladeColor: '#408840', bladeHighlight: '#80cc60', bladeShadow: '#205020',
       guardColor: '#285828', guardHighlight: '#387838', guardShadow: '#1a3a1a',
-      gripColor: '#503820', accentColor: '#80cc60', glowColor: null,
+      gripColor: '#503820', gripHighlight: '#685030', gripShadow: '#382010',
+      accentColor: '#80cc60', glowColor: null,
     }
   if (level >= 2)
     return {
-      bladeColor: '#c8c8c8', bladeHighlight: '#e8e8e8', bladeShadow: '#909090',
+      bladeColor: '#b0b0b0', bladeHighlight: '#e0e0e0', bladeShadow: '#707878',
       guardColor: '#909090', guardHighlight: '#b0b0b0', guardShadow: '#686868',
-      gripColor: '#503820', accentColor: '#e8e8e8', glowColor: null,
+      gripColor: '#503820', gripHighlight: '#685030', gripShadow: '#382010',
+      accentColor: '#e8e8e8', glowColor: null,
     }
   return {
-    bladeColor: '#908060', bladeHighlight: '#b0a080', bladeShadow: '#705840',
+    bladeColor: '#908060', bladeHighlight: '#c0a878', bladeShadow: '#685838',
     guardColor: '#605040', guardHighlight: '#786858', guardShadow: '#483828',
-    gripColor: '#503820', accentColor: '#b0a080', glowColor: null,
+    gripColor: '#503820', gripHighlight: '#685030', gripShadow: '#382010',
+    accentColor: '#b0a080', glowColor: null,
   }
 }
 
@@ -140,60 +150,72 @@ export default function SwordDisplay({ level, forgePhase }: Props) {
       >
         {/* 검 SVG */}
         <svg
-          viewBox="0 0 200 300"
+          viewBox="0 0 200 340"
           style={{
             ...filterStyle,
             ...animStyle,
-            maxWidth: '220px',
-            maxHeight: '320px',
+            maxWidth: '260px',
+            maxHeight: '360px',
             width: '60%',
             height: 'auto',
           }}
           aria-label={`+${level}강 검`}
         >
           <defs>
-            {/* 날 그라디언트 */}
-            <linearGradient id={`${uid}-blade`} x1="0" y1="0" x2="1" y2="1">
+            {/* 날 좌→우 그라디언트 (2면) */}
+            <linearGradient id={`${uid}-blade`} x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor={cfg.bladeHighlight} />
+              <stop offset="40%" stopColor={cfg.bladeColor} />
               <stop offset="100%" stopColor={cfg.bladeShadow} />
             </linearGradient>
-            {/* 가드 그라디언트 */}
+            {/* 날 shine (수직 반사) */}
+            <linearGradient id={`${uid}-shine`} x1="0.5" y1="0" x2="0.5" y2="1">
+              <stop offset="0%" stopColor="white" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="white" stopOpacity="0" />
+              <stop offset="100%" stopColor="white" stopOpacity="0.2" />
+            </linearGradient>
+            {/* 가드 그라디언트 (상→하) */}
             <linearGradient id={`${uid}-guard`} x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor={cfg.guardHighlight} />
               <stop offset="100%" stopColor={cfg.guardShadow} />
             </linearGradient>
-            {/* 날 하이라이트 (에지 라인) */}
-            <linearGradient id={`${uid}-edge`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={cfg.bladeHighlight} stopOpacity="0.8" />
-              <stop offset="100%" stopColor={cfg.bladeHighlight} stopOpacity="0" />
+            {/* 그립 원통 쉐이딩 (좌→우) */}
+            <linearGradient id={`${uid}-grip`} x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor={cfg.gripHighlight} />
+              <stop offset="50%" stopColor={cfg.gripColor} />
+              <stop offset="100%" stopColor={cfg.gripShadow} />
             </linearGradient>
           </defs>
 
           {/* ── 날 (blade) — 테이퍼드 폴리곤 ── */}
           <polygon
-            points="100,12 86,170 114,170"
+            points="100,8 86,190 114,190"
             fill={`url(#${uid}-blade)`}
           />
 
-          {/* 날 에지 하이라이트 (왼쪽 면) */}
-          <line
-            x1="100" y1="12" x2="86" y2="170"
-            stroke={cfg.bladeHighlight} strokeWidth="1.5" opacity="0.5"
+          {/* 날 shine (반사 하이라이트 — 얇은 수직선) */}
+          <rect
+            x="97" y="20" width="3" height="140"
+            fill={`url(#${uid}-shine)`} opacity="0.5"
           />
+          {/* 추가 smear (Block 2+) */}
+          {level >= 8 && (
+            <rect x="94" y="40" width="2" height="60" fill="white" opacity="0.15" />
+          )}
 
           {/* 풀러 (blood groove) — Block 2+ */}
           {level >= 8 && (
             <line
-              x1="100" y1="45" x2="100" y2="155"
-              stroke={cfg.accentColor} strokeWidth="2" opacity="0.4"
+              x1="100" y1="35" x2="100" y2="175"
+              stroke={cfg.accentColor} strokeWidth="1.5" opacity="0.35"
             />
           )}
 
           {/* ── 크로스가드 — 곡선 path ── */}
           <path
             d={level >= 13
-              ? 'M55,168 Q100,180 145,168 L145,178 Q100,166 55,178 Z'
-              : 'M62,168 Q100,178 138,168 L138,178 Q100,168 62,178 Z'
+              ? 'M56,190 Q100,202 144,190 L144,200 Q100,188 56,200 Z'
+              : 'M62,190 Q100,200 138,190 L138,200 Q100,190 62,200 Z'
             }
             fill={`url(#${uid}-guard)`}
           />
@@ -201,41 +223,42 @@ export default function SwordDisplay({ level, forgePhase }: Props) {
           {/* 가드 장식 — Block 3+ */}
           {level >= 13 && (
             <>
-              <circle cx="58" cy="173" r="4" fill={cfg.accentColor} opacity="0.8" />
-              <circle cx="142" cy="173" r="4" fill={cfg.accentColor} opacity="0.8" />
+              <circle cx="52" cy="195" r="5" fill={cfg.accentColor} opacity="0.8" />
+              <circle cx="148" cy="195" r="5" fill={cfg.accentColor} opacity="0.8" />
             </>
           )}
 
-          {/* ── 그립 — 가드에서 자연스럽게 연결 ── */}
-          <rect x="94" y="178" width="12" height="55" rx="2"
-                fill={cfg.gripColor} />
+          {/* ── 그립 — 가드에서 자연스럽게 연결, 원통 쉐이딩 ── */}
+          <rect
+            x="93" y="200" width="14" height="60" rx="2"
+            fill={`url(#${uid}-grip)`}
+          />
 
           {/* 그립 감김 — 사선 줄무늬 */}
-          {[186, 194, 202, 210, 218, 226].map((y) => (
+          {[208, 216, 224, 232, 240, 248].map((y) => (
             <line
               key={y}
-              x1="93" y1={y} x2="107" y2={y + 4}
-              stroke={cfg.guardColor} strokeWidth="2" opacity="0.6"
+              x1="92" y1={y} x2="108" y2={y + 5}
+              stroke={cfg.guardColor} strokeWidth="2.5" opacity="0.5"
             />
           ))}
 
-          {/* ── 포멜 — 그립 하단에 연결된 형태 ── */}
-          <ellipse cx="100" cy="237" rx="10" ry="8"
-                   fill={cfg.guardColor} />
+          {/* ── 포멜 — 그립 하단에 연결 (분리 금지) ── */}
+          <ellipse cx="100" cy="264" rx="11" ry="9"
+                   fill={`url(#${uid}-guard)`} />
           {/* 포멜 장식 — Block 4+ */}
           {level >= 17 && (
-            <ellipse cx="100" cy="237" rx="5" ry="4"
-                     fill={cfg.accentColor} opacity="0.8" />
+            <circle cx="100" cy="264" r="4" fill={cfg.accentColor} opacity="0.7" />
           )}
 
           {/* +25 여명 특수 광채 */}
           {level === 25 && (
             <>
-              <line x1="100" y1="-10" x2="100" y2="260"
-                    stroke="#c0d8ff" strokeWidth="1.5" opacity="0.4" />
-              <line x1="40" y1="130" x2="160" y2="130"
-                    stroke="#c0d8ff" strokeWidth="1.5" opacity="0.4" />
-              <circle cx="100" cy="90" r="40"
+              <line x1="100" y1="-20" x2="100" y2="290"
+                    stroke="#c0d8ff" strokeWidth="1.5" opacity="0.3" />
+              <line x1="-20" y1="195" x2="220" y2="195"
+                    stroke="#c0d8ff" strokeWidth="1.5" opacity="0.3" />
+              <circle cx="100" cy="100" r="40"
                       fill="none" stroke="#c0d8ff" strokeWidth="0.8" opacity="0.2" />
             </>
           )}

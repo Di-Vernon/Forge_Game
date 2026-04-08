@@ -9,6 +9,7 @@ import { canAffordMaterials, deductMaterials } from '../game/materials'
 import { canSkip, executeSkip } from '../game/skip'
 import { getNewlyUnlockedTitles, unlockTitles } from '../game/titles'
 import configJson from '../data/config.json'
+import swordsData from '../data/swords.json'
 
 // 도감: 레벨을 발견 목록에 추가
 function addDiscovered(existing: number[], level: number): number[] {
@@ -306,12 +307,17 @@ export function useGameState(): UseGameStateReturn {
 
   // 복원 스크롤 사용 (DestroyScreen에서 호출)
   // 파괴 직전 레벨로 복원 — currentLevel은 이미 파괴 직전 레벨을 유지하고 있음
+  // Block별 소모 개수: config.json#scrollCostByBlock
   const useScroll = useCallback(() => {
     setState((prev) => {
-      if (prev.scrolls <= 0 || prev.currentLevel === null) return prev
+      if (prev.currentLevel === null) return prev
+      const sword = swordsData.find((s) => s.level === prev.currentLevel)
+      if (!sword) return prev
+      const cost = (configJson.scrollCostByBlock as Record<string, number>)[String(sword.block)] ?? 1
+      if (prev.scrolls < cost) return prev
       return {
         ...prev,
-        scrolls: prev.scrolls - 1,
+        scrolls: prev.scrolls - cost,
       }
     })
     setScreen('forge')

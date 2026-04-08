@@ -160,8 +160,9 @@
   bottom: 28px;
   width: 120px;
   height: 20px;
-  background: var(--c-surface2);
+  background: linear-gradient(180deg, #3a2818, #211710);
   border: 2px solid var(--c-border);
+  border-radius: 2px;
 }
 .anvil::before {
   content: '';
@@ -171,9 +172,10 @@
   transform: translateX(-50%);
   width: 80px;
   height: 12px;
-  background: var(--c-surface2);
+  background: linear-gradient(180deg, #3a2818, #211710);
   border: 2px solid var(--c-border);
   border-bottom: none;
+  border-radius: 2px 2px 0 0;
 }
 
 .swordWrapper {
@@ -272,7 +274,7 @@
   padding: 0 20px;
   min-height: 52px;
   border-top: 2px solid var(--c-border);
-  background: var(--c-surface);
+  background: var(--c-surface2);
 }
 
 .swordInfo {
@@ -286,7 +288,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--c-gold-bright);
-  text-shadow: 0 0 4px var(--c-gold);
+  text-shadow: 0 0 6px var(--c-gold);
 }
 
 .swordName {
@@ -351,7 +353,7 @@
   background: transparent;
   border: none;
   border-bottom: 1px dashed var(--c-border-lt);
-  color: var(--c-text);
+  color: var(--c-gold-bright);
   font-size: 0.9rem;
   font-family: inherit;
   letter-spacing: 0.04em;

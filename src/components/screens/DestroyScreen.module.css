@@ -108,8 +108,9 @@
 .anvil {
   width: 120px;
   height: 20px;
-  background: var(--c-surface2);
+  background: linear-gradient(180deg, #3a2818, #211710);
   border: 2px solid var(--c-border);
+  border-radius: 2px;
   margin-top: -10px;
   position: relative;
   z-index: 1;
@@ -123,9 +124,10 @@
   transform: translateX(-50%);
   width: 80px;
   height: 12px;
-  background: var(--c-surface2);
+  background: linear-gradient(180deg, #3a2818, #211710);
   border: 2px solid var(--c-border);
   border-bottom: none;
+  border-radius: 2px 2px 0 0;
 }
 
 /* ── 페이즈별 스크린 클래스 ─────────────────────────────────── */

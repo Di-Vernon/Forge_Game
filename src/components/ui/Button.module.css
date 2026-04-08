@@ -36,12 +36,12 @@
 }
 
 .gold {
-  background: var(--c-gold);
+  background: linear-gradient(180deg, #d4a020 0%, #a07810 100%);
   border-color: var(--c-gold-bright);
   color: #0c0906;
 }
 .gold:hover:not(:disabled) {
-  background: var(--c-gold-bright);
+  filter: brightness(1.15);
 }
 
 .danger {

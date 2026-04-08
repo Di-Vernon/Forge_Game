@@ -193,7 +193,16 @@ export default function HomeScreen({
       <main className={styles.main}>
         {/* 게임 타이틀 */}
         <div className={styles.titleSection}>
-          <div className={styles.titleDecor}>⚔</div>
+          <div className={styles.titleDecor}>
+            <svg width="36" height="36" viewBox="0 0 36 36" style={{ opacity: 0.6 }}>
+              <line x1="4" y1="32" x2="32" y2="4" stroke="var(--c-gold)" strokeWidth="2.5" />
+              <polygon points="32,4 28,2 34,8" fill="var(--c-gold)" />
+              <line x1="10" y1="22" x2="14" y2="26" stroke="var(--c-gold)" strokeWidth="2" />
+              <line x1="32" y1="32" x2="4" y2="4" stroke="var(--c-gold)" strokeWidth="2.5" />
+              <polygon points="4,4 8,2 2,8" fill="var(--c-gold)" />
+              <line x1="26" y1="22" x2="22" y2="26" stroke="var(--c-gold)" strokeWidth="2" />
+            </svg>
+          </div>
           <h1 className={styles.gameTitle}>검 만들기</h1>
           <div className={styles.titleSubtext}>대장간에서 전설의 검을 완성하라</div>
         </div>
