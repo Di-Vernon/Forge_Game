@@ -19,13 +19,12 @@
 
 ## 공통 규칙
 
-- **표시 크기**: `SwordDisplay.tsx`의 `SWORD_SIZES` 맵 기준. 128px PNG를 `image-rendering: pixelated`로 확대.
-  - Block 1 (+0~+7): 310~410px (기본 존재감)
-  - Block 2 (+8~+12): 420~480px (마법 영역 진입)
-  - Block 3 (+13~+16): 490~540px (눈에 띄는 스케일 점프)
-  - Block 4 (+17~+22): 440~580px (화면 압도, +22 단검은 의도적 작음)
-  - Block 5~6 (+23~+25): 560~620px (최대 스케일)
-- **방향**: 검별 `swordOrientations.json`의 CSS rotation 값 적용. 원본 이미지 무손실.
+> ⚠️ **UI/UX 대격변으로 크기/방향 스펙 변경됨** (2026-04-09).
+> 변경 상세: @docs/ui_ux_design_overhaul.md 섹션 5
+
+- **표시 크기**: **450~520px 균일**. 128px PNG를 `image-rendering: pixelated`로 확대.
+  - 기존 Block별 310~620px 범위 스펙은 폐기됨.
+- **방향**: **회전 없음.** `swordOrientations.json`의 CSS rotation 값 적용 폐기. PNG 원본 방향 그대로 표시.
 - **idle 애니메이션**: Block 1~2는 기본 정지. Block 3부터 검별 고유 효과 적극 활용.
 - **그라디언트**: 각 검마다 blade/guard/grip에 linearGradient 적용
 - **명암**: 날 좌→우 (밝은면→어두운면), 그립 좌→우 (원통 쉐이딩)
