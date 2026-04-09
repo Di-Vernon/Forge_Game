@@ -34,7 +34,11 @@
       "Bash(node -e \"const h = require\\('./node_modules/eslint-plugin-react-hooks'\\); console.log\\(JSON.stringify\\(Object.keys\\(h.configs['recommended-latest'] || {}\\)\\)\\)\")",
       "Bash(echo \"PID: $!\")",
       "Bash(echo \"Started: $!\")",
-      "Bash(find C:\\\\Users\\\\PC\\\\project\\\\Forge_Game\\\\simulation\\\\v11\\\\\" -type f -name *\" | head -50:*)"
+      "Bash(find C:\\\\Users\\\\PC\\\\project\\\\Forge_Game\\\\simulation\\\\v11\\\\\" -type f -name *\" | head -50:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(ls public/sprites/swords/sword_*.png)"
     ]
   }
 }
