@@ -1,26 +1,85 @@
-/* ── ShopCraftScreen 레이아웃 ───────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   ShopCraftScreen — 중세 상점 / 조합소 공간 기반 UI
+   분위기: 촛불 조명 + 낡은 목재 + 석재 카운터
+   ═══════════════════════════════════════════════════════ */
 
+/* ── 최상위 레이아웃 ──────────────────────────────────────── */
 .screen {
   display: grid;
-  grid-template-rows: 52px 3px 1fr;
+  grid-template-rows: 56px 3px 1fr;
   height: 100%;
   min-height: 0;
-  background: var(--c-bg);
+  background: #120a02;
   position: relative;
+  overflow: hidden;
 }
 
-/* ── 헤더 ──────────────────────────────────────────────────── */
+/* 목재 나뭇결 질감 — 수평 미세 선 */
+.screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 5px,
+      rgba(200, 140, 40, 0.014) 5px,
+      rgba(200, 140, 40, 0.014) 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 63px,
+      rgba(200, 120, 20, 0.022) 63px,
+      rgba(200, 120, 20, 0.022) 64px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 촛불 조명 — 상단 중앙 따뜻한 빛 */
+.screen::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 45%;
+  background: radial-gradient(
+    ellipse 70% 40% at 50% 0%,
+    rgba(200, 110, 20, 0.13) 0%,
+    rgba(120, 60, 10, 0.06) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 헤더 — 상점 이름판 ────────────────────────────────────── */
 .header {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 0 16px;
-  border-bottom: none;
-  background: var(--c-surface);
+  background: #1c1006;
+  border-bottom: 2px solid #5a3010;
+  position: relative;
+  z-index: 2;
   flex-shrink: 0;
 }
 
-/* ── 탭 ─────────────────────────────────────────────────────── */
+/* 헤더 하단 금빛 미세선 */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(180, 110, 20, 0.35), transparent);
+  pointer-events: none;
+}
+
+/* ── 탭 — 나무 표지판 ──────────────────────────────────────── */
 .tabs {
   display: flex;
   gap: 0;
@@ -31,38 +90,49 @@
 .tab {
   background: transparent;
   border: none;
-  color: var(--c-text-dim);
-  font-family: inherit;
-  font-size: 0.85rem;
+  border-bottom: 3px solid transparent;
+  color: #7a5830;
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
   font-weight: 600;
-  padding: 0 24px;
-  height: 52px;
+  padding: 0 22px;
+  height: 56px;
   cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: color 0.15s;
+  letter-spacing: 0.12em;
+  transition: color 0.15s, border-color 0.15s;
   position: relative;
 }
-.tab:hover    { color: var(--c-text); }
-.tabActive    { color: var(--c-gold-bright); }
+.tab:hover { color: #b07838; }
+.tabActive {
+  color: var(--c-gold-bright);
+  border-bottom-color: var(--c-gold);
+}
 
-/* 탭 하단 인디케이터 바 */
+/* ── 탭 인디케이터 바 ──────────────────────────────────────── */
 .tabBar {
-  background: var(--c-border);
+  background: #1c1006;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .tabIndicator {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 50%;
   height: 100%;
-  background: var(--c-gold);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(160, 90, 20, 0.55) 30%,
+    rgba(200, 120, 30, 0.7) 50%,
+    rgba(160, 90, 20, 0.55) 70%,
+    transparent 100%
+  );
   transition: transform 0.2s ease;
 }
 
-/* ── headerStats ──────────────────────────────────────────── */
+/* ── 헤더 stats ─────────────────────────────────────────────── */
 .headerStats {
   display: flex;
   gap: 14px;
@@ -72,216 +142,378 @@
 .hStat {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 0.75rem;
+  gap: 5px;
 }
-.hStatLabel { color: var(--c-text-dim); font-size: 0.65rem; }
-.hStatVal   { font-family: 'Courier New', monospace; font-weight: 700; color: var(--c-text); }
 
-/* ── 콘텐츠 영역 ──────────────────────────────────────────── */
+.hStatLabel {
+  color: #7a5830;
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.hStatVal {
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+}
+
+/* ── 콘텐츠 본문 ──────────────────────────────────────────── */
 .body {
   overflow-y: auto;
   min-height: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .tabContent {
-  padding: 0 0 40px;
+  padding: 0 0 48px;
 }
 
-/* ── 섹션 헤더 ────────────────────────────────────────────── */
+/* ── 섹션 헤더 — 석판 각인 ──────────────────────────────────── */
 .sectionHeader {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--c-text-dim);
-  padding: 16px 20px 8px;
-  border-bottom: 1px solid var(--c-border);
+  color: #9a7040;
+  padding: 18px 20px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* ── 상점 탭 ──────────────────────────────────────────────── */
+.sectionHeader::before,
+.sectionHeader::after {
+  content: '';
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4a2c0e, transparent);
+  flex: 1;
+}
+
+.sectionHeader::before { max-width: 16px; }
+
+/* ── 상점 탭: 골드 표시 바 ─────────────────────────────────── */
 .shopGoldBar,
 .shopScrollBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-surface);
+  background: rgba(28, 16, 4, 0.95);
+  border-top: 1px solid #3a2010;
+  border-bottom: 1px solid #3a2010;
+  position: relative;
 }
 
-.shopGoldLabel { font-size: 0.72rem; color: var(--c-text-dim); letter-spacing: 0.06em; }
-.shopGoldVal   {
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
+.shopGoldBar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 16px; right: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #6a3c10 30%, #6a3c10 70%, transparent);
+}
+
+.shopGoldLabel {
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #7a5830;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.shopGoldVal {
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 14px;
   font-weight: 700;
   color: var(--c-gold-bright);
+  text-shadow: 0 0 10px rgba(200, 160, 40, 0.4);
 }
 
+/* ── 상점 아이템 목록 ──────────────────────────────────────── */
 .shopList {
   list-style: none;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .shopItem {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-surface);
-  transition: background 0.1s;
+  padding: 14px 16px 14px 20px;
+  background: #180e04;
+  border: 1px solid #3a2010;
+  position: relative;
+  transition: background 0.12s, border-color 0.12s;
+  overflow: hidden;
 }
-.shopItem:hover { background: var(--c-surface2); }
 
-.shopItemIcon { font-size: 1.4rem; flex-shrink: 0; }
+.shopItem::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #8a4c18, #5a3010);
+}
+
+.shopItem:hover {
+  background: #201408;
+  border-color: #5a3018;
+}
+
+/* 구매 가능 시 따뜻한 배경 강조 */
+.shopItem:has(button:not(:disabled)):hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at right, rgba(160, 90, 20, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.shopItemIcon { font-size: 1.35rem; flex-shrink: 0; }
 
 .shopItemInfo {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   flex: 1;
   min-width: 0;
 }
 
-.shopItemName  { font-size: 0.88rem; color: var(--c-text); }
-.shopItemPrice { font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 700; color: var(--c-gold-bright); }
-.shopItemTbd   { font-size: 0.75rem; color: var(--c-text-faint); font-style: italic; }
-.shopItemWarn  { font-size: 0.68rem; color: var(--c-fail); }
+.shopItemName {
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
+  color: #c09050;
+}
 
-/* ── 조각 인벤토리 바 ─────────────────────────────────────── */
+.shopItemPrice {
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-gold-bright);
+}
+
+.shopItemTbd {
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #5a4028;
+  font-style: italic;
+}
+
+.shopItemWarn {
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: var(--c-fail);
+}
+
+/* ── 조각 인벤토리 바 — 광석 진열대 ─────────────────────────── */
 .fragBar {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  padding: 12px 20px;
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-surface);
+  padding: 12px 16px;
+  background: #0c0802;
+  border-top: 1px solid #2e1c08;
+  border-bottom: 1px solid #2e1c08;
 }
 
 .fragChip {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 4px 10px 4px 6px;
-  background: var(--c-surface2);
-  border: 1px solid var(--c-border);
-  font-size: 0.72rem;
+  padding: 5px 10px 5px 7px;
+  background: #180e04;
+  border: 1px solid #3a2010;
+  transition: border-color 0.12s, background 0.12s;
 }
-.fragChipEmpty { opacity: 0.4; }
+
+.fragChipEmpty { opacity: 0.32; }
+
+.fragChip:not(.fragChipEmpty):hover {
+  background: #221408;
+  border-color: #5a3820;
+}
 
 .fragDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 5px currentColor;
 }
 
-.fragLabel { color: var(--c-text-dim); }
-.fragCount { font-family: 'Courier New', monospace; font-weight: 700; min-width: 1.2rem; text-align: right; }
-.fragNone  { font-size: 0.75rem; color: var(--c-text-faint); align-self: center; }
+.fragLabel {
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #7a5a30;
+}
+
+.fragCount {
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 1.1rem;
+  text-align: right;
+}
+
+.fragNone {
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #4a3820;
+  align-self: center;
+}
 
 /* ── 조합소 리스트 공통 ───────────────────────────────────── */
 .craftList {
   list-style: none;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .craftItem {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-surface);
-  transition: background 0.1s;
+  padding: 12px 14px 12px 18px;
+  background: #160c02;
+  border: 1px solid #2e1c08;
+  position: relative;
+  transition: background 0.1s, border-color 0.1s;
+  overflow: hidden;
 }
-.craftItem:hover { background: var(--c-surface2); }
+
+.craftItem::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #3a2010;
+}
+
+.craftItem:hover {
+  background: #1e1206;
+  border-color: #4a2c14;
+}
+
+.craftItem:has(button:not(:disabled))::before {
+  background: linear-gradient(180deg, #6a4018, #4a2c10);
+}
 
 .craftItemLeft {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 11px;
   flex: 1;
   min-width: 0;
 }
 
 .craftFragDot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   flex-shrink: 0;
-  margin-top: 4px;
+  margin-top: 5px;
+  box-shadow: 0 0 4px currentColor;
 }
 
 .craftSwordLevel {
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 11px;
   font-weight: 700;
-  min-width: 2.8rem;
+  min-width: 2.6rem;
   flex-shrink: 0;
 }
 
 .craftItemInfo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   min-width: 0;
 }
 
 .craftItemName {
-  font-size: 0.88rem;
-  color: var(--c-text);
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
+  color: #b89050;
 }
 
 .craftItemMat {
-  font-size: 0.75rem;
-  color: var(--c-text-dim);
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #7a5830;
 }
 
-.craftTbd { color: var(--c-text-faint); font-style: italic; }
-.craftHave { color: var(--c-text-dim); }
+.craftTbd {
+  font-style: italic;
+  color: #5a4028;
+}
+
+.craftHave {
+  color: #6a5030;
+}
 
 /* 검 재료 칩 */
 .craftMaterials {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
 }
 
 .craftMatChip {
-  font-size: 0.72rem;
-  color: var(--c-text-dim);
-  background: var(--c-surface2);
-  border: 1px solid var(--c-border);
-  padding: 2px 8px;
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #7a5830;
+  background: #0e0802;
+  border: 1px solid #2e1c08;
+  padding: 2px 7px;
 }
-.craftMatOk  { border-color: var(--c-success); color: var(--c-text); }
-.craftMatTbd { border-style: dashed; color: var(--c-text-faint); }
+
+.craftMatOk {
+  border-color: #3a5820;
+  color: #90b860;
+}
+
+.craftMatTbd {
+  border-style: dashed;
+  color: #4a3820;
+}
 
 /* 검 제작 불가 경고 */
 .craftWarning {
-  margin: 10px 20px;
-  padding: 10px 14px;
-  background: rgba(176, 40, 32, 0.12);
-  border: 1px solid var(--c-fail);
-  font-size: 0.75rem;
-  color: var(--c-fail);
-  opacity: 0.85;
+  margin: 6px 14px;
+  padding: 9px 14px;
+  background: rgba(140, 30, 20, 0.13);
+  border: 1px solid #5a2010;
+  border-left: 3px solid #8a2c10;
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #b04030;
 }
 
 /* ── 토스트 ───────────────────────────────────────────────── */
 .toast {
   position: absolute;
-  bottom: 24px;
+  bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--c-surface);
+  background: #1e1206;
   border: 2px solid var(--c-gold);
+  border-left: 4px solid var(--c-gold-bright);
   color: var(--c-gold-bright);
-  font-size: 0.82rem;
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
   padding: 10px 24px;
   white-space: nowrap;
   pointer-events: none;
   z-index: 20;
   animation: toast-in 0.2s ease;
+  box-shadow: 0 4px 24px rgba(180, 110, 20, 0.35);
 }
 
 @keyframes toast-in {

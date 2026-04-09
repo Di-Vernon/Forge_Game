@@ -379,10 +379,16 @@ gsap.to(goldDisplay, {
 
 ## 13. 구현 순서 (Phase별)
 
-| Phase | 내용 | 우선순위 |
-|-------|------|---------|
-| Phase 1 | 색상 팔레트 CSS 변수화 + 레이아웃 구조 (슬라이드 패널) | 기반 |
-| Phase 2 | 5레이어 대장간 배경 + Canvas 파티클 | 분위기 |
-| Phase 3 | 4단계 피드백 애니메이션 + 버튼 물리감 + 사운드 동기화 | 피드백 |
-| Phase 4 | 상점/조합소/보관함 공간 기반 UI | 공간 UI |
-| Phase 5 | 골드 롤링 + 타이포그래피 정비 + 적응형 페이싱 | 폴리싱 |
+| Phase | 내용 | 우선순위 | 상태 |
+|-------|------|---------|------|
+| Phase 1 | 색상 팔레트 CSS 변수화 + 레이아웃 구조 (슬라이드 패널) | 기반 | ✅ 완료 |
+| Phase 2 | 5레이어 대장간 배경 + Canvas 파티클 (EmberCanvas) | 분위기 | ✅ 완료 |
+| Phase 3 | 4단계 피드백 애니메이션 + 버튼 물리감 + 사운드 동기화 | 피드백 | ✅ 완료 |
+| Phase 4 | 상점/조합소/보관함 공간 기반 UI (중세 상점·병기고 컨셉) | 공간 UI | ✅ 완료 |
+| Phase 5 | 앰비언스 사운드 + 화면 전환 효과 + 마일스톤 시네마틱 | 폴리싱 | ✅ 완료 |
+
+### Phase 5 구현 상세 (2026-04-09)
+
+- **AmbientManager** (`src/audio/AmbientManager.ts`): 순수 Web Audio API 절차적 앰비언스. 용광로 저역 럼블(저역 필터 노이즈 75Hz) + 불꽃 크래클(대역통과 노이즈 380Hz + 2.1Hz LFO 명멸) + 42Hz 사인 기저 진동. bgmOn 토글 연동, 2초 페이드인 / 0.8초 페이드아웃.
+- **화면 전환** (`src/index.css`): `@keyframes screen-enter` (opacity 0→1, 0.18s). 비-게임 화면(Destroy/ShopCraft/Storage/Dex) React key 기반 마운트 애니메이션.
+- **마일스톤 시네마틱** (`src/App.tsx`, `MilestoneOverlay`): discoveredLevels 변화 감지. +12/+17/+22/+25 최초 달성 시 3.5초 인라인 오버레이. Block별 색상(파랑/보라/금/백금), `milestone-in/level/name/line` 키프레임 시퀀스. `prefers-reduced-motion` 시 표시 생략.

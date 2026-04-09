@@ -1,53 +1,88 @@
-/* ── StorageScreen 레이아웃 ─────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   StorageScreen — 병기고 / 무기 보관함 공간 기반 UI
+   분위기: 어두운 석조 병기고, 희미한 청백 등불
+   ═══════════════════════════════════════════════════════ */
 
+/* ── 최상위 레이아웃 ──────────────────────────────────────── */
 .screen {
   display: grid;
   grid-template-rows: 52px 1fr;
   height: 100%;
   min-height: 0;
-  /* 보물창고: 깊고 어두운 남색 기조 */
-  background: #07080f;
+  /* 석조 병기고: 깊고 어두운 남색 기조 */
+  background: #060810;
   position: relative;
   overflow: hidden;
 }
 
-/* 돌벽 질감 격자 */
+/* 돌벽 블록 격자 질감 */
 .screen::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(80, 100, 160, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(80, 100, 160, 0.025) 1px, transparent 1px),
+    linear-gradient(rgba(60, 80, 140, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 80, 140, 0.012) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px, 16px 16px, 16px 16px;
   pointer-events: none;
   z-index: 0;
 }
 
-/* ── 헤더 ─────────────────────────────────────────────────────── */
+/* 등불 빛 — 중앙 상단 희미한 청백광 */
+.screen::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 35%;
+  background: radial-gradient(
+    ellipse 60% 35% at 50% 0%,
+    rgba(80, 120, 200, 0.08) 0%,
+    rgba(40, 60, 120, 0.04) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 헤더 — 병기고 표지판 ──────────────────────────────────── */
 .header {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 0 16px;
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-surface);
+  background: #0c0e18;
+  border-bottom: 2px solid #1c2440;
   position: relative;
   z-index: 2;
   flex-shrink: 0;
 }
 
+/* 헤더 하단 은빛 미세선 */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(100, 130, 200, 0.25), transparent);
+  pointer-events: none;
+}
+
 .headerTitle {
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--c-text-dim);
+  color: #6070a0;
 }
 
 .headerCount {
   margin-left: auto;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9rem;
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 11px;
 }
 
 .countNum {
@@ -56,98 +91,115 @@
 }
 
 .countDen {
-  color: var(--c-text-dim);
+  color: #4a5878;
 }
 
 .mythProgress {
-  font-size: 0.68rem;
-  color: var(--c-text-dim);
-  font-family: inherit;
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #4a5878;
 }
 
 .mythComplete {
-  font-size: 0.68rem;
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
   color: var(--c-gold-bright);
-  font-family: inherit;
+  text-shadow: 0 0 8px rgba(200, 160, 40, 0.5);
 }
 
-/* ── 메인 스크롤 영역 ─────────────────────────────────────────── */
+/* ── 메인 스크롤 영역 ──────────────────────────────────────── */
 .main {
   overflow-y: auto;
   min-height: 0;
   position: relative;
   z-index: 1;
-  padding: 14px 12px 36px;
+  padding: 16px 14px 40px;
 }
 
-/* ── 5열 도감 그리드 ─────────────────────────────────────────── */
+/* ── 5열 도감 그리드 — 무기 걸이 ──────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 7px;
+  gap: 8px;
 }
 
-/* ── 슬롯 공통 ─────────────────────────────────────────────────── */
+/* ── 슬롯 공통 — 무기 걸이 칸 ─────────────────────────────── */
 .slot {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  padding: 8px 4px 10px;
-  border: 1px solid var(--c-border);
-  background: transparent;
+  padding: 9px 4px 11px;
+  border: 1px solid #1a2038;
+  background: #0a0c14;
   font-family: inherit;
-  transition: background 0.12s, border-color 0.12s;
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s;
   min-height: 128px;
 }
 
-/* ── 미보관 (어두움) ─────────────────────────────────────────── */
+/* 슬롯 내부 상단 미세 조명선 */
+.slot::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(80, 100, 160, 0.2), transparent);
+  pointer-events: none;
+}
+
+/* ── 미보관 (어두움) ──────────────────────────────────────── */
 .slotEmpty {
-  background: rgba(8, 8, 18, 0.7);
-  opacity: 0.52;
+  background: rgba(6, 8, 16, 0.85);
+  opacity: 0.4;
   cursor: default;
 }
 
-/* ── 보관됨 (밝음) ───────────────────────────────────────────── */
+/* ── 보관됨 (밝음) ────────────────────────────────────────── */
 .slotOwned {
-  background: var(--c-surface);
+  background: #0e1020;
   cursor: pointer;
+  border-color: #202840;
 }
 
 .slotOwned:hover {
-  background: var(--c-surface2);
-  border-color: var(--c-border-lt);
+  background: #141828;
+  border-color: #303c60;
+  box-shadow:
+    0 0 8px rgba(60, 80, 160, 0.15),
+    inset 0 0 12px rgba(40, 60, 120, 0.08);
 }
 
 /* ── +25 여명 특별 이펙트 ──────────────────────────────────── */
 .slotLegendary {
-  border-color: var(--c-gold);
+  border-color: var(--c-gold) !important;
   animation: legendary-pulse 2.6s ease-in-out infinite;
 }
 
 @keyframes legendary-pulse {
   0%, 100% {
-    box-shadow: 0 0 6px rgba(200, 160, 32, 0.25),
-                inset 0 0 10px rgba(200, 160, 32, 0.07);
+    box-shadow:
+      0 0 6px rgba(200, 160, 32, 0.22),
+      inset 0 0 10px rgba(200, 160, 32, 0.06);
   }
   50% {
-    box-shadow: 0 0 16px rgba(200, 160, 32, 0.55),
-                inset 0 0 20px rgba(200, 160, 32, 0.14);
+    box-shadow:
+      0 0 18px rgba(200, 160, 32, 0.55),
+      inset 0 0 22px rgba(200, 160, 32, 0.13);
   }
 }
 
-/* ── 레벨 텍스트 ─────────────────────────────────────────────── */
+/* ── 레벨 텍스트 ──────────────────────────────────────────── */
 .slotLevel {
-  font-family: 'Courier New', monospace;
-  font-size: 0.64rem;
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 9px;
   font-weight: 700;
-  color: var(--c-text-dim);
-  letter-spacing: 0.03em;
+  color: #3a4868;
+  letter-spacing: 0.04em;
   line-height: 1;
 }
 
-/* ── 검 이미지 영역 ──────────────────────────────────────────── */
+/* ── 검 이미지 영역 ───────────────────────────────────────── */
 .slotSword {
   display: flex;
   align-items: center;
@@ -157,16 +209,17 @@
 }
 
 .lockIcon {
-  font-size: 1.15rem;
-  opacity: 0.22;
+  font-size: 1.1rem;
+  opacity: 0.18;
 }
 
-/* ── 검 이름 ────────────────────────────────────────────────── */
+/* ── 검 이름 ──────────────────────────────────────────────── */
 .slotName {
-  font-size: 0.58rem;
-  color: var(--c-text-dim);
+  font-family: 'Galmuri9', monospace;
+  font-size: 9px;
+  color: #5060a0;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.4;
   width: 100%;
   padding: 0 2px;
   overflow: hidden;
@@ -177,17 +230,17 @@
 }
 
 .slotNameEmpty {
-  color: var(--c-text-faint);
+  color: #2a3048;
   font-style: italic;
 }
 
-/* ── 수량 뱃지 ───────────────────────────────────────────────── */
+/* ── 수량 뱃지 ────────────────────────────────────────────── */
 .countBadge {
   position: absolute;
   top: 4px;
   right: 4px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.56rem;
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 9px;
   font-weight: 700;
   background: var(--c-gold);
   color: #1a1000;
@@ -196,11 +249,11 @@
   pointer-events: none;
 }
 
-/* ── 도감 상세 모달 ──────────────────────────────────────────── */
+/* ── 도감 상세 모달 / 액션 모달 공통 ──────────────────────── */
 .loreBackdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.84);
+  background: rgba(0, 0, 0, 0.88);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,13 +267,16 @@
 }
 
 .loreModal {
-  background: var(--c-surface);
-  border: 2px solid var(--c-border);
+  background: #0e1020;
+  border: 2px solid #283050;
+  border-top-color: #3a4870;
   width: min(480px, 92%);
   max-height: 74%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.92);
+  box-shadow:
+    0 16px 56px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(80, 100, 160, 0.15);
   animation: modal-slide 0.15s ease;
 }
 
@@ -234,29 +290,30 @@
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-surface2);
+  border-bottom: 1px solid #1e2840;
+  background: #0a0c16;
   flex-shrink: 0;
 }
 
 .loreLevel {
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 11px;
   font-weight: 700;
   min-width: 2.8rem;
   flex-shrink: 0;
 }
 
 .loreName {
-  font-size: 0.9rem;
-  color: var(--c-text);
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
+  color: #a0b0d8;
   flex: 1;
 }
 
 .loreClose {
   background: transparent;
-  border: 1px solid var(--c-border-lt);
-  color: var(--c-text-dim);
+  border: 1px solid #2a3450;
+  color: #4a5878;
   font-size: 0.8rem;
   width: 26px;
   height: 26px;
@@ -268,7 +325,10 @@
   transition: color 0.1s, border-color 0.1s;
   flex-shrink: 0;
 }
-.loreClose:hover { color: var(--c-text); border-color: var(--c-text-dim); }
+.loreClose:hover {
+  color: #8090c0;
+  border-color: #4a5878;
+}
 
 .loreBody {
   padding: 20px;
@@ -277,12 +337,13 @@
 }
 
 .loreText {
-  font-size: 0.82rem;
-  color: var(--c-text-dim);
-  line-height: 1.85;
+  font-family: 'Galmuri11', monospace;
+  font-size: 11px;
+  color: #7080b0;
+  line-height: 1.9;
 }
 
-/* ── 액션 모달 ─────────────────────────────────────────────────── */
+/* ── 액션 모달 ─────────────────────────────────────────────── */
 .actionBody {
   display: flex;
   align-items: center;
@@ -297,8 +358,8 @@
   flex-shrink: 0;
   width: 72px;
   height: 72px;
-  background: var(--c-bg);
-  border: 1px solid var(--c-border);
+  background: #060810;
+  border: 1px solid #1e2840;
 }
 
 .actionButtons {
@@ -309,14 +370,14 @@
 }
 
 .loreCount {
-  font-family: 'Courier New', monospace;
-  font-size: 0.72rem;
+  font-family: 'GalmuriMono11', monospace;
+  font-size: 9px;
   color: var(--c-gold);
   font-weight: 700;
 }
 
-/* ── 반응형 ──────────────────────────────────────────────────── */
+/* ── 반응형 ───────────────────────────────────────────────── */
 @media (max-width: 360px) {
   .grid { gap: 5px; }
-  .slotName { font-size: 0.54rem; }
+  .slotName { font-size: 9px; }
 }

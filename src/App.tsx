@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useGameState } from './hooks/useGameState'
-import HomeScreen from './components/screens/HomeScreen'
-import ForgeScreen from './components/screens/ForgeScreen'
+import GameScreen from './components/screens/GameScreen'
 import DestroyScreen from './components/screens/DestroyScreen'
 import ShopCraftScreen from './components/screens/ShopCraftScreen'
 import StorageScreen from './components/screens/StorageScreen'
@@ -21,7 +20,9 @@ import {
   updateShake,
   type ShakeState,
 } from './effects/ScreenShake'
+import { ambientManager } from './audio/AmbientManager'
 import type { ForgePhase } from './hooks/useGameState'
+import swordsData from './data/swords.json'
 
 // 모션 감소 선호 여부 확인
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -31,6 +32,8 @@ export default function App() {
   const [bgmOn, setBgmOn] = useState(false)
   // 고단계 파괴 reveal 후 그레이스케일 상태
   const [grayscale, setGrayscale] = useState(false)
+  // 마일스톤 시네마틱 (null = 비활성)
+  const [milestoneLevel, setMilestoneLevel] = useState<number | null>(null)
 
   // ── 화면 흔들림 ──────────────────────────────────────────────────
   const containerRef = useRef<HTMLDivElement>(null)
@@ -165,13 +168,43 @@ export default function App() {
     }
   }, [])
 
+  // ── 앰비언스 bgmOn 연동 ──────────────────────────────────────
+  useEffect(() => {
+    if (bgmOn) { void ambientManager.start() }
+    else        { ambientManager.stop() }
+  }, [bgmOn])
+
+  // ── 마일스톤 감지 (discoveredLevels 변화 추적) ────────────────
+  const prevDiscoveredRef = useRef<number[]>(state.discoveredLevels)
+  useEffect(() => {
+    const prev = prevDiscoveredRef.current
+    prevDiscoveredRef.current = state.discoveredLevels
+    const MILESTONES = [12, 17, 22, 25]
+    for (const m of MILESTONES) {
+      if (!prev.includes(m) && state.discoveredLevels.includes(m)) {
+        setMilestoneLevel(m)
+        return
+      }
+    }
+  }, [state.discoveredLevels])
+
+  // 마일스톤 자동 해제 (3.5s)
+  useEffect(() => {
+    if (milestoneLevel === null) return
+    const t = setTimeout(() => setMilestoneLevel(null), 3500)
+    return () => clearTimeout(t)
+  }, [milestoneLevel])
+
   const toggleBgm = () => setBgmOn((v) => !v)
 
   function renderScreen() {
-    if (screen === 'home') {
+    if (screen === 'home' || screen === 'forge') {
       return (
-        <HomeScreen
+        <GameScreen
+          screen={screen}
           state={state}
+          forgePhase={forgePhase}
+          lastOutcome={lastOutcome}
           bgmOn={bgmOn}
           onBgmToggle={toggleBgm}
           onGoForge={actions.goForge}
@@ -179,18 +212,6 @@ export default function App() {
           onGoStorage={actions.goStorage}
           onGoDex={actions.goDex}
           onEquipTitle={actions.equipTitle}
-        />
-      )
-    }
-
-    if (screen === 'forge') {
-      return (
-        <ForgeScreen
-          state={state}
-          forgePhase={forgePhase}
-          lastOutcome={lastOutcome}
-          bgmOn={bgmOn}
-          onBgmToggle={toggleBgm}
           onForge={actions.forge}
           onReveal={actions.reveal}
           onSell={actions.sell}
@@ -201,18 +222,19 @@ export default function App() {
       )
     }
 
+    // 비-게임 화면: screen-enter 트랜지션 래퍼
+    let content: React.ReactNode = null
+
     if (screen === 'destroy') {
-      return (
+      content = (
         <DestroyScreen
           state={state}
           onPickFragment={actions.pickFragment}
           onUseScroll={actions.useScroll}
         />
       )
-    }
-
-    if (screen === 'shop_craft') {
-      return (
+    } else if (screen === 'shop_craft') {
+      content = (
         <ShopCraftScreen
           state={state}
           onBack={actions.goHome}
@@ -221,10 +243,8 @@ export default function App() {
           onCraftSword={actions.craftSword}
         />
       )
-    }
-
-    if (screen === 'storage') {
-      return (
+    } else if (screen === 'storage') {
+      content = (
         <StorageScreen
           state={state}
           isRoundActive={state.currentRound !== null}
@@ -233,13 +253,13 @@ export default function App() {
           onContinueFromStorage={actions.continueFromStorage}
         />
       )
+    } else if (screen === 'dex') {
+      content = <DexScreen state={state} onBack={actions.goHome} />
     }
 
-    if (screen === 'dex') {
-      return <DexScreen state={state} onBack={actions.goHome} />
-    }
-
-    return null
+    return content
+      ? <div key={screen} className="screen-enter">{content}</div>
+      : null
   }
 
   return (
@@ -267,6 +287,111 @@ export default function App() {
           onDismiss={actions.dismissTitleUnlock}
         />
       )}
+
+      {/* 마일스톤 시네마틱 오버레이 */}
+      {milestoneLevel !== null && !prefersReducedMotion && (
+        <MilestoneOverlay level={milestoneLevel} />
+      )}
     </>
+  )
+}
+
+// ── 마일스톤 오버레이 컴포넌트 ────────────────────────────────────
+
+const MILESTONE_COLORS: Record<number, string> = {
+  12: '#60a0ff',   // Block 2: 파랑
+  17: '#c070ff',   // Block 3: 보라
+  22: '#ffe060',   // Block 4: 금
+  25: '#f0f0f8',   // Block 6: 백금
+}
+
+const MILESTONE_PHASES: Record<number, string> = {
+  12: 'Phase A',
+  17: 'Phase B',
+  22: 'Phase C',
+  25: 'Phase D · 완주',
+}
+
+function MilestoneOverlay({ level }: { level: number }) {
+  const sword = swordsData.find((s) => s.level === level)
+  const color = MILESTONE_COLORS[level] ?? '#c89028'
+  const phase = MILESTONE_PHASES[level] ?? ''
+  const dur = 3.5 // seconds — matches setTimeout 3500ms
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 200,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'rgba(0,0,0,0)',
+        pointerEvents: 'none',
+        animation: `milestone-in ${dur}s ease forwards`,
+      }}
+    >
+      {/* 중앙 컨텐츠 */}
+      <div style={{ textAlign: 'center', userSelect: 'none' }}>
+        {/* 레벨 뱃지 */}
+        <div
+          style={{
+            fontFamily: "'GalmuriMono11', monospace",
+            fontSize: 22,
+            fontWeight: 700,
+            color,
+            textShadow: `0 0 24px ${color}, 0 0 48px ${color}60`,
+            letterSpacing: '0.06em',
+            animation: `milestone-level ${dur}s ease forwards`,
+            marginBottom: 10,
+          }}
+        >
+          +{level}
+        </div>
+
+        {/* 구분선 */}
+        <div
+          style={{
+            height: 1,
+            background: color,
+            opacity: 0.6,
+            margin: '0 auto 14px',
+            width: 120,
+            animation: `milestone-line ${dur}s ease forwards`,
+          }}
+        />
+
+        {/* 검 이름 */}
+        <div
+          style={{
+            fontFamily: "'Galmuri14', monospace",
+            fontSize: 28,
+            color,
+            textShadow: `0 0 16px ${color}80`,
+            letterSpacing: '0.08em',
+            animation: `milestone-name ${dur}s ease forwards`,
+            marginBottom: 12,
+          }}
+        >
+          {sword?.name ?? ''}
+        </div>
+
+        {/* Phase 라벨 */}
+        <div
+          style={{
+            fontFamily: "'Galmuri9', monospace",
+            fontSize: 9,
+            color: 'rgba(200,180,140,0.7)',
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            animation: `milestone-name ${dur}s ease forwards`,
+          }}
+        >
+          {phase}
+        </div>
+      </div>
+    </div>
   )
 }

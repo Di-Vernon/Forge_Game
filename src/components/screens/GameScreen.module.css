@@ -1,0 +1,757 @@
+/* ═══════════════════════════════════════════════════════
+   GameScreen — 통합 Home + Forge 화면
+   레이아웃: header(56px) + main(1fr)
+   Main: left-panel(200px) | center(1fr) | right-panel(200px)
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 최상위 레이아웃 ─────────────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  height: 100%;
+  min-height: 0;
+  background: var(--c-bg);
+  position: relative;
+}
+
+/* ── 헤더 ─────────────────────────────────────────────── */
+.header {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 2px solid var(--c-border);
+  background: var(--c-surface);
+  gap: 8px;
+  z-index: 20;
+  position: relative;
+}
+
+.bgmBtn {
+  background: transparent;
+  border: 1px solid var(--c-border);
+  color: var(--c-text-mute);
+  font-size: 0.68rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  transition: color 0.1s, border-color 0.1s;
+}
+.bgmBtn:hover    { color: var(--c-text-dim); border-color: var(--c-border-lt); }
+.bgmBtnOn        { color: var(--c-gold); border-color: var(--c-gold); }
+
+.titleBadge {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--c-gold);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px var(--c-gold);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.titleBadgeNone {
+  color: var(--c-text-mute);
+  font-style: italic;
+  font-size: 0.65rem;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+}
+.statLabel { color: var(--c-text-mute); font-size: 0.62rem; letter-spacing: 0.06em; }
+.statValue { color: var(--c-text); font-family: 'GalmuriMono11', 'Courier New', monospace; font-weight: 700; }
+.statGold  { color: var(--c-gold); }
+
+/* ── 메인 영역 (3열) ──────────────────────────────────── */
+.mainArea {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── 패널 슬롯 (overflow:hidden으로 슬라이드 클리핑) ───── */
+.panelLeft,
+.panelRight {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── 패널 공통 (absolute, 트랜지션) ─────────────────── */
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 300ms cubic-bezier(0.45, 0, 0.55, 1);
+  background: var(--c-surface);
+}
+
+.panelVisible {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.panelOutLeft {
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.panelOutRight {
+  transform: translateX(100%);
+  pointer-events: none;
+}
+
+/* ── 패널 내용 공통 ────────────────────────────────── */
+.panelInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 14px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.panelDivider {
+  width: 100%;
+  height: 1px;
+  background: var(--c-border);
+  margin: 4px 0;
+}
+
+.panelSectionLabel {
+  font-size: 0.6rem;
+  color: var(--c-text-mute);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  padding: 0 2px;
+}
+
+/* ── Home Left 패널 ────────────────────────────────── */
+.homeLeftPanel {
+  border-right: 2px solid var(--c-border);
+}
+
+/* ── Forge Left 패널 ──────────────────────────────── */
+.forgeLeftPanel {
+  border-right: 2px solid var(--c-border);
+}
+
+.sellPrice {
+  font-family: 'GalmuriMono11', 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--c-gold);
+  text-align: center;
+  line-height: 1.2;
+}
+.sellPriceDimmed {
+  color: var(--c-text-mute);
+  font-size: 0.9rem;
+}
+
+/* ── Home Right 패널 ──────────────────────────────── */
+.homeRightPanel {
+  border-left: 2px solid var(--c-border);
+}
+
+.titleSelectBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: rgba(200,144,40,0.08);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-dim);
+  font-family: inherit;
+  font-size: 0.78rem;
+  padding: 10px 12px;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 0.06em;
+  transition: border-color 0.12s, background 0.12s;
+  text-align: center;
+}
+.titleSelectBtn:hover {
+  border-color: var(--c-gold);
+  background: rgba(200,144,40,0.14);
+}
+.titleSelectBtnLocked {
+  cursor: default;
+  opacity: 0.55;
+}
+.titleSelectBtnLocked:hover {
+  border-color: var(--c-border);
+  background: rgba(200,144,40,0.08);
+}
+
+.titleSelectName {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-gold);
+}
+.titleSelectNone {
+  font-size: 0.72rem;
+  color: var(--c-text-mute);
+  font-style: italic;
+}
+.titleSelectHint {
+  font-size: 0.6rem;
+  color: var(--c-text-mute);
+}
+.titleSelectEffect {
+  font-size: 0.65rem;
+  color: var(--c-text-dim);
+  line-height: 1.3;
+}
+
+.homeStatBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 0;
+}
+.homeStatRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+}
+.homeStatKey   { color: var(--c-text-mute); }
+.homeStatVal   { color: var(--c-text-dim); font-family: 'GalmuriMono11', 'Courier New', monospace; }
+.homeStatGold  { color: var(--c-gold); font-weight: 700; }
+
+/* ── Forge Right 패널 ─────────────────────────────── */
+.forgeRightPanel {
+  border-left: 2px solid var(--c-border);
+}
+
+.rateDisplay {
+  font-family: 'GalmuriMono11', 'Courier New', monospace;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--c-text);
+  text-align: center;
+  line-height: 1;
+}
+.rateHigh    { color: var(--c-success); }
+.rateMedium  { color: var(--c-gold); }
+.rateLow     { color: var(--c-molten); }
+.rateVeryLow { color: var(--c-ember); }
+
+.costTag {
+  font-size: 0.68rem;
+  color: var(--c-text-mute);
+  text-align: center;
+}
+.costTag span {
+  font-family: 'GalmuriMono11', 'Courier New', monospace;
+  color: var(--c-text-dim);
+  font-weight: 700;
+}
+
+.indomitableNote {
+  font-size: 0.62rem;
+  color: var(--c-gold);
+  text-align: center;
+  opacity: 0.85;
+}
+
+.warnNote {
+  font-size: 0.62rem;
+  color: var(--c-ember);
+  text-align: center;
+  opacity: 0.85;
+}
+
+/* ── 재료 요구사항 ─────────────────────────────────── */
+.materialReqs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 8px 0;
+  border-top: 1px solid var(--c-border);
+}
+.materialLabel {
+  font-size: 0.6rem;
+  color: var(--c-text-mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.materialItem {
+  font-size: 0.68rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.materialOk   { color: var(--c-success); }
+.materialLack { color: var(--c-ember); }
+.materialHave {
+  font-size: 0.6rem;
+  color: var(--c-text-mute);
+  margin-left: 2px;
+}
+
+/* ── UPGRADE 버튼 래퍼 — charged 상태 애니메이션 ──── */
+.upgradeBtnWrap {
+  width: 100%;
+  position: relative;
+}
+
+.upgradeCharged::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--c-hot);
+  pointer-events: none;
+  animation: charge-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes charge-pulse {
+  0%, 100% { opacity: 0; }
+  50%       { opacity: 0.55; }
+}
+
+/* ── 골드 롤링 span (GSAP가 textContent를 직접 조작) ── */
+.goldRoll {
+  font-family: 'GalmuriMono11', 'Courier New', monospace;
+  font-weight: 700;
+  color: var(--c-gold);
+  /* will-change: contents — 브라우저 최적화 힌트 */
+}
+
+/* ── 건너뛰기 ─────────────────────────────────────── */
+.actionRow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--c-border);
+}
+.skipCost {
+  font-size: 0.6rem;
+  color: var(--c-text-mute);
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════
+   CENTER (검 영역)
+   ══════════════════════════════════════════════════ */
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  /* Layer 1: CSS 그라디언트 배경 */
+  background:
+    radial-gradient(ellipse 55% 38% at 50% 78%, rgba(200,144,40,0.20) 0%, transparent 68%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #1a1410 25%, #0c0906 100%);
+}
+
+/* ── 검 이름 + 레벨 (검 위 중앙) ─────────────────── */
+.swordNameArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
+  padding-bottom: 8px;
+}
+
+.levelTag {
+  font-family: 'Galmuri11 Bold', 'Galmuri11', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 0 8px currentColor;
+}
+
+.swordName {
+  font-family: 'Galmuri11 Bold', 'Galmuri11', monospace;
+  font-size: 16px;
+  color: var(--c-text);
+  letter-spacing: 0.06em;
+  opacity: 0.92;
+}
+
+/* ── 검 래퍼 ──────────────────────────────────────── */
+.swordWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  position: relative;
+}
+.swordClickable { cursor: pointer; }
+.swordClickable:hover { filter: brightness(1.12); }
+
+/* ── 강화 오버레이 ─────────────────────────────────── */
+.forgingOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.forgingOverlay.forging   { animation: flash-success 0.4s ease infinite; }
+.forgingOverlay.success   { animation: flash-success 0.5s ease forwards; }
+.forgingOverlay.fail      { animation: flash-fail    0.5s ease forwards; }
+.forgingOverlay.near_miss { animation: flash-nearmiss 2.4s ease forwards; }
+
+/* ── 보호 발동 배너 ──────────────────────────────── */
+.protectionBanner {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  background: rgba(200, 144, 40, 0.15);
+  border: 1px solid var(--c-gold);
+  box-shadow: 0 0 14px rgba(200,144,40,0.28);
+  animation: protection-fade 2.5s ease forwards;
+  white-space: nowrap;
+}
+@keyframes protection-fade {
+  0%   { opacity: 0.97; }
+  70%  { opacity: 0.97; }
+  100% { opacity: 0; pointer-events: none; }
+}
+.protectionIcon { font-size: 1rem; }
+.protectionText {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c-gold);
+  letter-spacing: 0.06em;
+}
+.protectionSub {
+  font-size: 0.65rem;
+  color: var(--c-gold);
+  opacity: 0.82;
+}
+
+/* ── waiting_reveal 오버레이 ─────────────────────── */
+.revealOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 5, 2, 0.80);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 6;
+  cursor: pointer;
+  animation: reveal-in 0.35s ease;
+}
+@keyframes reveal-in {
+  from { opacity: 0; }
+  to   { opacity: 0.97; }
+}
+.revealOrb {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c-hot) 0%, var(--c-gold) 40%, transparent 70%);
+  box-shadow: 0 0 20px var(--c-gold), 0 0 60px rgba(200,144,40,0.35);
+  animation: orb-pulse 1.4s ease-in-out infinite;
+}
+@keyframes orb-pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 20px var(--c-gold), 0 0 60px rgba(200,144,40,0.35); }
+  50%       { transform: scale(1.14); box-shadow: 0 0 30px var(--c-hot), 0 0 80px rgba(200,144,40,0.55); }
+}
+.revealPrompt {
+  font-size: 0.78rem;
+  color: var(--c-gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  animation: prompt-blink 1.4s ease-in-out infinite;
+}
+@keyframes prompt-blink {
+  0%, 100% { opacity: 0.97; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── Home 오버레이 (라운드 미시작) ──────────────── */
+.homeOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(12, 9, 6, 0.82);
+  z-index: 10;
+}
+
+.gameTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gameTitleText {
+  font-family: 'Galmuri14', 'Galmuri11', monospace;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--c-gold);
+  text-shadow: 0 0 14px var(--c-gold), 0 0 36px rgba(200,144,40,0.35);
+  line-height: 1;
+}
+.gameTitleSub {
+  font-size: 0.68rem;
+  color: var(--c-text-mute);
+  letter-spacing: 0.12em;
+}
+
+/* ── Forge 진입 대기 오버레이 (round active, home) ── */
+.continueOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(12, 9, 6, 0.65);
+  z-index: 10;
+}
+
+/* ── CSS 먼지 파티클 (Layer 4) ────────────────────── */
+.dustLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.dustParticle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--c-gold);
+  opacity: 0.15;
+}
+
+/* ══════════════════════════════════════════════════
+   모달 (검 도안, 칭호 선택)
+   ══════════════════════════════════════════════════ */
+.modalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  animation: modal-fade 0.14s ease;
+}
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to   { opacity: 0.97; }
+}
+
+.modal {
+  background: var(--c-surface);
+  border: 2px solid var(--c-border);
+  width: min(480px, 92%);
+  max-height: 78%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.85);
+  animation: modal-slide 0.14s ease;
+}
+@keyframes modal-slide {
+  from { transform: translateY(10px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 0.97; }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface2);
+  flex-shrink: 0;
+}
+.modalTitle {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--c-text);
+  letter-spacing: 0.06em;
+}
+.modalLevelTag {
+  font-family: 'GalmuriMono11', 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--c-gold);
+  min-width: 2.5rem;
+}
+.modalClose {
+  background: transparent;
+  border: 1px solid var(--c-border-lt);
+  color: var(--c-text-mute);
+  font-size: 0.8rem;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: color 0.1s, border-color 0.1s;
+}
+.modalClose:hover { color: var(--c-text); border-color: var(--c-text-dim); }
+
+.modalBody {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+.loreText {
+  font-size: 0.82rem;
+  color: var(--c-text-dim);
+  line-height: 1.8;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+
+/* ── 칭호 모달 (홈 우측 패널에서 열림) ─────────── */
+.titleModalWide {
+  width: min(540px, 94%);
+}
+
+.titleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--c-border);
+  overflow-y: auto;
+  flex: 1;
+}
+@media (max-width: 400px) {
+  .titleGrid { grid-template-columns: 1fr; }
+}
+
+.titleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--c-surface);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  position: relative;
+  transition: background 0.1s;
+  min-height: 80px;
+}
+.titleCard:hover:not(:disabled) { background: var(--c-surface2); }
+.titleCard:disabled { cursor: not-allowed; }
+
+.titleCardEquipped {
+  background: rgba(200,144,40,0.10);
+  outline: 2px solid var(--c-gold);
+  outline-offset: -2px;
+}
+.titleCardLocked { opacity: 0.50; }
+
+.cardName {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.2;
+}
+.cardNameLocked { color: var(--c-text-mute); }
+
+.cardEffect {
+  font-size: 0.68rem;
+  color: var(--c-gold);
+  line-height: 1.3;
+}
+.cardCondition {
+  font-size: 0.62rem;
+  color: var(--c-text-mute);
+  margin-top: 2px;
+}
+.cardBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.55rem;
+  color: var(--c-gold);
+  border: 1px solid var(--c-gold);
+  padding: 2px 5px;
+  letter-spacing: 0.04em;
+}
+.cardProtection {
+  font-size: 0.62rem;
+  color: var(--c-gold);
+  opacity: 0.88;
+}
+.cardSkip {
+  font-size: 0.60rem;
+  color: var(--c-blue);
+  line-height: 1.3;
+}
+.lockIcon {
+  font-size: 0.9rem;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  opacity: 0.45;
+}
+
+/* ── 반응형 ────────────────────────────────────── */
+@media (max-width: 600px) {
+  .mainArea {
+    grid-template-columns: 160px 1fr 160px;
+  }
+}
+@media (max-width: 480px) {
+  .mainArea {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  .panelLeft  { order: 1; }
+  .center     { order: 2; min-height: 250px; }
+  .panelRight { order: 3; }
+  .panelLeft,
+  .panelRight { height: auto; }
+  .panel      { position: relative; inset: auto; }
+  .panelOutLeft,
+  .panelOutRight { display: none; }
+}
