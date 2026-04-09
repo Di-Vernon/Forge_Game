@@ -5,23 +5,10 @@
   grid-template-rows: 52px 1fr;
   height: 100%;
   min-height: 0;
-  /* 보물창고: 깊고 어두운 남색 기조 */
-  background: #07080f;
+  /* 보물창고: 어두운 석조 지하실 */
+  background: #0a0908;
   position: relative;
   overflow: hidden;
-}
-
-/* 돌벽 질감 격자 */
-.screen::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* ── 헤더 ─────────────────────────────────────────────────────── */
@@ -52,7 +39,7 @@
 
 .countNum {
   font-weight: 700;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
 }
 
 .countDen {
@@ -67,7 +54,7 @@
 
 .mythComplete {
   font-size: 0.68rem;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   font-family: inherit;
 }
 
@@ -122,18 +109,18 @@
 
 /* ── +25 여명 특별 이펙트 ──────────────────────────────────── */
 .slotLegendary {
-  border-color: var(--c-gold);
+  border-color: var(--c-ember);
   animation: legendary-pulse 2.6s ease-in-out infinite;
 }
 
 @keyframes legendary-pulse {
   0%, 100% {
-    box-shadow: 0 0 6px rgba(200, 160, 32, 0.25),
-                inset 0 0 10px rgba(200, 160, 32, 0.07);
+    box-shadow: 0 0 6px rgba(196, 90, 32, 0.25),
+                inset 0 0 10px rgba(196, 90, 32, 0.07);
   }
   50% {
-    box-shadow: 0 0 16px rgba(200, 160, 32, 0.55),
-                inset 0 0 20px rgba(200, 160, 32, 0.14);
+    box-shadow: 0 0 16px rgba(196, 90, 32, 0.55),
+                inset 0 0 20px rgba(196, 90, 32, 0.14);
   }
 }
 
@@ -189,8 +176,8 @@
   font-family: 'Courier New', monospace;
   font-size: 0.56rem;
   font-weight: 700;
-  background: var(--c-gold);
-  color: #1a1000;
+  background: var(--c-ember);
+  color: #120e0c;
   padding: 1px 4px;
   line-height: 1.5;
   pointer-events: none;
@@ -311,7 +298,7 @@
 .loreCount {
   font-family: 'Courier New', monospace;
   font-size: 0.72rem;
-  color: var(--c-gold);
+  color: var(--c-ember);
   font-weight: 700;
 }
 

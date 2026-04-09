@@ -31,14 +31,14 @@
   transition: color 0.1s, border-color 0.1s;
 }
 .bgmBtn:hover { color: var(--c-text); border-color: var(--c-text-dim); }
-.bgmBtnOn     { color: var(--c-gold-bright); border-color: var(--c-gold); }
+.bgmBtnOn     { color: var(--c-ember-bright); border-color: var(--c-ember); }
 
 .titleBadge {
   text-align: center;
   font-size: 0.8rem;
-  color: var(--c-gold);
+  color: var(--c-ember);
   letter-spacing: 0.08em;
-  text-shadow: 0 0 8px var(--c-gold);
+  text-shadow: 0 0 8px var(--c-ember);
 }
 
 .statsRow {
@@ -55,7 +55,7 @@
 }
 .statLabel { color: var(--c-text-dim); font-size: 0.68rem; }
 .statValue  { color: var(--c-text); font-family: 'Courier New', monospace; font-weight: 700; }
-.statValue.gold { color: var(--c-gold-bright); }
+.statValue.goldStat { color: var(--c-ember-bright); }
 
 /* ── 메인 영역 ─────────────────────────────────────────── */
 .main {
@@ -95,7 +95,7 @@
   font-family: 'Courier New', monospace;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   text-align: center;
   line-height: 1.2;
 }
@@ -110,7 +110,7 @@
   line-height: 1;
 }
 .rateDisplay.high   { color: var(--c-success); }
-.rateDisplay.medium { color: var(--c-gold-bright); }
+.rateDisplay.medium { color: var(--c-ember-bright); }
 .rateDisplay.low    { color: var(--c-nearmiss); }
 .rateDisplay.veryLow { color: var(--c-fail); }
 
@@ -127,7 +127,7 @@
 
 .indomitableNote {
   font-size: 0.65rem;
-  color: var(--c-gold);
+  color: var(--c-ember);
   text-align: center;
   opacity: 0.8;
 }
@@ -143,41 +143,49 @@
   overflow: visible;
 }
 
-/* 대장간 배경 그리드 패턴 */
+/* 비네트 — 가장자리 어둡게 */
 .swordCenter::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--c-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--c-border) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.18;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    transparent 0%,
+    rgba(10, 8, 7, 0.4) 60%,
+    rgba(10, 8, 7, 0.85) 100%
+  );
   pointer-events: none;
+  z-index: 1;
 }
 
-/* 모루 받침 */
-.anvil {
-  position: absolute;
-  bottom: 28px;
-  width: 120px;
-  height: 20px;
-  background: linear-gradient(180deg, #3a2818, #211710);
-  border: 2px solid var(--c-border);
-  border-radius: 2px;
-}
-.anvil::before {
+/* 하단 불빛 반사 — 화로가 아래에 있는 느낌 */
+.swordCenter::after {
   content: '';
   position: absolute;
-  bottom: 100%;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 120px;
+  background: radial-gradient(
+    ellipse 80% 100% at 50% 100%,
+    rgba(196, 90, 32, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 검 이름 라벨 (swordCenter 상단 중앙) */
+.swordLabel {
+  position: absolute;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 12px;
-  background: linear-gradient(180deg, #3a2818, #211710);
-  border: 2px solid var(--c-border);
-  border-bottom: none;
-  border-radius: 2px 2px 0 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
 }
 
 .swordWrapper {
@@ -224,21 +232,21 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--c-gold-bright) 0%, var(--c-gold) 40%, transparent 70%);
+  background: radial-gradient(circle, var(--c-ember-bright) 0%, var(--c-ember) 40%, transparent 70%);
   box-shadow:
-    0 0 20px var(--c-gold),
-    0 0 60px rgba(200, 144, 40, 0.4);
+    0 0 20px var(--c-ember),
+    0 0 60px rgba(196, 90, 32, 0.4);
   animation: orb-pulse 1.4s ease-in-out infinite;
 }
 
 @keyframes orb-pulse {
-  0%, 100% { transform: scale(1);    box-shadow: 0 0 20px var(--c-gold), 0 0 60px rgba(200,144,40,0.4); }
-  50%       { transform: scale(1.15); box-shadow: 0 0 32px var(--c-gold-bright), 0 0 80px rgba(200,144,40,0.6); }
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 20px var(--c-ember), 0 0 60px rgba(196,90,32,0.4); }
+  50%       { transform: scale(1.15); box-shadow: 0 0 32px var(--c-ember-bright), 0 0 80px rgba(196,90,32,0.6); }
 }
 
 .revealPrompt {
   font-size: 0.8rem;
-  color: var(--c-gold);
+  color: var(--c-ember);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   animation: prompt-blink 1.4s ease-in-out infinite;
@@ -270,27 +278,21 @@
 
 /* ── 푸터 ──────────────────────────────────────────────── */
 .footer {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 0 20px;
   min-height: 52px;
   border-top: 2px solid var(--c-border);
   background: var(--c-surface2);
 }
 
-.swordInfo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .levelTag {
   font-family: 'Courier New', monospace;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: var(--c-gold-bright);
-  text-shadow: 0 0 6px var(--c-gold);
+  color: var(--c-ember-bright);
+  text-shadow: 0 0 12px rgba(196, 90, 32, 0.5);
 }
 
 .swordName {
@@ -355,7 +357,7 @@
   background: transparent;
   border: none;
   border-bottom: 1px dashed var(--c-border-lt);
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   font-size: 0.9rem;
   font-family: inherit;
   letter-spacing: 0.04em;
@@ -364,8 +366,8 @@
   transition: color 0.1s, border-color 0.1s;
 }
 .swordNameBtn:hover:not(:disabled) {
-  color: var(--c-gold-bright);
-  border-bottom-color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
+  border-bottom-color: var(--c-ember-bright);
 }
 .swordNameBtn:disabled {
   cursor: default;
@@ -413,7 +415,7 @@
   font-family: 'Courier New', monospace;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   min-width: 2.5rem;
 }
 
@@ -504,9 +506,9 @@
   align-items: center;
   gap: 8px;
   padding: 8px 20px;
-  background: rgba(200, 144, 40, 0.18);
-  border: 1px solid var(--c-gold);
-  box-shadow: 0 0 16px rgba(200, 144, 40, 0.3);
+  background: rgba(196, 90, 32, 0.18);
+  border: 1px solid var(--c-ember);
+  box-shadow: 0 0 16px rgba(196, 90, 32, 0.3);
   animation: protection-fade 2.5s ease forwards;
 }
 
@@ -520,12 +522,12 @@
 .protectionText {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   letter-spacing: 0.06em;
 }
 .protectionSub {
   font-size: 0.68rem;
-  color: var(--c-gold);
+  color: var(--c-ember);
   opacity: 0.85;
 }
 

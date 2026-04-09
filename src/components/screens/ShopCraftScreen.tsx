@@ -123,7 +123,7 @@ function ShopTab({ gold, scrolls, onBuy, showToast }: ShopTabProps) {
                 )}
               </div>
               <Button
-                variant={canBuy ? 'gold' : 'ghost'}
+                variant={canBuy ? 'ember' : 'ghost'}
                 size="sm"
                 disabled={!canBuy}
                 onClick={() => handleBuy(key)}
@@ -263,7 +263,7 @@ function CraftTab({ state, onCraftScroll, onCraftSword, showToast }: CraftTabPro
                 </div>
               </div>
               <Button
-                variant={canCraft ? 'gold' : 'ghost'}
+                variant={canCraft ? 'ember' : 'ghost'}
                 size="sm"
                 disabled={!canCraft}
                 onClick={() => handleCraftSword(recipe)}

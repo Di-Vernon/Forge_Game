@@ -31,7 +31,7 @@
   font-family: 'Courier New', monospace;
 }
 .headerCountNum {
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   font-weight: 700;
 }
 
@@ -87,15 +87,15 @@
 .accentBlock1 { background: var(--c-text-dim); }
 .accentBlock2 { background: var(--c-blue); }
 .accentBlock3 { background: var(--c-purple); }
-.accentBlock4 { background: var(--c-gold); }
+.accentBlock4 { background: var(--c-ember); }
 .accentBlock5 { background: var(--c-fire); }
-.accentBlock6 { background: var(--c-gold-bright); }
+.accentBlock6 { background: var(--c-ember-bright); }
 
 .entryLevel {
   font-family: 'Courier New', monospace;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   min-width: 2.5rem;
 }
 
@@ -165,7 +165,7 @@
   font-family: 'Courier New', monospace;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   min-width: 2.5rem;
 }
 

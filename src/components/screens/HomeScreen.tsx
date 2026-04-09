@@ -195,12 +195,12 @@ export default function HomeScreen({
         <div className={styles.titleSection}>
           <div className={styles.titleDecor}>
             <svg width="36" height="36" viewBox="0 0 36 36" style={{ opacity: 0.6 }}>
-              <line x1="4" y1="32" x2="32" y2="4" stroke="var(--c-gold)" strokeWidth="2.5" />
-              <polygon points="32,4 28,2 34,8" fill="var(--c-gold)" />
-              <line x1="10" y1="22" x2="14" y2="26" stroke="var(--c-gold)" strokeWidth="2" />
-              <line x1="32" y1="32" x2="4" y2="4" stroke="var(--c-gold)" strokeWidth="2.5" />
-              <polygon points="4,4 8,2 2,8" fill="var(--c-gold)" />
-              <line x1="26" y1="22" x2="22" y2="26" stroke="var(--c-gold)" strokeWidth="2" />
+              <line x1="4" y1="32" x2="32" y2="4" stroke="var(--c-ember)" strokeWidth="2.5" />
+              <polygon points="32,4 28,2 34,8" fill="var(--c-ember)" />
+              <line x1="10" y1="22" x2="14" y2="26" stroke="var(--c-ember)" strokeWidth="2" />
+              <line x1="32" y1="32" x2="4" y2="4" stroke="var(--c-ember)" strokeWidth="2.5" />
+              <polygon points="4,4 8,2 2,8" fill="var(--c-ember)" />
+              <line x1="26" y1="22" x2="22" y2="26" stroke="var(--c-ember)" strokeWidth="2" />
             </svg>
           </div>
           <h1 className={styles.gameTitle}>검 만들기</h1>
@@ -223,7 +223,7 @@ export default function HomeScreen({
         </button>
 
         {/* 강화소 입장 / 강화 계속하기 */}
-        <Button variant="gold" size="lg" onClick={onGoForge}>
+        <Button variant="ember" size="lg" onClick={onGoForge}>
           {roundActive ? '강화 계속하기' : '강화소 입장'}
         </Button>
 

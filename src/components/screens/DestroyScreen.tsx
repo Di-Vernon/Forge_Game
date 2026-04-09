@@ -12,7 +12,6 @@ import styles from './DestroyScreen.module.css'
 import Button from '../ui/Button'
 import type { GameState, FragmentId } from '../../types'
 import { rollFragmentDrop, type FragmentDropResult } from '../../game/fragments'
-import { getSwordImagePath, getSwordGlowColor } from '../../utils/swordImage'
 import swordsData from '../../data/swords.json'
 import configJson from '../../data/config.json'
 
@@ -25,47 +24,6 @@ function getFragmentName(id: FragmentId): string {
 
 function formatGold(g: number): string {
   return g.toLocaleString('ko-KR') + ' G'
-}
-
-// ── BrokenSwordDisplay — PNG + grayscale + 균열 오버레이 ──────
-
-function BrokenSwordDisplay({ level, className }: { level: number; className?: string }) {
-  const glowColor = getSwordGlowColor(level)
-  const glowFilter = glowColor
-    ? `grayscale(1) brightness(0.5) drop-shadow(0 0 6px ${glowColor}90)`
-    : 'grayscale(1) brightness(0.5)'
-
-  return (
-    <div className={`${styles.brokenWrap} ${className ?? ''}`} style={{ position: 'relative' }}>
-      <img
-        src={getSwordImagePath(level)}
-        alt={`파괴된 +${level}강 검`}
-        draggable={false}
-        style={{
-          width: 120,
-          height: 120,
-          imageRendering: 'pixelated',
-          filter: glowFilter,
-          opacity: 0.7,
-          transform: 'rotate(-45deg)',
-          userSelect: 'none',
-        }}
-      />
-      {/* 균열 오버레이 */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          background: `
-            linear-gradient(135deg, transparent 42%, rgba(0,0,0,0.35) 42.5%, rgba(0,0,0,0.35) 43%, transparent 43.5%),
-            linear-gradient(155deg, transparent 48%, rgba(0,0,0,0.25) 48.5%, rgba(0,0,0,0.25) 49%, transparent 49.5%),
-            linear-gradient(120deg, transparent 55%, rgba(0,0,0,0.2) 55.5%, rgba(0,0,0,0.2) 56%, transparent 56.5%)
-          `,
-        }}
-      />
-    </div>
-  )
 }
 
 // ── Props ──────────────────────────────────────────────────────
@@ -122,13 +80,6 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
     setTimeout(() => onUseScroll(), 700)
   }
 
-  const swordClass =
-    phase === 'entering'  ?
-      (destroyTier === 'high' ? styles.swordEnteringHigh :
-       destroyTier === 'mid'  ? styles.swordEnteringMid  : styles.swordEntering) :
-    phase === 'restoring' ? styles.swordRestoring :
-    (destroyTier === 'high' ? styles.swordBrokenHigh : styles.swordBroken)
-
   const screenClass = [
     styles.screen,
     destroyTier === 'mid'  ? styles.screenMid  : '',
@@ -137,9 +88,6 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
 
   return (
     <div className={screenClass}>
-      {/* 대장간 배경 그리드 */}
-      <div className={styles.gridBg} />
-
       {/* 어두운 분위기 오버레이 */}
       <div className={styles.darkOverlay} />
 
@@ -155,7 +103,7 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
       <div className={styles.statsCorner}>
         <div className={styles.stat}>
           <span className={styles.statLabel}>GOLD</span>
-          <span className={`${styles.statValue} ${styles.gold}`}>{formatGold(state.gold)}</span>
+          <span className={`${styles.statValue} ${styles.goldStat}`}>{formatGold(state.gold)}</span>
         </div>
         <div className={styles.stat}>
           <span className={styles.statLabel}>스크롤</span>
@@ -166,10 +114,10 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
       {/* ── 메인 ────────────────────────────────────── */}
       <main className={styles.main}>
 
-        {/* 파괴된 검 + 모루 */}
-        <div className={styles.swordArea}>
-          <BrokenSwordDisplay level={level} className={swordClass} />
-          <div className={styles.anvil} />
+        {/* 파괴 표시 — 검은 공간, 이미지 없음 */}
+        <div className={styles.destroyArea}>
+          <span className={styles.destroyTitle}>파 괴</span>
+          <span className={styles.destroyName}>+{level} {sword.name}</span>
         </div>
 
         {/* 결과 메시지 (picking 상태) */}
@@ -233,7 +181,7 @@ export default function DestroyScreen({ state, onPickFragment, onUseScroll }: Pr
               return (
                 <div className={styles.choiceSlot}>
                   <Button
-                    variant={canRestore ? 'gold' : 'primary'}
+                    variant={canRestore ? 'ember' : 'primary'}
                     size="lg"
                     disabled={!canRestore}
                     onClick={handleUseScroll}

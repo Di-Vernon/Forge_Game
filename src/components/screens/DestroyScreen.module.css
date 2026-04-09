@@ -10,18 +10,7 @@
   overflow: hidden;
 }
 
-/* ── 배경 그리드 (ForgeScreen과 동일) ──────────────────────── */
-.gridBg {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--c-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--c-border) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.18;
-  pointer-events: none;
-  z-index: 0;
-}
+/* (그리드 배경 삭제됨) */
 
 /* ── 어두운 분위기 오버레이 ──────────────────────────────────── */
 .darkOverlay {
@@ -74,7 +63,7 @@
 .stat         { display: flex; align-items: center; gap: 6px; }
 .statLabel    { font-size: 0.68rem; color: var(--c-text-dim); letter-spacing: 0.06em; }
 .statValue    { font-family: 'Courier New', monospace; font-size: 0.88rem; font-weight: 700; color: var(--c-text); }
-.statValue.gold { color: var(--c-gold-bright); }
+.statValue.goldStat { color: var(--c-ember-bright); }
 
 /* ── 메인 영역 ──────────────────────────────────────────────── */
 .main {
@@ -89,45 +78,28 @@
   min-height: 0;
 }
 
-/* ── 검 + 모루 ─────────────────────────────────────────────── */
-.swordArea {
+/* ── 파괴 표시 영역 ────────────────────────────────────────── */
+.destroyArea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-}
-
-.brokenWrap {
-  display: flex;
-  align-items: flex-end;
   justify-content: center;
-  /* overflow visible so rotated SVG parts don't clip */
+  gap: 16px;
 }
 
-/* 모루 */
-.anvil {
-  width: 120px;
-  height: 20px;
-  background: linear-gradient(180deg, #3a2818, #211710);
-  border: 2px solid var(--c-border);
-  border-radius: 2px;
-  margin-top: -10px;
-  position: relative;
-  z-index: 1;
+.destroyTitle {
+  font-family: var(--font-pixel-lg);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--c-fail);
+  letter-spacing: 0.5em;
+  text-shadow: 0 0 20px rgba(160, 40, 32, 0.6);
 }
 
-.anvil::before {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 12px;
-  background: linear-gradient(180deg, #3a2818, #211710);
-  border: 2px solid var(--c-border);
-  border-bottom: none;
-  border-radius: 2px 2px 0 0;
+.destroyName {
+  font-size: 0.9rem;
+  color: var(--c-text-dim);
+  letter-spacing: 0.1em;
 }
 
 /* ── 페이즈별 스크린 클래스 ─────────────────────────────────── */
@@ -315,7 +287,7 @@
 .toastItem {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
 }
 
 .toastEmpty {

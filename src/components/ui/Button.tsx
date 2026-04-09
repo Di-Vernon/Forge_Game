@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode
   onClick?: () => void
   disabled?: boolean
-  variant?: 'primary' | 'danger' | 'ghost' | 'gold'
+  variant?: 'primary' | 'danger' | 'ghost' | 'ember'
   size?: 'sm' | 'md' | 'lg'
   fullWidth?: boolean
 }

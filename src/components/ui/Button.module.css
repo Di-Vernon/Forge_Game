@@ -35,12 +35,12 @@
   border-color: var(--c-text-dim);
 }
 
-.gold {
-  background: linear-gradient(180deg, #d4a020 0%, #a07810 100%);
-  border-color: var(--c-gold-bright);
-  color: #0c0906;
+.ember {
+  background: linear-gradient(180deg, #c45a20 0%, #8a3e10 100%);
+  border-color: var(--c-ember-bright);
+  color: #0a0807;
 }
-.gold:hover:not(:disabled) {
+.ember:hover:not(:disabled) {
   filter: brightness(1.15);
 }
 

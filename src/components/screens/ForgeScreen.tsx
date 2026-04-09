@@ -232,7 +232,7 @@ export default function ForgeScreen({
         <div className={styles.statsRow}>
           <div className={styles.stat}>
             <span className={styles.statLabel}>GOLD</span>
-            <span className={`${styles.statValue} ${styles.gold}`}>
+            <span className={`${styles.statValue} ${styles.goldStat}`}>
               {formatGold(state.gold)}
             </span>
           </div>
@@ -314,6 +314,20 @@ export default function ForgeScreen({
             </div>
           )}
 
+          {/* 검 이름 라벨 (상단 중앙) */}
+          {isRoundActive && (
+            <div className={styles.swordLabel}>
+              <span className={styles.levelTag}>+{displayLevel}</span>
+              <button
+                className={styles.swordNameBtn}
+                disabled={isBusy}
+                onClick={() => !isBusy && setShowLore(true)}
+              >
+                {sword.name}
+              </button>
+            </div>
+          )}
+
           {/* 검 표시 */}
           <div
             ref={swordWrapperRef}
@@ -332,14 +346,11 @@ export default function ForgeScreen({
             </div>
           )}
 
-          {/* 모루 */}
-          <div className={styles.anvil} />
-
           {/* 라운드 미시작 오버레이 */}
           {!isRoundActive && (
             <div className={styles.startOverlay}>
               <span className={styles.startTitle}>대장간</span>
-              <Button variant="gold" size="lg" onClick={onStartRound}>
+              <Button variant="ember" size="lg" onClick={onStartRound}>
                 강화 시작
               </Button>
             </div>
@@ -357,7 +368,7 @@ export default function ForgeScreen({
                 </span>
               )}
               <Button
-                variant={canForge ? 'gold' : 'primary'}
+                variant={canForge ? 'ember' : 'primary'}
                 size="lg"
                 disabled={!canForge}
                 onClick={handleForge}
@@ -430,16 +441,6 @@ export default function ForgeScreen({
 
       {/* ── 푸터 ──────────────────────────────── */}
       <footer className={styles.footer}>
-        <div className={styles.swordInfo}>
-          <span className={styles.levelTag}>+{displayLevel}</span>
-          <button
-            className={styles.swordNameBtn}
-            disabled={!isRoundActive}
-            onClick={() => isRoundActive && setShowLore(true)}
-          >
-            {sword.name}
-          </button>
-        </div>
         <button className={styles.storageBtn}>My Storage ({state.storage.length})</button>
       </footer>
 

@@ -18,10 +18,10 @@
 
 .modal {
   background: var(--c-surface);
-  border: 2px solid var(--c-gold);
+  border: 2px solid var(--c-ember);
   box-shadow:
-    0 0 20px rgba(200, 160, 32, 0.35),
-    0 0 60px rgba(200, 160, 32, 0.12),
+    0 0 20px rgba(196, 90, 32, 0.35),
+    0 0 60px rgba(196, 90, 32, 0.12),
     0 16px 48px rgba(0, 0, 0, 0.85);
   width: min(340px, 88%);
   padding: 32px 28px 24px;
@@ -45,7 +45,7 @@
 
 .star {
   font-size: 1.3rem;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   animation: star-pulse 1.6s ease-in-out infinite;
 }
 .star:nth-child(1) { animation-delay: 0s;    }
@@ -68,13 +68,13 @@
 .titleName {
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   letter-spacing: 0.06em;
   text-align: center;
   line-height: 1.2;
   text-shadow:
-    0 0 10px var(--c-gold),
-    0 0 28px rgba(200, 144, 40, 0.35);
+    0 0 10px var(--c-ember),
+    0 0 28px rgba(196, 90, 32, 0.35);
 }
 
 .divider {
@@ -99,9 +99,9 @@
 /* ── 확인 버튼 ─────────────────────────────────────────────────── */
 .confirmBtn {
   margin-top: 8px;
-  background: var(--c-gold);
+  background: var(--c-ember);
   border: none;
-  color: #1a1000;
+  color: #120e0c;
   font-family: inherit;
   font-size: 0.88rem;
   font-weight: 700;
@@ -113,7 +113,7 @@
 
 .confirmBtn:hover,
 .confirmBtn:focus-visible {
-  background: var(--c-gold-bright);
+  background: var(--c-ember-bright);
   outline: none;
 }
 
@@ -169,10 +169,10 @@
 
 /* gold 단계: 전설 금색 */
 .eggGold {
-  border-color: var(--c-gold-bright);
+  border-color: var(--c-ember-bright);
   box-shadow:
-    0 0 30px rgba(232, 176, 64, 0.6),
-    0 0 80px rgba(200, 144, 40, 0.25),
+    0 0 30px rgba(232, 120, 48, 0.6),
+    0 0 80px rgba(196, 90, 32, 0.25),
     0 16px 48px rgba(0, 0, 0, 0.9);
   animation: gold-reveal 0.5s ease forwards;
 }
@@ -183,7 +183,7 @@
 }
 
 .eggStar {
-  color: var(--c-gold-bright);
+  color: var(--c-ember-bright);
   animation: egg-star-burst 0.6s ease forwards;
 }
 
@@ -194,26 +194,26 @@
 }
 
 .eggAcquired {
-  color: var(--c-gold);
+  color: var(--c-ember);
   letter-spacing: 0.2em;
 }
 
 .eggTitleName {
   font-size: 1.55rem;
   text-shadow:
-    0 0 16px var(--c-gold-bright),
-    0 0 40px rgba(232, 176, 64, 0.5);
+    0 0 16px var(--c-ember-bright),
+    0 0 40px rgba(232, 120, 48, 0.5);
   animation: gold-pulse 2s ease-in-out infinite;
 }
 
 @keyframes gold-pulse {
-  0%, 100% { text-shadow: 0 0 16px var(--c-gold-bright), 0 0 40px rgba(232,176,64,0.5); }
-  50%       { text-shadow: 0 0 28px var(--c-gold-bright), 0 0 60px rgba(232,176,64,0.8); }
+  0%, 100% { text-shadow: 0 0 16px var(--c-ember-bright), 0 0 40px rgba(232,120,48,0.5); }
+  50%       { text-shadow: 0 0 28px var(--c-ember-bright), 0 0 60px rgba(232,120,48,0.8); }
 }
 
 .eggConfirmBtn {
-  background: linear-gradient(135deg, var(--c-gold) 0%, var(--c-gold-bright) 100%);
-  box-shadow: 0 0 16px rgba(232, 176, 64, 0.5);
+  background: linear-gradient(135deg, var(--c-ember) 0%, var(--c-ember-bright) 100%);
+  box-shadow: 0 0 16px rgba(232, 120, 48, 0.5);
   animation: confirm-appear 0.4s ease forwards;
 }
 

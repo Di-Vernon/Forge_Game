@@ -1,33 +1,33 @@
 @import 'galmuri/dist/galmuri.css';
 
 /* ────────────────────────────────────────
-   CSS 변수 — 모던 픽셀아트 대장간 테마
+   CSS 변수 — 어둠 속의 대장간 테마
    ──────────────────────────────────────── */
 :root {
   --font-pixel:      'Galmuri11', 'Malgun Gothic', monospace;
   --font-pixel-sm:   'Galmuri9',  'Malgun Gothic', monospace;
   --font-pixel-lg:   'Galmuri14', 'Malgun Gothic', monospace;
   --font-pixel-bold: 'Galmuri11 Bold', 'Galmuri11', 'Malgun Gothic', monospace;
-  --c-bg:          #0c0906;
-  --c-surface:     #18120c;
-  --c-surface2:    #211710;
-  --c-border:      #3a2818;
-  --c-border-lt:   #524030;
+  --c-bg:          #0a0807;
+  --c-surface:     #141110;
+  --c-surface2:    #1c1714;
+  --c-border:      #2a2220;
+  --c-border-lt:   #3d3230;
 
-  --c-gold:        #c89028;
-  --c-gold-bright: #e8b040;
+  --c-ember:       #c45a20;
+  --c-ember-bright:#e87830;
   --c-fire:        #cc5510;
   --c-fire-bright: #f07030;
 
-  --c-text:        #d8c090;
-  --c-text-dim:    #7a6040;
-  --c-text-faint:  #3e2e1a;
+  --c-text:        #b8a898;
+  --c-text-dim:    #6a5848;
+  --c-text-faint:  #3a2e24;
 
-  --c-success:     #58a030;
-  --c-fail:        #b02820;
-  --c-nearmiss:    #d06010;
-  --c-blue:        #4488cc;
-  --c-purple:      #9944cc;
+  --c-success:     #4a8a30;
+  --c-fail:        #a02820;
+  --c-nearmiss:    #c05810;
+  --c-blue:        #3a7098;
+  --c-purple:      #7a4498;
 }
 
 /* ────────────────────────────────────────
