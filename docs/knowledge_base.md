@@ -446,7 +446,7 @@ GameState의 `discoveredLevels: number[]`로 추적. 초기값 `[0]`.
 
 ---
 
-# 8. 검 비주얼 시스템 (v4.1 추가)
+# 8. 검 비주얼 시스템 (v5.0 UI 대격변 반영)
 
 ## 구현 방식: 하이브리드 D방식
 
@@ -454,15 +454,24 @@ GameState의 `discoveredLevels: number[]`로 추적. 초기값 `[0]`.
 - 이펙트: **CSS/SVG 오버레이**로 코드에서 처리 (glow, 핏물, 번개 13개 검)
 - 이미지 경로: `public/sprites/swords/sword_XX.png`
 - 디자인 스펙: `docs/sword_design_spec.md`
+- UI/UX 대격변 설계: `docs/ui_ux_design_overhaul.md`
 
-## Block별 스케일링
+## Block별 표시 크기 (v5.0 대격변, 균일 대형화)
 
-| Block | CSS scale | glow drop-shadow |
-|-------|-----------|-------------------|
-| 1~2 | 1.0x | 10~12px |
-| 3 | 1.2x | 16~20px |
-| 4 | 1.4x | 20~32px |
-| 5~6 | 1.5x | 28~40px |
+> ⚠️ 기존 CSS scale 방식에서 px 고정 크기로 전환. Block 간 차이 최소화.
+
+| Block | 표시 크기 범위 | 비고 |
+|-------|-------------|------|
+| Block 1 (+0~+7) | 450~470px | 기본 존재감 |
+| Block 2 (+8~+12) | 470~485px | |
+| Block 3 (+13~+16) | 488~500px | |
+| Block 4 (+17~+22) | 480~515px | +22 단검 480px |
+| Block 5~6 (+23~+25) | 510~520px | |
+
+## 검 방향 (v5.0 변경)
+
+- **rotate(-45deg) 제거** — 원본 PNG 그대로 표시 (회전 없음)
+- 방향 통일은 PixelLab에서 세로 방향으로 재생성 (별도 작업)
 
 ## 검별 고유 idle 이펙트 (총 13개)
 
