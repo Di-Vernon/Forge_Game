@@ -261,7 +261,7 @@ export default function ForgeScreen({
                 variant="ghost"
                 size="lg"
                 disabled={isBusy || sellPrice == null}
-                onClick={(e: React.MouseEvent) => { e.stopPropagation(); onSell() }}
+                onClick={() => { onSell() }}
                 fullWidth
               >
                 SELL

@@ -156,7 +156,7 @@ function ActionModal({
               {sellable ? `판매 (${price.toLocaleString('ko-KR')} G)` : '판매 불가'}
             </Button>
             <Button
-              variant="gold"
+              variant="ember"
               size="lg"
               disabled={isRoundActive}
               onClick={onContinue}
