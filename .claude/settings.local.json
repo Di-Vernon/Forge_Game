@@ -38,7 +38,10 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(ls public/sprites/swords/sword_*.png)"
+      "Bash(ls public/sprites/swords/sword_*.png)",
+      "Bash(du:*)",
+      "Bash(git:*)",
+      "Bash(xxd /c/Users/PC/project/Forge_Game/.gitignore)"
     ]
   }
 }
